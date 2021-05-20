@@ -1,2 +1,40 @@
 Les fonctionnalités seront les suivantes :
 
+
+1.1 Création d'un labyrinthe par défaut
+1.2 Collision avec les Murs
+1.4 Cases déclencheur
+2.1 Génération de monstres immobiles
+3.1 Collision avec un monstre
+3.2 Fantômes
+3.3 Troll
+5.1 Attaque des monstres
+5.2 Attaque du joueur
+5.3 Affichage des attaques
+5.5 Mort des monstres
+6.1 Fin du jeu : mort du héros
+6.2 Mise en place de l'amulette
+6.3 Acquisition de l'amulette
+6.4 Fin du jeu : victoire du héros
+7.1 Inventaire
+7.4 Affichage de l'inventaire
+11.1 Achage avec des sprites
+
+
+
+
+Optionnel : 
+1.3 Gestion des niveaux ou 1.8 Gestion d'un labyrinthe multi-étages
+1.6 Ouverture de Passages secrets
+1.7 Fermeture de Passage
+2.4 Monstres au comportement intelligent
+2.5 Monstres avec intelligence variable
+5.4 Attaque directionnelle
+God mode?
+Boss de fin?
+7.2 Armes
+8.1 Attaque à distance du joueur
+11.2 Conguration du clavier
+11.3 Gestion d'un menu 
+
+
