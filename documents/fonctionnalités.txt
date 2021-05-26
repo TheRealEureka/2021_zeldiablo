@@ -32,9 +32,9 @@ Les fonctionnalités seront les suivantes :
 6.4 Fin du jeu : victoire du héros
 - Clément P
 7.1 Inventaire
-- Thomasz DA
+- Thomas DA
 7.4 Affichage de l'inventaire
-- Thomasz DA
+- Thomas DA
 11.1 Achage avec des sprites
 - Kévin BC
 
