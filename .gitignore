@@ -1,1 +1,4 @@
 *.class
+./projet_zeldiablo/bin
+./projet_zeldiablo/.classpath
+./projet_zeldiablo/.project
