@@ -2,24 +2,41 @@ Les fonctionnalités seront les suivantes :
 
 
 1.1 Création d'un labyrinthe par défaut
+- Thomas S
 1.2 Collision avec les Murs
+- Thomas S
 1.4 Cases déclencheur
+- Thomas DA
 2.1 Génération de monstres immobiles
+- Thomas DA
 3.1 Collision avec un monstre
+- Thomas DA
 3.2 Fantômes
+- Kévin BC
 3.3 Troll
+- Kévin BC
 5.1 Attaque des monstres
+- Clément P
 5.2 Attaque du joueur
+- Clément P
 5.3 Affichage des attaques
+- Clément P
 5.5 Mort des monstres
+- Thomas DA
 6.1 Fin du jeu : mort du héros
+- Kévin BC
 6.2 Mise en place de l'amulette
+- Thomas S
 6.3 Acquisition de l'amulette
+- Thomas S
 6.4 Fin du jeu : victoire du héros
+- Clément P
 7.1 Inventaire
+- Thomasz DA
 7.4 Affichage de l'inventaire
+- Thomasz DA
 11.1 Achage avec des sprites
-
+- Kévin BC
 
 
 
