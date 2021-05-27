@@ -10,19 +10,21 @@ public class Monstre implements Personnage{
 	 * Vie : la vie du monstre
 	 */
 	private int vie;
-	
+	private int pointsAttaque;
 	/**
 	 * Constructeur avec paramètre pour la vie du monstre
 	 * @param v vie du monstre
 	 */
-	public Monstre(int v) {
+	public Monstre(int v, int pA) {
 		this.vie = v;
+		this.pointsAttaque = pA;
 	}
 	/**
 	 * Constructeur sans paramètre
 	 */
 	public Monstre() {
 		this.vie = 150;
+		this.pointsAttaque = 20;
 	}
 	/**
 	 * Méthode setVie pour changer la vie du monstre
@@ -48,17 +50,30 @@ public class Monstre implements Personnage{
 	 */
 	@Override
 	public void attaquer(Personnage cible) {
-		
+		cible.subirDegats(this.pointsAttaque);
 	}
 	/**
-	 * Méthode pour faire perdre des points de ves au monstre
+	 * Méthode pour faire perdre des points de vies au monstre
 	 */
 	@Override
 	public void subirDegats(int v) {
-		// TODO Auto-generated method stub
+		this.vie -= v;
 		
 	}
+	/**
+	 * Méthode etreMort pour vérifier si le monstre est mort
+	 */
+	@Override
+	public boolean etreMort() {
+		return this.pointsAttaque == 0;
+	}
 	
-	
+	/**
+	 * Méthode qui retourne les points de dégats du monstre
+	 * @return pointsAttaque du monstre
+	 */
+	public int getPointsAttaque() {
+		return this.pointsAttaque;
+	}
 	
 }
