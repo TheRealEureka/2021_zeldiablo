@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Personnages.Monstre;
+
 public class TestMonstres {
 
 	@Test
-	public void testConstructeurMonstreValide() {
+	public void testConstructeurMonstreVide() {
 		Monstre m = new Monstre();
 		boolean res = m == null;
 		assertFalse("Le monstre ne devrait pas être null", res);
@@ -15,10 +17,10 @@ public class TestMonstres {
 	}
 
 	@Test
-	public void testConstructeurMonstreInvalide() {
-		Monstre m = new Monstre("Troll");
-		boolean res = m == null;
-		assertTrue("Le monstre ne devrait pas être null", res);
+	public void testConstructeurMonstreNonVide() {
+		Monstre m = new Monstre(3500);
+		int res = m.getVie();
+		assertEquals("Le points de vies devrait etre de 3500", 3500, res);
 
 	}
 

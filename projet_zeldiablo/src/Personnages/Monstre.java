@@ -5,6 +5,9 @@ public class Monstre implements Personnage{
 	public Monstre(int v) {
 		this.vie = v;
 	}
+	public Monstre() {
+		this.vie = 150;
+	}
 	@Override
 	public void setVie(int v) {
 		this.vie = v;
