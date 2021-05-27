@@ -56,6 +56,7 @@ public class TestMonstres {
 	/**
 	 * Test l'action attaquer quand la distance est trop grande
 	 */
+	@Test
 	public void test_attaquer_PasOk() {
 		Labyrinthe labyrinthe = new Labyrinthe();
 		Heros h = new Heros();
@@ -67,6 +68,7 @@ public class TestMonstres {
 	/**
 	 * Test l'action attaquer quand tout est ok
 	 */
+	@Test
 	public void test_attaquer_OK() {
 		Labyrinthe labyrinthe = new Labyrinthe();
 		Heros h = new Heros();
