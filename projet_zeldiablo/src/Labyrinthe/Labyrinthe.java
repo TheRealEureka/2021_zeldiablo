@@ -4,7 +4,7 @@ public class Labyrinthe {
 	
 	private int largeur;
 	private int hauteur; 
-	//public Amulette amulette;
+	public Amulette amulette;
 
 	public Labyrinthe(int l, int h) {
 		
@@ -20,7 +20,7 @@ public class Labyrinthe {
 			this.largeur = l;
 		}
 		
-		//this.amulette = new Amulette(3,4,false);
+		this.amulette = new Amulette(3,4,this);
 	}
 	
 	
@@ -47,7 +47,7 @@ public class Labyrinthe {
 		return this.hauteur;
 	}
 	
-	/*public Amulette getAmulette() {
+	public Amulette getAmulette() {
 		return this.amulette;
-	}*/
+	}
 }
