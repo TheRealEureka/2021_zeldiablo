@@ -16,7 +16,7 @@ public class TestMonstres {
 	
 	@Test
 	public void testConstructeurMonstreInvalide() {
-		Monstre m;
+		Monstre m = new Monstre("Troll");
 		boolean res = m == null;
 		assertTrue("Le monstre ne devrait pas être null", res);
 		
