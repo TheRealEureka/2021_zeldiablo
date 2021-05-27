@@ -22,10 +22,10 @@ public class TestMonstres {
 	 */
 	@Test
 	public void testConstructeurMonstreNonVide() {
-		Monstre m = new Monstre(3500);
+		Monstre m = new Monstre(3500, 150);
 		int res = m.getVie();
 		assertEquals("Le points de vies devrait etre de 3500", 3500, res);
-
+		assertEquals("Les degats devrait etre de 150", 150, m.getPointsAttaque());
 	}
 
 	/**

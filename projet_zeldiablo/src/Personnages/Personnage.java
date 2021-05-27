@@ -11,4 +11,7 @@ public interface Personnage {
 	
 	public void subirDegats(int v);
 	
+	public boolean etreMort();
+	
+	public int getPointsAttaque();
 }

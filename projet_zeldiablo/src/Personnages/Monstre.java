@@ -72,6 +72,7 @@ public class Monstre implements Personnage{
 	 * Méthode qui retourne les points de dégats du monstre
 	 * @return pointsAttaque du monstre
 	 */
+	@Override
 	public int getPointsAttaque() {
 		return this.pointsAttaque;
 	}
