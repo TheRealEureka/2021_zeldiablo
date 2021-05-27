@@ -9,7 +9,8 @@ public class TestMonstres {
 	@Test
 	public void testConstructeurMonstre() {
 		Monstre m = new Monstre();
-		assertFalse("Le monstre ne devrait pas être null", m == null);
+		boolean res = m == null;
+		assertFalse("Le monstre ne devrait pas être null", res);
 		
 	}
 
