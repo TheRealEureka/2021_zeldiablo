@@ -7,6 +7,8 @@ public interface Personnage {
 	
 	public int getVie();
 	
-	public boolean attaquer(Personnage cible);
+	public void attaquer(Personnage cible);
+	
+	public void subirDegats(int v);
 	
 }
