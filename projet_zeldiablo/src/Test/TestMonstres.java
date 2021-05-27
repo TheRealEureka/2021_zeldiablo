@@ -7,7 +7,9 @@ import org.junit.Test;
 import Personnages.Monstre;
 
 public class TestMonstres {
-
+	/**
+	 * Test du constructeur de monstre vide
+	 */
 	@Test
 	public void testConstructeurMonstreVide() {
 		Monstre m = new Monstre();
@@ -15,7 +17,9 @@ public class TestMonstres {
 		assertFalse("Le monstre ne devrait pas être null", res);
 
 	}
-
+	/**
+	 * Test du constructeur de monstre non vide
+	 */
 	@Test
 	public void testConstructeurMonstreNonVide() {
 		Monstre m = new Monstre(3500);
