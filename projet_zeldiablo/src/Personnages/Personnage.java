@@ -20,4 +20,5 @@ public interface Personnage {
 	public boolean etreDansLabyrinthe(Labyrinthe lab);
 	
 	public void setLabyrinthe(Labyrinthe lab);
+	
 }

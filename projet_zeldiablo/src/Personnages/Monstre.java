@@ -55,6 +55,7 @@ public class Monstre implements Personnage{
 		this.pointsAttaque = 20;
 		this.labi = la;
 	}
+	
 	/**
 	 * Méthode setVie pour changer la vie du monstre
 	 * @param v nouvelle vie du monstre
