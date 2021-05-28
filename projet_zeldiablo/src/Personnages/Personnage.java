@@ -9,7 +9,7 @@ public interface Personnage {
 	
 	public int getVie();
 	
-	public void attaquer(Personnage cible);
+	public boolean attaquer(Personnage victime);
 	
 	public void subirDegats(int v);
 	

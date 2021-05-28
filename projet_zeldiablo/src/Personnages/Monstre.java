@@ -101,15 +101,6 @@ public class Monstre implements Personnage {
 		return this.vie;
 	}
 
-	/**
-	 * Méthode attaquer pour attaquer un autre personnage
-	 * 
-	 * @param cible, cible visée par l'attaque
-	 */
-	@Override
-	public void attaquer(Personnage cible) {
-		cible.subirDegats(this.pointsAttaque);
-	}
 
 	/**
 	 * Méthode pour faire perdre des points de vies au monstre
@@ -153,8 +144,8 @@ public class Monstre implements Personnage {
 	}
 
 //Rajouter && (this.getPortee() >= this.getDistance(victime)) une fois distance créer
-	public boolean attaquer(Heros victime) {
-		if ((this != null) && (victime != null) && (this.labi == victime.getLab()) && (victime.getVie() > 0)
+	public boolean attaquer(Personnage victime) {
+		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
 				&& (this.vie > 0)) {
 			victime.subirDegats(this.pointsAttaque);
 			return true;

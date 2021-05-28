@@ -89,10 +89,16 @@ public class Heros implements Personnage {
 	 * @param cible, cible visée par l'attaque
 	 */
 	@Override
-	public void attaquer(Personnage cible) {
-		cible.subirDegats(this.pointsAttaque);
-	}
+	public boolean attaquer(Personnage victime) {
+		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
+				&& (this.vie > 0)) {
+			victime.subirDegats(this.pointsAttaque);
+			return true;
 
+		}
+		return false;
+	}
+	
 	/**
 	 * Méthode pour faire perdre des points de vies au monstre
 	 */
