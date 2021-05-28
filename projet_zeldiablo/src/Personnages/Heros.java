@@ -8,6 +8,7 @@ public class Heros implements Personnage {
 	 * Attributs : Vie : la vie du heros PointsAttaque : les degats du Heros labi :
 	 * le labyrinte dans lequel se trouve le Heros
 	 */
+	private String nom;
 	private int vie;
 	private int pointsAttaque;
 	private Labyrinthe labi;
@@ -24,7 +25,8 @@ public class Heros implements Personnage {
 	 * @param la labyrinthe du Heros
 	 * @param po portee du Heros
 	 */
-	public Heros(int v, int pA, Labyrinthe la, int po) {
+	public Heros(String n, int v, int pA, Labyrinthe la, int po) {
+		this.nom = n;
 		this.vie = v;
 		this.pointsAttaque = pA;
 		this.labi = la;
@@ -35,6 +37,7 @@ public class Heros implements Personnage {
 	 * Constructeur sans paramètre
 	 */
 	public Heros() {
+		this.nom = "Stib";
 		this.vie = 150;
 		this.pointsAttaque = 20;
 		this.portee = 1;
@@ -47,7 +50,8 @@ public class Heros implements Personnage {
 	 * @param pA degats du Heros
 	 * @param po portee du heros
 	 */
-	public Heros(int v, int pA, int pO) {
+	public Heros(String n, int v, int pA, int pO) {
+		this.nom = n;
 		this.vie = v;
 		this.pointsAttaque = pA;
 		this.portee = pO;
@@ -60,6 +64,7 @@ public class Heros implements Personnage {
 	 * @param la labyrinthe du Heros
 	 */
 	public Heros(Labyrinthe la) {
+		this.nom = "Stib";
 		this.vie = 150;
 		this.pointsAttaque = 20;
 		this.portee = 1;
@@ -92,13 +97,14 @@ public class Heros implements Personnage {
 	 */
 	@Override
 	public boolean attaquer(Personnage victime) {
+		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
 				&& (this.vie > 0)) {
 			victime.subirDegats(this.pointsAttaque);
-			return true;
+			res = true;
 
 		}
-		return false;
+		return res;
 	}
 	
 	/**
@@ -134,7 +140,12 @@ public class Heros implements Personnage {
 	 */
 	@Override
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
-		return this.labi == lab;
+		boolean res = false;
+		if (lab != null) {
+		 res = this.labi == lab;
+		}
+		
+		return res;
 	}
 
 	public Labyrinthe getLab() {

@@ -133,7 +133,12 @@ public class Monstre implements Personnage {
 
 	@Override
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
-		return this.labi == lab;
+		boolean res = false;
+		if (lab != null) {
+		 res = this.labi == lab;
+		}
+		
+		return res;
 	}
 
 	public Labyrinthe getLab() {
@@ -147,13 +152,14 @@ public class Monstre implements Personnage {
 
 //Rajouter && (this.getPortee() >= this.getDistance(victime)) une fois distance créer
 	public boolean attaquer(Personnage victime) {
+		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
 				&& (this.vie > 0)) {
 			victime.subirDegats(this.pointsAttaque);
-			return true;
+			res = true;
 
 		}
-		return false;
+		return res;
 	}
 
 	@Override
