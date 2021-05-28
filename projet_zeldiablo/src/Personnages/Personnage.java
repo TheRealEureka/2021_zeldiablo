@@ -21,4 +21,10 @@ public interface Personnage {
 	
 	public void setLabyrinthe(Labyrinthe lab);
 	
+	public void setPosXY(int x, int y);
+	
+	public int getPosX();
+	
+	public int getPosY();
+	
 }

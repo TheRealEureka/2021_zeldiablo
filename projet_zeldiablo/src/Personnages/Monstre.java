@@ -18,6 +18,8 @@ public class Monstre implements Personnage {
 	private Labyrinthe labi;
 	private int portee;
 	private Heros heros;
+	private int posX;
+	private int posY;
 
 	/**
 	 * Constructeur avec paramètre pour la vie du monstre
@@ -152,5 +154,22 @@ public class Monstre implements Personnage {
 
 		}
 		return false;
+	}
+
+	@Override
+	public void setPosXY(int x, int y) {
+		this.posX = x;
+		this.posY = y;
+		
+	}
+
+	@Override
+	public int getPosX() {
+		return this.posX;
+	}
+
+	@Override
+	public int getPosY() {
+		return this.posY;
 	}
 }

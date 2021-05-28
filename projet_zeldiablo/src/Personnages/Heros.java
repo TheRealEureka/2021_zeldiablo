@@ -13,6 +13,8 @@ public class Heros implements Personnage {
 	private Labyrinthe labi;
 	private int portee;
 	private Monstre monstre;
+	private int posX;
+	private int posY;
 
 	/**
 	 * Constructeur avec paramètre pour la vie du Heros
@@ -156,6 +158,23 @@ public class Heros implements Personnage {
 	 */
 	public void setPortee(int portee) {
 		this.portee = portee;
+	}
+
+	@Override
+	public void setPosXY(int x, int y) {
+		this.posX = x;
+		this.posY = y;
+		
+	}
+
+	@Override
+	public int getPosX() {
+		return this.posX;
+	}
+
+	@Override
+	public int getPosY() {
+		return this.posY;
 	}
 
 }
