@@ -101,6 +101,7 @@ public class Heros implements Personnage {
 	
 	/**
 	 * Méthode pour faire perdre des points de vies au monstre
+	 * @param v les points de vie à faire perdre
 	 */
 	@Override
 	public void subirDegats(int v) {
@@ -109,7 +110,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode etreMort pour vérifier si le monstre est mort
+	 * Méthode etreMort pour vérifier si le héros est mort
 	 */
 	@Override
 	public boolean etreMort() {
@@ -119,13 +120,16 @@ public class Heros implements Personnage {
 	/**
 	 * Méthode qui retourne les points de dégats du monstre
 	 * 
-	 * @return pointsAttaque du monstre
+	 * @return pointsAttaque du héros
 	 */
 	@Override
 	public int getPointsAttaque() {
 		return this.pointsAttaque;
 	}
-
+	/**
+	 * Méthode qui vérifie si le heros est dans le labyrinthe
+	 * @param lab labyrinthe à vérifier 
+	 */
 	@Override
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
 		return this.labi == lab;
