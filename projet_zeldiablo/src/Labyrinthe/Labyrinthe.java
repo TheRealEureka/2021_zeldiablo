@@ -30,7 +30,6 @@ public class Labyrinthe {
 	public boolean etreAccessible(int x, int y) {
 		boolean resultat=true;
 		int i = getIndex(x,y);
-		System.out.println(i);
 		if(i!=-1)
 		{
 			if(tab.get(i).getX() == x && tab.get(i).getY() == y && tab.get(i).asCollider())
@@ -38,7 +37,6 @@ public class Labyrinthe {
 				resultat=false;
 			}
 		}
-		System.out.println(resultat);
 	      return resultat;
 	}
 	
