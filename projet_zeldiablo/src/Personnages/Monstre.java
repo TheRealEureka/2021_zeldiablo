@@ -104,7 +104,6 @@ public class Monstre implements Personnage {
 		return this.vie;
 	}
 
-
 	/**
 	 * M�thode pour faire perdre des points de vies au monstre
 	 */
@@ -121,7 +120,7 @@ public class Monstre implements Personnage {
 	public boolean etreMort() {
 		this.poserAmulette();
 		return this.vie <= 0;
-	
+
 	}
 
 	/**
@@ -138,9 +137,9 @@ public class Monstre implements Personnage {
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
 		boolean res = false;
 		if (lab != null) {
-		 res = this.labi == lab;
+			res = this.labi == lab;
 		}
-		
+
 		return res;
 	}
 
@@ -169,7 +168,7 @@ public class Monstre implements Personnage {
 	public void setPosXY(int x, int y) {
 		this.posX = x;
 		this.posY = y;
-		
+
 	}
 
 	@Override
@@ -181,9 +180,7 @@ public class Monstre implements Personnage {
 	public int getPosY() {
 		return this.posY;
 	}
-	
 
-	
 	@Override
 	public boolean aAmulette() {
 		boolean res = false;
@@ -191,19 +188,21 @@ public class Monstre implements Personnage {
 			res = true;
 		return res;
 	}
-	
-	public void prendreAmulette(Amulette a) {
-		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null)
+
+	public boolean prendreAmulette(Amulette a) {
+		boolean res = false;
+		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null) {
 			this.amul = a;
-		
+			res = true;
+		}
+		return res;
+
 	}
+
 	public void poserAmulette() {
 		if (this.amul != null) {
 			this.amul = null;
 		}
 	}
-	
 
 }
-
-
