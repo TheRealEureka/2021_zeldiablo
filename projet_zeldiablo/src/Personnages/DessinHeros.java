@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import jeuPerso.JeuPerso;
-import jeuPerso.Personnage;
 
 public class DessinHeros {
 	/**
