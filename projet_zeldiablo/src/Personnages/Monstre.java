@@ -177,9 +177,9 @@ public class Monstre implements Personnage {
 
 	/**
 	 * @param victime Heros cible de l'attaque
-	 * @return la distance entre l'attaquant et l'attaqué.
+	 * @return la distance entre l'attaquant et l'attaquï¿½.
 	 */
-	public int getDistance(Heros victime) {
+	public int getDistance(Personnage victime) {
 
 		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
 		return distance;

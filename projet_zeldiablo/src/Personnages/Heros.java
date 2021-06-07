@@ -115,13 +115,9 @@ public class Heros implements Personnage {
 
 	/**
 	 * @param victime Monstre cible de l'attaque
-	 * @return la distance entre l'attaquant et l'attaqué.
+	 * @return la distance entre l'attaquant et l'attaquï¿½.
 	 */
-	public int getDistance(Monstre victime) {
 
-		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
-		return distance;
-	}
 
 	/**
 	 * Mï¿½thode pour faire perdre des points de vies au monstre
@@ -235,30 +231,45 @@ public class Heros implements Personnage {
 
 	@Override
 	public void deplacer(Commande commande) {
+		int x =this.posX;
+		int y = this.posY;
 		if (commande.gauche) {
-			this.posX--;
-			if (this.posX < 0)
-				this.posX = 0;
+			x--;
+			if (x < 0)
+				x = 0;
 		}
 
 		if (commande.droite) {
-			this.posX++;
-			if (this.posX >= LIMIT_X)
-				this.posX = LIMIT_X;
+			x++;
+			if (x >= LIMIT_X)
+				x = LIMIT_X;
 		}
 
 		if (commande.haut) {
-			this.posY--;
-			if (this.posY < 0) {
-				this.posY = 0;
+			y--;
+			if (y < 0) {
+				y = 0;
 			}
 		}
 
 		if (commande.bas) {
-			this.posY++;
-			if (this.posY >= LIMIT_Y) {
-				this.posY = LIMIT_Y;
+			y++;
+			if (y >= LIMIT_Y) {
+				y = LIMIT_Y;
 			}
+			
 		}
+		if(labi.etreAccessible(x,y))
+		{
+			this.posX=x;
+			this.posY = y;
+		}
+	}
+
+
+	public int getDistance(Personnage victime) {
+
+		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
+		return distance;
 	}
 }
