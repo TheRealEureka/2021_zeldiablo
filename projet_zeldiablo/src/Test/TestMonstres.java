@@ -37,9 +37,9 @@ public class TestMonstres {
 	 */
 	public void test_subirDegats_OK() {
 
-		Heros h = new Heros("Stib", 5, 2, 4);
-		h.subirDegats(5);
-		boolean res = h.getVie() == 0;
+		Monstre m = new Monstre(5, 2, 4);
+		m.subirDegats(5);
+		boolean res = m.getVie() == 0;
 		assertEquals("hï¿½ros subis dï¿½gats", true, res);
 	}
 
@@ -47,14 +47,31 @@ public class TestMonstres {
 	 * Test l'action subir dï¿½gats quand les degats subis sont ï¿½ 0
 	 */
 	public void test_subirDegats_PasOK() {
-		Heros h = new Heros("Stib", 5, 2, 4);
-		h.subirDegats(-5);
-		boolean res = h.getVie() == 0;
+		Monstre m = new Monstre(5, 2, 4);
+		m.subirDegats(-5);
+		boolean res = m.getVie() == 0;
 		assertEquals("hï¿½ros ne subis pas de dï¿½gats", false, res);
 	}
 
 	/**
-	 * Test l'action attaquer quand la distance est trop grande
+	 * Test l'action attaquer quand la portee n'est pas sufisante
+	 */
+	public void test_attaquer_Portee() {
+
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Monstre m = new Monstre();
+		Heros h = new Heros();
+		m.setLabyrinthe(labyrinthe);
+		h.setLabyrinthe(labyrinthe);
+		m.setPortee(2);
+		m.setPosXY(0, 0);
+		h.setPosXY(10, 10);
+		boolean res = m.attaquer(h);
+		assertEquals("hï¿½ros ne subis pas de dï¿½gats", false, res);
+	}
+
+	/**
+	 * Test l'action attaquer quand pas dans le même labyrinthe
 	 */
 	@Test
 	public void test_attaquer_PasOk() {
@@ -72,10 +89,8 @@ public class TestMonstres {
 	@Test
 	public void test_attaquer_OK() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros();
-		Monstre m = new Monstre();
-		h.setLabyrinthe(labyrinthe);
-		m.setLabyrinthe(labyrinthe);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Monstre m = new Monstre(10, 3, labyrinthe, 2);
 		boolean res = m.attaquer(h);
 		assertEquals("Monstre attaque le deuxiï¿½me", true, res);
 	}
