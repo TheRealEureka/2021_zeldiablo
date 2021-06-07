@@ -6,7 +6,6 @@ public class Amulette {
 	
 	private int x;
 	private int y;
-	private boolean appartient;
 	private Personnage porteur;
 	public Amulette(int xc, int yc, Labyrinthe labi) {
 		
@@ -30,15 +29,17 @@ public class Amulette {
 		return this.y;
 	}
 	
-	public boolean getAppartient() {
-		return this.appartient;
-	}
-	
 
 	public void porteurPrendsAmulette(Personnage p) {
 		if (p.getPosX() == this.x && p.getPosY() == this.y) {
 			this.porteur = p;
 			p.prendreAmulette(this);
+		}
+	}
+
+	public void porteurPoseAmulette() {
+		if (this.porteur !=null) {
+			this.porteur = null;
 		}
 	}
 }
