@@ -2,6 +2,7 @@ package jeuPerso;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import Personnages.*;
 
 /**
  * classe qui contient les donnees du jeu. Pour le moment, il ne possede qu'un
