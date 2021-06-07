@@ -160,7 +160,7 @@ public class Monstre implements Personnage {
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
-				&& (this.vie > 0)) {
+				&& (this.vie > 0) && (this.getPortee() >= this.getDistance(victime)) && (this.vie > 0)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
