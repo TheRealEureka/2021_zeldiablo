@@ -19,6 +19,7 @@ public class GenerationLaby {
 		{
 			l.addCase(new Case(i,7));		
 		}
+		l.addCase(new CaseDeclencheuse(0,1));
 		
 	}
 }

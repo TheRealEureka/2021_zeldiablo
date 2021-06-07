@@ -60,6 +60,16 @@ public class DessinPerso implements DessinJeu {
 			crayon.drawRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
 			break;
+		case "DEC":
+			crayon.setColor(Color.green);
+			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
+		case "DEC_USED":
+			crayon.setColor(Color.red);
+			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
@@ -70,14 +80,13 @@ public class DessinPerso implements DessinJeu {
 	 */
 	public void dessiner(BufferedImage im) {
 		Personnage pj = jeu.getPj();
-		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 		ArrayList<Case> tab = laby.getTab();
 		for(int i = 0 ; i < tab.size(); i++)
 		{
-			this.dessinerObjet("MUR", tab.get(i).getX(), tab.get(i).getY(), im);
-
+			this.dessinerObjet(tab.get(i).getType(), tab.get(i).getX(), tab.get(i).getY(), im);
 		}
-		
+		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
+
 		
 		
 	}

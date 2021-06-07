@@ -263,6 +263,14 @@ public class Heros implements Personnage {
 		{
 			this.posX=x;
 			this.posY = y;
+			int i = labi.getIndex(x,y);
+			if(i!=-1)
+			{
+			if(labi.getTab().get(i).getType()=="DEC")
+			{
+				labi.getTab().get(i).effet(this);
+			}
+			}
 		}
 	}
 
