@@ -24,9 +24,9 @@ public class MainPerso {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		// creation du jeu particulier et de son afficheur
-		JeuPerso jeu = new JeuPerso();
 		Labyrinthe lab = new Labyrinthe(15,15);
 		lab.addCase(new Case(2,2));
+		JeuPerso jeu = new JeuPerso(lab);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 
 		// classe qui lance le moteur de jeu generique

@@ -2,6 +2,7 @@ package jeuPerso;
 
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import Labyrinthe.Labyrinthe;
 import Personnages.*;
 
 /**
@@ -19,8 +20,8 @@ public class JeuPerso implements Jeu {
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
-	public JeuPerso() {
-		this.pj=new Heros();
+	public JeuPerso(Labyrinthe l) {
+		this.pj=new Heros(l);
 	}
 
 	/**
