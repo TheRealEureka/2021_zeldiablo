@@ -56,6 +56,9 @@ public class DessinPerso implements DessinJeu {
 			crayon.setColor(Color.gray);
 			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
 					TAILLE_CASE);
+			crayon.setColor(Color.black);
+			crayon.drawRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE,
+					TAILLE_CASE);
 			break;
 		default:
 			throw new AssertionError("objet inexistant");
