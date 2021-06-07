@@ -18,6 +18,7 @@ public class Heros implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
+
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -107,9 +108,10 @@ public class Heros implements Personnage {
 		}
 		return res;
 	}
-	
+
 	/**
 	 * M�thode pour faire perdre des points de vies au monstre
+	 * 
 	 * @param v les points de vie � faire perdre
 	 */
 	@Override
@@ -135,17 +137,19 @@ public class Heros implements Personnage {
 	public int getPointsAttaque() {
 		return this.pointsAttaque;
 	}
+
 	/**
 	 * M�thode qui v�rifie si le heros est dans le labyrinthe
-	 * @param lab labyrinthe � v�rifier 
+	 * 
+	 * @param lab labyrinthe � v�rifier
 	 */
 	@Override
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
 		boolean res = false;
 		if (lab != null) {
-		 res = this.labi == lab;
+			res = this.labi == lab;
 		}
-		
+
 		return res;
 	}
 
@@ -176,7 +180,7 @@ public class Heros implements Personnage {
 	public void setPosXY(int x, int y) {
 		this.posX = x;
 		this.posY = y;
-		
+
 	}
 
 	@Override
@@ -196,12 +200,14 @@ public class Heros implements Personnage {
 			res = true;
 		return res;
 	}
-	
-	public void prendreAmulette(Amulette a) {
-		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null)
+
+	public boolean prendreAmulette(Amulette a) {
+		boolean res = false;
+		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null) {
 			this.amul = a;
-		
+			res = true;
+		}
+		return res;
 	}
 
 }
-
