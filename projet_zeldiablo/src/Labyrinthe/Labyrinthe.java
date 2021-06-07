@@ -10,7 +10,7 @@ public class Labyrinthe {
 	private ArrayList<Case> tab;
 	
 	public Labyrinthe(int l, int h) {
-		
+		tab = new ArrayList<Case>();
 		if (this.hauteur>15 || this.hauteur<10) {
 			this.hauteur = 10;
 		}else {
