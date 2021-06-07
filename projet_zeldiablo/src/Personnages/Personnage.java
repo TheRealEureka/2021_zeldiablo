@@ -1,5 +1,6 @@
 package Personnages;
 
+import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 
 public interface Personnage {
@@ -28,4 +29,8 @@ public interface Personnage {
 	public int getPosY();
 	
 	public boolean aAmulette();
+	
+	public void prendreAmulette(Amulette a);
+
+	
 }

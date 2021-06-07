@@ -1,11 +1,13 @@
 package Labyrinthe;
 
+import Personnages.Personnage;
+
 public class Amulette {
 	
 	private int x;
 	private int y;
 	private boolean appartient;
-
+	private Personnage porteur;
 	public Amulette(int xc, int yc, Labyrinthe labi) {
 		
 		if(this.x > labi.getHauteur() ) {
@@ -35,5 +37,11 @@ public class Amulette {
 	public void attraper() {
 		//ajout perso dans labyrinthe 
 		
+	}
+	public void porteurPrendsAmulette(Personnage p) {
+		if (p.getPosX() == this.x && p.getPosY() == this.y) {
+			this.porteur = p;
+			p.prendreAmulette(this);
+		}
 	}
 }

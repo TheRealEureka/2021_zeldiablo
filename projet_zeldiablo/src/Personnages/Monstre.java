@@ -119,7 +119,9 @@ public class Monstre implements Personnage {
 	 */
 	@Override
 	public boolean etreMort() {
-		return this.pointsAttaque == 0;
+		this.poserAmulette();
+		return this.vie >= 0;
+	
 	}
 
 	/**
@@ -200,6 +202,8 @@ public class Monstre implements Personnage {
 			this.amul = null;
 		}
 	}
+	
+
 }
 
 
