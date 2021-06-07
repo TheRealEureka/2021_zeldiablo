@@ -31,7 +31,6 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private JeuPerso jeu;
 	private Labyrinthe laby;
-
 	/**
 	 * appelle constructeur parent
 	 * 
@@ -55,12 +54,14 @@ public class DessinPerso implements DessinJeu {
 		BufferedImage stone = null;
 		BufferedImage cd_off = null;
 		BufferedImage cd_on = null;
+
 		try {
 			image = ImageIO.read(new File("src\\images\\2.png"));
 			background =  ImageIO.read(new File("src\\images\\background.png"));
 			stone =  ImageIO.read(new File("src\\images\\stone.png"));
 			cd_off =  ImageIO.read(new File("src\\images\\cd_off.png"));
 			cd_on =  ImageIO.read(new File("src\\images\\cd_on.png"));
+
 		} catch (IOException e) {
 		}
 
@@ -71,6 +72,8 @@ public class DessinPerso implements DessinJeu {
 				for(int t = 0 ; t<= 15 ;t++)
 				{
 					crayon.drawImage(background, i * TAILLE_CASE, t * TAILLE_CASE, null);
+					
+					
 				}
 			}
 			break;
