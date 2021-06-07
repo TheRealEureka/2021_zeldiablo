@@ -2,6 +2,7 @@ package Personnages;
 
 import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
+import moteurJeu.Commande;
 
 public class Heros implements Personnage {
 
@@ -18,7 +19,9 @@ public class Heros implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
-
+	
+	private final static int LIMIT_X = 25;
+	private final static int LIMIT_Y = 25;
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -209,5 +212,35 @@ public class Heros implements Personnage {
 		}
 		return res;
 	}
+	
+	@Override
+	public void deplacer(Commande commande) {
+		if (commande.gauche)
+		{
+			this.posX--;
+			if (this.posX < 0)
+				this.posX = 0;
+		}
 
+		if (commande.droite)
+		{
+			this.posX++;
+			if (this.posX >LIMIT_X)
+				this.posX = LIMIT_X;
+		}
+		
+		if (commande.haut) {
+			this.posY--;
+			if (this.posY < 0) {
+				this.posY = 0;
+			}
+		}
+		
+		if (commande.bas) {
+			this.posY++;
+			if (this.posY > LIMIT_Y) {
+				this.posY = LIMIT_Y;
+			}
+		}
+	}
 }

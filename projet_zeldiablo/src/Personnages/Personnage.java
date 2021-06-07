@@ -2,6 +2,7 @@ package Personnages;
 
 import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
+import moteurJeu.Commande;
 
 public interface Personnage {
 
@@ -30,5 +31,6 @@ public interface Personnage {
 	public boolean aAmulette();
 
 	public boolean prendreAmulette(Amulette a);
-
+	
+	public void deplacer(Commande commande);
 }
