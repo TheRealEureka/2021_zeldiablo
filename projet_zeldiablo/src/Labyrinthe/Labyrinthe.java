@@ -1,11 +1,14 @@
 package Labyrinthe;
 
+import java.util.ArrayList;
+
 public class Labyrinthe {
 	
 	private int largeur;
 	private int hauteur; 
 	public Amulette amulette;
-
+	private ArrayList<Case> tab;
+	
 	public Labyrinthe(int l, int h) {
 		
 		if (this.hauteur>15 || this.hauteur<10) {
@@ -26,18 +29,49 @@ public class Labyrinthe {
 	
 	public boolean etreAccessible(int x, int y) {
 		boolean resultat=true;
-	      if ((x<0 || x>this.largeur-1) || (y<0 || y>this.hauteur-1)) {
-	        resultat=false;
-	      }
-	      if ((x==3) && (y==0 || y==1 || y==2 || y==7 || y==8 || y==9)) {
-	        resultat = false;
-	      }
-	      if ((x==7) && (y==3 || y==4 || y==5 || y==6)) {
-	        resultat = false;
-	      }
+		for(int i = 0 ; i < tab.size(); i++)
+		{
+			if(tab.get(i).getX() == x && tab.get(i).getY() == y && tab.get(i).asCollider())
+			{
+				resultat=false;
+			}
+		}
 	      return resultat;
 	}
 	
+	public int getIndex(int x, int y)
+	{
+		int idx = -1;
+		for(int i = 0 ; i < tab.size(); i++)
+		{
+			if(tab.get(i).getX() == x && tab.get(i).getY() == y)
+			{
+				idx=i;
+				break;
+			}
+		}
+		return idx;
+	}
+	
+	public boolean addCase(Case c)
+	{
+		boolean place = false;
+		if(getIndex(c.getX(), c.getY()) == -1 )
+		{
+			place=true;
+			this.tab.add(c);
+		}
+		return place;
+		
+	}
+	
+	public void removeCase(int x, int y) {
+		int idx = getIndex(x,y);
+		if(idx!=-1)
+		{
+			this.tab.remove(idx);
+		}
+	}
 	
 	public int getLargeur() {
 		return this.largeur;
@@ -49,5 +83,10 @@ public class Labyrinthe {
 	
 	public Amulette getAmulette() {
 		return this.amulette;
+	}
+	
+	public ArrayList<Case> getTab()
+	{
+		return this.tab;
 	}
 }

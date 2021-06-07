@@ -40,6 +40,9 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		
+		
+		
 		switch (s) {
 		case "PJ":
 			crayon.setColor(Color.blue);

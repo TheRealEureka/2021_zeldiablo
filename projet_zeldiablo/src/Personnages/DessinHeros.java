@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import jeuPerso.JeuPerso;
-import jeuPerso.Personnage;
 
 public class DessinHeros {
 	/**
@@ -56,7 +55,7 @@ public class DessinHeros {
 	 */
 	public void dessiner(BufferedImage im) {
 		Personnage pj = jeu.getPj();
-		this.dessinerObjet("PJ", pj.x, pj.y, im);
+		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 	}
 
 }
