@@ -17,12 +17,11 @@ public class Monstre implements Personnage {
 	private int pointsAttaque;
 	private Labyrinthe labi;
 	private int portee;
-	private Heros heros;
 	private int posX;
 	private int posY;
 
 	/**
-	 * Constructeur avec paramètre pour la vie du monstre
+	 * Constructeur avec paramï¿½tre pour la vie du monstre
 	 * 
 	 * @param v  vie du monstre
 	 * @param pA degats du monstre
@@ -37,7 +36,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Constructeur sans paramètre
+	 * Constructeur sans paramï¿½tre
 	 */
 	public Monstre() {
 		this.vie = 150;
@@ -46,7 +45,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Constructeur avec paramètre pour la vie du monstre
+	 * Constructeur avec paramï¿½tre pour la vie du monstre
 	 * 
 	 * @param v  vie du monstre
 	 * @param pA degats du monstre
@@ -59,7 +58,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Constructeur avec paramètre
+	 * Constructeur avec paramï¿½tre
 	 * 
 	 * @param la labyrinthe du monstre
 	 */
@@ -85,7 +84,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Méthode setVie pour changer la vie du monstre
+	 * Mï¿½thode setVie pour changer la vie du monstre
 	 * 
 	 * @param v nouvelle vie du monstre
 	 */
@@ -96,7 +95,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Méthode getVie pour récupérer la vie du monstre
+	 * Mï¿½thode getVie pour rï¿½cupï¿½rer la vie du monstre
 	 */
 	@Override
 	public int getVie() {
@@ -105,7 +104,7 @@ public class Monstre implements Personnage {
 
 
 	/**
-	 * Méthode pour faire perdre des points de vies au monstre
+	 * Mï¿½thode pour faire perdre des points de vies au monstre
 	 */
 	@Override
 	public void subirDegats(int v) {
@@ -114,7 +113,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Méthode etreMort pour vérifier si le monstre est mort
+	 * Mï¿½thode etreMort pour vï¿½rifier si le monstre est mort
 	 */
 	@Override
 	public boolean etreMort() {
@@ -122,7 +121,7 @@ public class Monstre implements Personnage {
 	}
 
 	/**
-	 * Méthode qui retourne les points de dégats du monstre
+	 * Mï¿½thode qui retourne les points de dï¿½gats du monstre
 	 * 
 	 * @return pointsAttaque du monstre
 	 */
@@ -150,7 +149,7 @@ public class Monstre implements Personnage {
 		this.labi = lab;
 	}
 
-//Rajouter && (this.getPortee() >= this.getDistance(victime)) une fois distance créer
+//Rajouter && (this.getPortee() >= this.getDistance(victime)) une fois distance crï¿½er
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)

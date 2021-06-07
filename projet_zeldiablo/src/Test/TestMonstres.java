@@ -17,7 +17,7 @@ public class TestMonstres {
 	public void testConstructeurMonstreVide() {
 		Monstre m = new Monstre();
 		boolean res = m == null;
-		assertFalse("Le monstre ne devrait pas être null", res);
+		assertFalse("Le monstre ne devrait pas ï¿½tre null", res);
 
 	}
 
@@ -33,24 +33,24 @@ public class TestMonstres {
 	}
 
 	/**
-	 * Test l'action subir dégats quand c'est juste
+	 * Test l'action subir dï¿½gats quand c'est juste
 	 */
 	public void test_subirDegats_OK() {
-		
+
 		Heros h = new Heros("Stib", 5, 2, 4);
 		h.subirDegats(5);
 		boolean res = h.getVie() == 0;
-		assertEquals("héros subis dégats", true, res);
+		assertEquals("hï¿½ros subis dï¿½gats", true, res);
 	}
 
 	/**
-	 * Test l'action subir dégats quand les degats subis sont à 0
+	 * Test l'action subir dï¿½gats quand les degats subis sont ï¿½ 0
 	 */
 	public void test_subirDegats_PasOK() {
 		Heros h = new Heros("Stib", 5, 2, 4);
 		h.subirDegats(-5);
 		boolean res = h.getVie() == 0;
-		assertEquals("héros ne subis pas de dégats", false, res);
+		assertEquals("hï¿½ros ne subis pas de dï¿½gats", false, res);
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class TestMonstres {
 		Monstre m = new Monstre();
 		boolean res = m.attaquer(h);
 		System.out.println(m.etreDansLabyrinthe(h.getLab()));
-		assertEquals("Monstre ne peux pas attaque le deuxième", false, res);
+		assertEquals("Monstre ne peux pas attaque le deuxiï¿½me", false, res);
 	}
 
 	/**
@@ -77,6 +77,6 @@ public class TestMonstres {
 		h.setLabyrinthe(labyrinthe);
 		m.setLabyrinthe(labyrinthe);
 		boolean res = m.attaquer(h);
-		assertEquals("Monstre attaque le deuxième", true, res);
+		assertEquals("Monstre attaque le deuxiï¿½me", true, res);
 	}
 }
