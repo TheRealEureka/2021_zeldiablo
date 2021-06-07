@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import Personnages.Personnage;
 import moteurJeu.DessinJeu;
 
 /**
@@ -60,7 +61,7 @@ public class DessinPerso implements DessinJeu {
 	 */
 	public void dessiner(BufferedImage im) {
 		Personnage pj = jeu.getPj();
-		this.dessinerObjet("PJ", pj.x, pj.y, im);
+		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 	}
 
 }

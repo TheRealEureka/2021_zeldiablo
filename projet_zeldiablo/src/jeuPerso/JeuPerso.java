@@ -20,7 +20,7 @@ public class JeuPerso implements Jeu {
 	 * constructeur de jeu avec un Personnage
 	 */
 	public JeuPerso() {
-		this.pj=new Personnage();
+		this.pj=new Heros();
 	}
 
 	/**

@@ -2,6 +2,7 @@ package Personnages;
 
 import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
+import moteurJeu.Commande;
 
 /**
  * Classe Monstre qui implemente l'interface Personnage
@@ -21,7 +22,9 @@ public class Monstre implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
-
+	
+	private static final int LIMIT_X = 25;
+	private static final int LIMIT_Y = 25;
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
 	 * 
@@ -204,5 +207,39 @@ public class Monstre implements Personnage {
 			this.amul = null;
 		}
 	}
+	
+	@Override
+	public void deplacer(Commande commande) {
+		if (commande.gauche)
+		{
+			this.posX--;
+			if (this.posX < 0)
+				this.posX = 0;
+		}
 
-}
+		if (commande.droite)
+		{
+			this.posX++;
+			if (this.posX >LIMIT_X)
+				this.posX = LIMIT_X;
+		}
+		
+		if (commande.haut) {
+			this.posY--;
+			if (this.posY < 0) {
+				this.posY = 0;
+			}
+		}
+		
+		if (commande.bas) {
+			this.posY++;
+			if (this.posY > LIMIT_Y) {
+				this.posY = LIMIT_Y;
+			}
+		}
+	}
+
+		
+	}
+
+
