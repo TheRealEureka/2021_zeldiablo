@@ -1,5 +1,6 @@
 package Labyrinthe;
 
+import Personnages.Heros;
 import Personnages.Personnage;
 
 public class Amulette {
@@ -41,4 +42,13 @@ public class Amulette {
 			p.prendreAmulette(this);
 		}
 	}
+	
+	public boolean heroGagne(Heros h) {
+		boolean fin = false;
+		if (h.getPosX() == this.x && h.getPosY() == this.y) {
+			fin = true;
+		}
+		return fin;
+	}
+	
 }
