@@ -1,9 +1,12 @@
 package Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
+import Labyrinthe.Labyrinthe;
+import Personnages.Heros;
 import Personnages.Monstre;
 
 public class TestMonstres {
@@ -14,40 +17,66 @@ public class TestMonstres {
 	public void testConstructeurMonstreVide() {
 		Monstre m = new Monstre();
 		boolean res = m == null;
-		assertFalse("Le monstre ne devrait pas être null", res);
+		assertFalse("Le monstre ne devrait pas ï¿½tre null", res);
 
 	}
+
 	/**
 	 * Test du constructeur de monstre non vide
 	 */
 	@Test
 	public void testConstructeurMonstreNonVide() {
-		Monstre m = new Monstre(3500, 150);
+		Monstre m = new Monstre(3500, 150, 42);
 		int res = m.getVie();
 		assertEquals("Le points de vies devrait etre de 3500", 3500, res);
 		assertEquals("Les degats devrait etre de 150", 150, m.getPointsAttaque());
 	}
 
 	/**
-	 * Test l'action subir dégats quand c'est juste
+	 * Test l'action subir dï¿½gats quand c'est juste
 	 */
 	public void test_subirDegats_OK() {
-		Labyrinthe labyrinthe = new Labyrinthe();
-		heros h = new heros("Stib", 5, 2);
+
+		Heros h = new Heros("Stib", 5, 2, 4);
 		h.subirDegats(5);
-		boolean res = h.getPv() == 0;
-		assertEquals("héros subis dégats", true, res);
+		boolean res = h.getVie() == 0;
+		assertEquals("hï¿½ros subis dï¿½gats", true, res);
 	}
 
 	/**
-	 * Test l'action subir dégats quand les degats subis sont à 0
+	 * Test l'action subir dï¿½gats quand les degats subis sont ï¿½ 0
 	 */
 	public void test_subirDegats_PasOK() {
-		Labyrinthe labyrinthe = new Labyrinthe();
-		heros h = new heros("Stib", 5, 2);
+		Heros h = new Heros("Stib", 5, 2, 4);
 		h.subirDegats(-5);
-		boolean res = h.getPv() == 0;
-		assertEquals("héros ne subis pas de dégats", false, res);
+		boolean res = h.getVie() == 0;
+		assertEquals("hï¿½ros ne subis pas de dï¿½gats", false, res);
 	}
 
+	/**
+	 * Test l'action attaquer quand la distance est trop grande
+	 */
+	@Test
+	public void test_attaquer_PasOk() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros();
+		Monstre m = new Monstre();
+		boolean res = m.attaquer(h);
+		System.out.println(m.etreDansLabyrinthe(h.getLab()));
+		assertEquals("Monstre ne peux pas attaque le deuxiï¿½me", false, res);
+	}
+
+	/**
+	 * Test l'action attaquer quand tout est ok
+	 */
+	@Test
+	public void test_attaquer_OK() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros();
+		Monstre m = new Monstre();
+		h.setLabyrinthe(labyrinthe);
+		m.setLabyrinthe(labyrinthe);
+		boolean res = m.attaquer(h);
+		assertEquals("Monstre attaque le deuxiï¿½me", true, res);
+	}
 }
