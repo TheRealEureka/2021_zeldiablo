@@ -120,7 +120,7 @@ public class Monstre implements Personnage {
 	@Override
 	public boolean etreMort() {
 		this.poserAmulette();
-		return this.vie >= 0;
+		return this.vie <= 0;
 	
 	}
 

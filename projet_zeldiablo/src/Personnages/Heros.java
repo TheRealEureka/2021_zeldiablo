@@ -123,7 +123,7 @@ public class Heros implements Personnage {
 	 */
 	@Override
 	public boolean etreMort() {
-		return this.pointsAttaque == 0;
+		return this.pointsAttaque <= 0;
 	}
 
 	/**
