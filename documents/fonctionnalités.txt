@@ -9,6 +9,10 @@ Les fonctionnalités seront les suivantes :
 - Thomas DA
 2.1 Génération de monstres immobiles
 - Thomas DA
+    Tests : Test.TestMonstre
+    Génération de monstre, vérification s'ils ne sont pas nuls
+    Vérification des points de vies
+    Vérification des coordonnées
 3.1 Collision avec un monstre
 - Thomas DA
 3.2 Fantômes
@@ -23,6 +27,8 @@ Les fonctionnalités seront les suivantes :
 - Clément P
 5.5 Mort des monstres
 - Thomas DA
+    Tests : Test.TestMonstre
+    Génération de monstres, mises des points de vies à 0 et vérification de leurs mort
 6.1 Fin du jeu : mort du héros
 - Kévin BC
 6.2 Mise en place de l'amulette
