@@ -156,7 +156,6 @@ public class Monstre implements Personnage {
 		this.labi = lab;
 	}
 
-//Rajouter && (this.getPortee() >= this.getDistance(victime)) une fois distance cr�er
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
