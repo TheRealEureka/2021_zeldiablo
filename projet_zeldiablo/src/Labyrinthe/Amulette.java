@@ -1,35 +1,34 @@
 package Labyrinthe;
 
-import Personnages.Heros;
 import Personnages.Personnage;
 
 public class Amulette {
-	
+
 	private int x;
 	private int y;
 	private Personnage porteur;
+
 	public Amulette(int xc, int yc, Labyrinthe labi) {
-		
-		if(this.x > labi.getHauteur() ) {
+
+		if (this.x > labi.getHauteur()) {
 			this.x = 10;
-		}else {
+		} else {
 			this.x = xc;
 		}
-		if(this.y > labi.getLargeur() ) {
+		if (this.y > labi.getLargeur()) {
 			this.y = 10;
-		}else {
+		} else {
 			this.y = yc;
 		}
 	}
-	
+
 	public int getX() {
 		return this.x;
 	}
-	
+
 	public int getY() {
 		return this.y;
 	}
-	
 
 	public void porteurPrendsAmulette(Personnage p) {
 		if (p.getPosX() == this.x && p.getPosY() == this.y) {
@@ -38,19 +37,8 @@ public class Amulette {
 		}
 	}
 
-	
-	public boolean heroGagne(Heros h) {
-		boolean fin = false;
-		if (h.getPosX() == this.x && h.getPosY() == this.y) {
-			fin = true;
-		}
-		return fin;
-	}
-	
-
-
 	public void porteurPoseAmulette() {
-		if (this.porteur !=null) {
+		if (this.porteur != null) {
 			this.porteur = null;
 		}
 	}
