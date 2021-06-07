@@ -3,7 +3,10 @@ package jeuPerso;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
+import Labyrinthe.Case;
+import Labyrinthe.Labyrinthe;
 import Personnages.Personnage;
 import moteurJeu.DessinJeu;
 
@@ -23,15 +26,16 @@ public class DessinPerso implements DessinJeu {
 	 * lien vers le jeu a afficher
 	 */
 	private JeuPerso jeu;
-
+	private Labyrinthe laby;
 	/**
 	 * appelle constructeur parent
 	 * 
 	 * @param j
 	 *            le jeutest a afficher
 	 */
-	public DessinPerso(JeuPerso j) {
+	public DessinPerso(JeuPerso j, Labyrinthe lab) {
 		this.jeu = j;
+		this.laby = lab;
 	}
 
 	/**
@@ -40,8 +44,7 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		
-		
+	
 		
 		switch (s) {
 		case "PJ":
@@ -65,6 +68,15 @@ public class DessinPerso implements DessinJeu {
 	public void dessiner(BufferedImage im) {
 		Personnage pj = jeu.getPj();
 		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
+		ArrayList<Case> tab = laby.getTab();
+		for(int i = 0 ; i < tab.size(); i++)
+		{
+			this.dessinerObjet("MUR", tab.get(i).getX(), tab.get(i).getY(), im);
+
+		}
+		
+		
+		
 	}
 
 }

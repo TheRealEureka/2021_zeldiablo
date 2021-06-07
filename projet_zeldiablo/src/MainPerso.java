@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-
+import Labyrinthe.Case;
+import Labyrinthe.Labyrinthe;
 import jeuPerso.DessinPerso;
 import jeuPerso.JeuPerso;
 import moteurJeu.MoteurGraphique;
@@ -24,7 +25,9 @@ public class MainPerso {
 	public static void main(String[] args) throws InterruptedException {
 		// creation du jeu particulier et de son afficheur
 		JeuPerso jeu = new JeuPerso();
-		DessinPerso aff = new DessinPerso(jeu);
+		Labyrinthe lab = new Labyrinthe(15,15);
+		lab.addCase(new Case(2,2));
+		DessinPerso aff = new DessinPerso(jeu, lab);
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
