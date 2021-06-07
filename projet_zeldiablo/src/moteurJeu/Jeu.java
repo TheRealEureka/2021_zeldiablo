@@ -1,9 +1,10 @@
 package moteurJeu;
 
 /**
- * represente un jeu un jeu est caracterise par la methode evoluer a redefinir
+ * interface qui permet de representer un jeu :
+ * <li>un jeu est caracterise par la methode evoluer a redefinir.
  * 
- * @author Graou
+ * @author vthomas
  *
  */
 public interface Jeu {
@@ -15,7 +16,7 @@ public interface Jeu {
 	 *            commande utilisateur
 	 */
 	public void evoluer(Commande commandeUser);
-	
+
 	/**
 	 * @return true si et seulement si le jeu est fini
 	 */

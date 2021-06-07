@@ -1,10 +1,16 @@
 package moteurJeu;
 
-
 /**
- * classe MoteurGraphique represente un moteur de jeu generique.
+ * classe MoteurGraphique represente un moteur de jeu generique. On lui passe un
+ * jeu et un afficheur et il permet d'executer un jeu.
+ * <p>
+ * Cette classe contient la boucle de jeu qui fait des appels reguliers
+ * <ul>
+ * <li>evoluer de jeu en charge de mettre a jour les donnees du jeu
+ * <li>dessiner de dessinjeu en charge de dessiner l'etat du jeu
+ * </ul>
  * 
- * On lui passe un jeu et un afficheur et il permet d'executer un jeu.
+ * @author vthomas
  */
 public class MoteurGraphique {
 
@@ -43,7 +49,7 @@ public class MoteurGraphique {
 	public void lancerJeu(int width, int height) throws InterruptedException {
 
 		// creation de l'interface graphique
-		this.gui = new InterfaceGraphique(this.dessin,width,height);
+		this.gui = new InterfaceGraphique(this.dessin, width, height);
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu

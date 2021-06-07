@@ -6,6 +6,20 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+/**
+ * cette classe definit le panel utilise par le moteur graphique et est basee
+ * sur un doublebuffering.
+ * <p>
+ * A chaque iteration du moteur,
+ * <ul>
+ * <li>le panel fournit une image a l'objet dessinejeu (methode dessinerJeu)
+ * <li>l'objet dessinjeu est en charge de dessine l'etat du jeu sur l'image
+ * <li>l'image est affichee dans le panel (methode paint redefinie)
+ * </ul>
+ * 
+ * @author vthomas
+ *
+ */
 public class PanelDessin extends JPanel {
 
 	/**
@@ -43,13 +57,11 @@ public class PanelDessin extends JPanel {
 		this.setPreferredSize(new Dimension(x, y));
 		this.width = x;
 		this.height = y;
-		this.dessin=affiche;
+		this.dessin = affiche;
 
 		// cree l'image buffer et son graphics
-		this.imageSuivante = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
-		this.imageEnCours = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
+		this.imageSuivante = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		this.imageEnCours = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	}
 
 	/**
@@ -66,8 +78,7 @@ public class PanelDessin extends JPanel {
 		this.imageEnCours = this.imageSuivante;
 		// l'ancienne image est videe
 		this.imageSuivante = temp;
-		this.imageSuivante.getGraphics()
-				.fillRect(0, 0, this.width, this.height);
+		this.imageSuivante.getGraphics().fillRect(0, 0, this.width, this.height);
 		// met a jour l'image a afficher sur le panel
 		this.repaint();
 	}
@@ -80,8 +91,7 @@ public class PanelDessin extends JPanel {
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawImage(this.imageEnCours, 0, 0, getWidth(), getHeight(), 0, 0,
-				getWidth(), getHeight(), null);
+		g.drawImage(this.imageEnCours, 0, 0, getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), null);
 	}
 
 }
