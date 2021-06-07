@@ -27,4 +27,5 @@ public interface Personnage {
 	
 	public int getPosY();
 	
+	public boolean aAmulette();
 }

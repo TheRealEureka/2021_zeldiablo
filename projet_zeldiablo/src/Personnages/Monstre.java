@@ -1,5 +1,6 @@
 package Personnages;
 
+import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 
 /**
@@ -19,6 +20,7 @@ public class Monstre implements Personnage {
 	private int portee;
 	private int posX;
 	private int posY;
+	private Amulette amul;
 
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
@@ -177,4 +179,27 @@ public class Monstre implements Personnage {
 	public int getPosY() {
 		return this.posY;
 	}
+	
+
+	
+	@Override
+	public boolean aAmulette() {
+		boolean res = false;
+		if (this.amul != null)
+			res = true;
+		return res;
+	}
+	
+	public void prendreAmulette(Amulette a) {
+		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null)
+			this.amul = a;
+		
+	}
+	public void poserAmulette() {
+		if (this.amul != null) {
+			this.amul = null;
+		}
+	}
 }
+
+

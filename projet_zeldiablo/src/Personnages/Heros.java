@@ -1,5 +1,6 @@
 package Personnages;
 
+import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 
 public class Heros implements Personnage {
@@ -16,9 +17,9 @@ public class Heros implements Personnage {
 	private Monstre monstre;
 	private int posX;
 	private int posY;
-
+	private Amulette amul;
 	/**
-	 * Constructeur avec paramètre pour la vie du Heros
+	 * Constructeur avec paramï¿½tre pour la vie du Heros
 	 * 
 	 * @param v  vie du Heros
 	 * @param pA degats du Heros
@@ -34,7 +35,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Constructeur sans paramètre
+	 * Constructeur sans paramï¿½tre
 	 */
 	public Heros() {
 		this.nom = "Stib";
@@ -44,7 +45,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Constructeur avec paramètre pour la vie du Heros
+	 * Constructeur avec paramï¿½tre pour la vie du Heros
 	 * 
 	 * @param v  vie du Heros
 	 * @param pA degats du Heros
@@ -59,7 +60,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Constructeur avec paramètre
+	 * Constructeur avec paramï¿½tre
 	 * 
 	 * @param la labyrinthe du Heros
 	 */
@@ -72,7 +73,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode setVie pour changer la vie du Heros
+	 * Mï¿½thode setVie pour changer la vie du Heros
 	 * 
 	 * @param v nouvelle vie du Heros
 	 */
@@ -83,7 +84,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode getVie pour récupérer la vie du Heros
+	 * Mï¿½thode getVie pour rï¿½cupï¿½rer la vie du Heros
 	 */
 	@Override
 	public int getVie() {
@@ -91,9 +92,9 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode attaquer pour attaquer un autre personnage
+	 * Mï¿½thode attaquer pour attaquer un autre personnage
 	 * 
-	 * @param cible, cible visée par l'attaque
+	 * @param cible, cible visï¿½e par l'attaque
 	 */
 	@Override
 	public boolean attaquer(Personnage victime) {
@@ -108,8 +109,8 @@ public class Heros implements Personnage {
 	}
 	
 	/**
-	 * Méthode pour faire perdre des points de vies au monstre
-	 * @param v les points de vie à faire perdre
+	 * Mï¿½thode pour faire perdre des points de vies au monstre
+	 * @param v les points de vie ï¿½ faire perdre
 	 */
 	@Override
 	public void subirDegats(int v) {
@@ -118,7 +119,7 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode etreMort pour vérifier si le héros est mort
+	 * Mï¿½thode etreMort pour vï¿½rifier si le hï¿½ros est mort
 	 */
 	@Override
 	public boolean etreMort() {
@@ -126,17 +127,17 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * Méthode qui retourne les points de dégats du monstre
+	 * Mï¿½thode qui retourne les points de dï¿½gats du monstre
 	 * 
-	 * @return pointsAttaque du héros
+	 * @return pointsAttaque du hï¿½ros
 	 */
 	@Override
 	public int getPointsAttaque() {
 		return this.pointsAttaque;
 	}
 	/**
-	 * Méthode qui vérifie si le heros est dans le labyrinthe
-	 * @param lab labyrinthe à vérifier 
+	 * Mï¿½thode qui vï¿½rifie si le heros est dans le labyrinthe
+	 * @param lab labyrinthe ï¿½ vï¿½rifier 
 	 */
 	@Override
 	public boolean etreDansLabyrinthe(Labyrinthe lab) {
@@ -188,4 +189,19 @@ public class Heros implements Personnage {
 		return this.posY;
 	}
 
+	@Override
+	public boolean aAmulette() {
+		boolean res = false;
+		if (this.amul != null)
+			res = true;
+		return res;
+	}
+	
+	public void prendreAmulette(Amulette a) {
+		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null)
+			this.amul = a;
+		
+	}
+
 }
+
