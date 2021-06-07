@@ -24,7 +24,7 @@ public class MainPerso {
 	 * @throws InterruptedException en cas de soucis de methode thread.sleep()
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		// creation du jeu particulier et de son afficheur
+		// creation du jeu 
 		Labyrinthe lab = new Labyrinthe(15,15);
 		GenerationLaby gL = new GenerationLaby(lab);
 		gL.labyTest();
