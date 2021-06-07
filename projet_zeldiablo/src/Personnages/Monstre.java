@@ -22,9 +22,10 @@ public class Monstre implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
-	
+
 	private static final int LIMIT_X = 15;
 	private static final int LIMIT_Y = 15;
+
 	/**
 	 * Constructeur avec paramï¿½tre pour la vie du monstre
 	 * 
@@ -115,7 +116,7 @@ public class Monstre implements Personnage {
 		this.vie -= v;
 
 	}
-	
+
 	/**
 	 * Mï¿½thode etreMort pour vï¿½rifier si le monstre est mort
 	 */
@@ -174,6 +175,30 @@ public class Monstre implements Personnage {
 
 	}
 
+	/**
+	 * @param victime Heros cible de l'attaque
+	 * @return la distance entre l'attaquant et l'attaqué.
+	 */
+	public int getDistance(Heros victime) {
+
+		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
+		return distance;
+	}
+
+	/**
+	 * @param posX the posX to set
+	 */
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	/**
+	 * @param posY the posY to set
+	 */
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
 	@Override
 	public int getPosX() {
 		return this.posX;
@@ -206,33 +231,31 @@ public class Monstre implements Personnage {
 		if (this.amul != null) {
 			amul.porteurPoseAmulette();
 			this.amul = null;
-			
+
 		}
 	}
-	
+
 	@Override
 	public void deplacer(Commande commande) {
-		if (commande.gauche)
-		{
+		if (commande.gauche) {
 			this.posX--;
 			if (this.posX < 0)
 				this.posX = 0;
 		}
 
-		if (commande.droite)
-		{
+		if (commande.droite) {
 			this.posX++;
-			if (this.posX >LIMIT_X)
+			if (this.posX > LIMIT_X)
 				this.posX = LIMIT_X;
 		}
-		
+
 		if (commande.haut) {
 			this.posY--;
 			if (this.posY < 0) {
 				this.posY = 0;
 			}
 		}
-		
+
 		if (commande.bas) {
 			this.posY++;
 			if (this.posY > LIMIT_Y) {
@@ -241,7 +264,4 @@ public class Monstre implements Personnage {
 		}
 	}
 
-		
-	}
-
-
+}

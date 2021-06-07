@@ -105,12 +105,22 @@ public class Heros implements Personnage {
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
-				&& (this.vie > 0)) {
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.vie > 0)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
 		}
 		return res;
+	}
+
+	/**
+	 * @param victime Monstre cible de l'attaque
+	 * @return la distance entre l'attaquant et l'attaqué.
+	 */
+	public int getDistance(Monstre victime) {
+
+		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
+		return distance;
 	}
 
 	/**

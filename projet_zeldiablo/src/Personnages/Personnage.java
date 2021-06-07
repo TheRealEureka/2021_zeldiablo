@@ -31,6 +31,8 @@ public interface Personnage {
 	public boolean aAmulette();
 
 	public boolean prendreAmulette(Amulette a);
-	
+
+	public int getDistance(Personnage victime);
+
 	public void deplacer(Commande commande);
 }
