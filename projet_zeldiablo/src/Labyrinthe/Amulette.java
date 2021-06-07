@@ -34,10 +34,7 @@ public class Amulette {
 		return this.appartient;
 	}
 	
-	public void attraper() {
-		//ajout perso dans labyrinthe 
-		
-	}
+
 	public void porteurPrendsAmulette(Personnage p) {
 		if (p.getPosX() == this.x && p.getPosY() == this.y) {
 			this.porteur = p;
