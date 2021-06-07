@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import Labyrinthe.Case;
+import Labyrinthe.GenerationLaby;
 import Labyrinthe.Labyrinthe;
 import jeuPerso.DessinPerso;
 import jeuPerso.JeuPerso;
@@ -25,7 +26,8 @@ public class MainPerso {
 	public static void main(String[] args) throws InterruptedException {
 		// creation du jeu particulier et de son afficheur
 		Labyrinthe lab = new Labyrinthe(15,15);
-		lab.addCase(new Case(2,2));
+		GenerationLaby gL = new GenerationLaby(lab);
+		gL.labyTest();
 		JeuPerso jeu = new JeuPerso(lab);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 
