@@ -22,4 +22,22 @@ public class GenerationLaby {
 		l.addCase(new CaseDeclencheuse(0,1));
 		
 	}
+	
+	
+	public void generationAleatoire() {
+		for (int i = 0; i < 15; i++) {
+			for (int y = 1; y < 15; y++) {
+			int r = (int) (Math.random() * 3);
+			System.out.println(r);
+			if (r == 1) {
+				l.addCase(new Case(i, y));
+			}else if (r == 2) {
+				
+				l.addCase(new CaseDeclencheuse(i, y));
+			}
+		}
+	}
+		
+		
+	}
 }
