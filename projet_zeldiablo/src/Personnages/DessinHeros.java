@@ -56,7 +56,7 @@ public class DessinHeros {
 	 */
 	public void dessiner(BufferedImage im) {
 		Personnage pj = jeu.getPj();
-		this.dessinerObjet("PJ", pj.x, pj.y, im);
+		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 	}
 
 }
