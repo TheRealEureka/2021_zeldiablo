@@ -23,8 +23,8 @@ public class Monstre implements Personnage {
 	private int posY;
 	private Amulette amul;
 	
-	private static final int LIMIT_X = 25;
-	private static final int LIMIT_Y = 25;
+	private static final int LIMIT_X = 15;
+	private static final int LIMIT_Y = 15;
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
 	 * 
