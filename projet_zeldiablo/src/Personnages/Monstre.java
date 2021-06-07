@@ -115,7 +115,7 @@ public class Monstre implements Personnage {
 		this.vie -= v;
 
 	}
-
+	
 	/**
 	 * M�thode etreMort pour v�rifier si le monstre est mort
 	 */
