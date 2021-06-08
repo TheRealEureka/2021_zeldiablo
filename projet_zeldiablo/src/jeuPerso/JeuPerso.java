@@ -16,6 +16,7 @@ public class JeuPerso implements Jeu {
 	 * le personnage du jeu
 	 */
 	private Personnage pj;
+	private Inventaire inv;
 
 	/**
 	 * constructeur de jeu avec un Personnage
@@ -56,6 +57,10 @@ public class JeuPerso implements Jeu {
 	
 	public Personnage getPj() {
 		return pj;
+	}
+	
+	public Inventaire getInv() {
+		return this.inv;
 	}
 
 }
