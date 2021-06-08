@@ -112,9 +112,14 @@ public class Monstre implements Personnage {
 	 * M�thode pour faire perdre des points de vies au monstre
 	 */
 	@Override
-	public void subirDegats(int v) {
-		this.vie -= v;
-
+	public void subirDegats(int degats) {
+		if (degats < 0) {
+			degats = 0;
+		} else if (this.vie - degats < 0) {
+			this.vie = 0;
+		} else if ((this.vie > 0)) {
+			this.vie = this.vie - degats;
+		}
 	}
 
 	/**
@@ -122,8 +127,14 @@ public class Monstre implements Personnage {
 	 */
 	@Override
 	public boolean etreMort() {
-		this.poserAmulette();
-		return this.vie <= 0;
+
+		boolean res = false;
+		if (this.vie == 0) {
+			this.poserAmulette();
+			res = true;
+
+		}
+		return res;
 
 	}
 

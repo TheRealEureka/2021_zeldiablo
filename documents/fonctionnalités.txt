@@ -1,11 +1,11 @@
 Les fonctionnalités seront les suivantes :
 
 
-1.1 Création d'un labyrinthe par défaut
+1.1 Création d'un labyrinthe par défaut	x
 - Thomas S
-1.2 Collision avec les Murs
+1.2 Collision avec les Murs x
 - Thomas S
-1.4 Cases déclencheur
+1.4 Cases déclencheur x
 - Thomas DA
 2.1 Génération de monstres immobiles
 - Thomas DA
@@ -17,31 +17,35 @@ Les fonctionnalités seront les suivantes :
 - Thomas DA
 3.2 Fantômes
 - Kévin BC
-3.3 Troll
+3.3 Troll x
 - Kévin BC
-5.1 Attaque des monstres
+5.1 Attaque des monstres x
 - Clément P
-5.2 Attaque du joueur
+	Tests : Test.TestMonstre
+	Vérification de la distance, si ils sont dans le même labyrinthe, vérification si les dégats sont négatifs.
+5.2 Attaque du joueur x
 - Clément P
+	Tests : Test.TestHeros
+	Vérification de la distance, si ils sont dans le même labyrinthe, vérification si les dégats sont négatifs.
 5.3 Affichage des attaques
 - Clément P
 5.5 Mort des monstres
 - Thomas DA
     Tests : Test.TestMonstre
     Génération de monstres, mises des points de vies à 0 et vérification de leurs mort
-6.1 Fin du jeu : mort du héros
+6.1 Fin du jeu : mort du héros x
 - Kévin BC
-6.2 Mise en place de l'amulette
+6.2 Mise en place de l'amulette x
 - Thomas S
-6.3 Acquisition de l'amulette
+6.3 Acquisition de l'amulette x
 - Thomas S
-6.4 Fin du jeu : victoire du héros
+6.4 Fin du jeu : victoire du héros x
 - Clément P
 7.1 Inventaire
 - Thomas DA
 7.4 Affichage de l'inventaire
 - Thomas DA
-11.1 Achage avec des sprites
+11.1 Achage avec des sprites x
 - Kévin BC
 
 
