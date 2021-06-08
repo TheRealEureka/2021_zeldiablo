@@ -105,7 +105,7 @@ public class Heros implements Personnage {
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
-				&& (this.getPortee() >= this.getDistance(victime)) && (this.vie > 0)) {
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.EtreMort() != true)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
@@ -121,11 +121,17 @@ public class Heros implements Personnage {
 	/**
 	 * M�thode pour faire perdre des points de vies au monstre
 	 * 
-	 * @param v les points de vie � faire perdre
+	 * @param degats les points de vie � faire perdre
 	 */
 	@Override
-	public void subirDegats(int v) {
-		this.vie -= v;
+	public void subirDegats(int degats) {
+		if (degats < 0) {
+			degats = 0;
+		} else if (this.vie - degats < 0) {
+			this.vie = 0;
+		} else if ((this.vie > 0)) {
+			this.vie = this.vie - degats;
+		}
 
 	}
 
@@ -212,7 +218,7 @@ public class Heros implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null) {
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.EtreMort() != true)) {
 			this.amul = a;
 			res = true;
 		}
@@ -221,7 +227,7 @@ public class Heros implements Personnage {
 
 	public boolean herosGagne(Amulette a) {
 		boolean res = false;
-		if (this.amul != null) {
+		if ((this.amul != null) && (this.EtreMort() != true)) {
 			res = true;
 
 		}
@@ -232,6 +238,7 @@ public class Heros implements Personnage {
 	public void deplacer(Commande commande) {
 		int x = this.posX;
 		int y = this.posY;
+
 		if (commande.gauche) {
 			x--;
 			if (x < 0)
@@ -259,8 +266,7 @@ public class Heros implements Personnage {
 
 		}
 
-
-		if (labi.etreAccessible(x, y)) {
+		if (labi.etreAccessible(x, y) && (this.EtreMort() != true)) {
 			this.posX = x;
 			this.posY = y;
 			int i = labi.getIndex(x, y);
@@ -272,9 +278,9 @@ public class Heros implements Personnage {
 		}
 	}
 
-	public boolean mort() {
+	public boolean EtreMort() {
 		boolean res = false;
-		if (this.vie <= 0) {
+		if (this.vie == 0) {
 			res = true;
 
 		}
