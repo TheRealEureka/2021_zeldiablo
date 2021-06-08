@@ -24,9 +24,7 @@ public class Inventaire {
 		}
 	}
 	
-	public Objet getTab(int index) {
-		return tab[index];
-	}
+	
 	
 	public String toString() {
 		StringBuffer bf = new StringBuffer();
@@ -39,7 +37,7 @@ public class Inventaire {
 	public Objet getObj(int idx)
 	{
 		Objet o = null;
-		if(idx>=9 && idx<tab.length)
+		if(idx>=0 && idx<tab.length)
 		{
 			o = tab[idx];
 		}

@@ -1,6 +1,10 @@
 package Labyrinthe;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Personnages.Personnage;
 
@@ -42,6 +46,13 @@ public class Amulette extends Objet {
 			this.y = yc;
 		}
 		this.labyrinthe = labi;
+		File imgLoc = new File("src/images/totem.png");
+		try {
+			   bi = ImageIO.read(imgLoc);
+			} catch (IOException ex) {
+			   System.out.println("aya");
+			}
+	 
 	}
 
 	public int getX() {

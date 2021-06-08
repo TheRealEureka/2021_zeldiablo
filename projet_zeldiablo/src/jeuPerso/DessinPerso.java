@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import Labyrinthe.Case;
-import Labyrinthe.Objet;
 import Labyrinthe.Labyrinthe;
+import Labyrinthe.Objet;
 import Personnages.Monstre;
 import Personnages.Personnage;
 import moteurJeu.DessinJeu;
@@ -35,7 +35,7 @@ public class DessinPerso implements DessinJeu {
 	private JeuPerso jeu;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre;
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette;
 	private String source =  "src/images/";
 	/**
 	 * appelle constructeur parent
@@ -54,6 +54,7 @@ public class DessinPerso implements DessinJeu {
 			monstre =  ImageIO.read(new File(source+"monstre.png"));
 			troll =  ImageIO.read(new File(source+"troll.png"));
 			fantome =  ImageIO.read(new File(source+"fantome.png"));
+			amulette = ImageIO.read(new File(source+"totem.png"));
 
 		} catch (IOException e) {
 		}
@@ -82,7 +83,16 @@ public class DessinPerso implements DessinJeu {
 			crayon.fillRect(0, 401, 400, 50);
 			crayon.setColor(Color.BLACK);
 			crayon.drawString("Inventaire",180,410);
-			BufferedImage o1 = jeu.getInv().getObj(1).getBi();
+			BufferedImage img1;
+			BufferedImage img2;
+			Objet o1 = jeu.getInv().getObj(1);
+			if(o1!=null) {
+				img1 = o1.getBi(); 
+			}
+			Objet o2 = jeu.getInv().getObj(2);
+			if(o2!=null) {
+				img2 = o2.getBi(); 
+			}
 			
 
 			
@@ -119,6 +129,9 @@ public class DessinPerso implements DessinJeu {
 		case "GHOST" :
 			crayon.drawImage(fantome, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
+		case "AMULETTE" : 
+			crayon.drawImage(amulette, x * TAILLE_CASE, y * TAILLE_CASE, null);
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
@@ -141,7 +154,7 @@ public class DessinPerso implements DessinJeu {
 			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(), im);
 		}
 		this.dessinerObjet("INV_UI", 0, 0, im);
-
+		this.dessinerObjet("AMULETTE",15,15,im);
 		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 		
 	}
