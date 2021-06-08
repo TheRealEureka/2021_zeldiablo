@@ -33,8 +33,6 @@ public class TestHeros {
 		assertEquals("h�ros ne subis pas de d�gats", false, res);
 	}
 
-
-
 	/**
 	 * Test l'action attaquer quand la portee n'est pas sufisante
 	 */
@@ -73,7 +71,9 @@ public class TestHeros {
 	public void test_Mort_Heros_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre();
+		Monstre m = new Monstre(3, 4, labyrinthe, 5, 0, 0);
+		h.setPosX(1);
+		h.setPosY(0);
 		m.attaquer(h);
 		boolean res = h.etreMort();
 		assertEquals("Heros meurt", true, res);
@@ -86,10 +86,12 @@ public class TestHeros {
 	public void test_Mort_Heros_Pasok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre();
+		Monstre m = new Monstre(15, 4, labyrinthe, 5, 0, 0);
+		h.setPosX(1);
+		h.setPosY(0);
 		m.attaquer(h);
 		boolean res = h.etreMort();
-		assertEquals("Heros meurt pas", true, res);
+		assertEquals("Heros meurt pas", false, res);
 	}
 
 }
