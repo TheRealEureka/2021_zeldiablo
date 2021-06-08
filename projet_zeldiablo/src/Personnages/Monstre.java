@@ -51,6 +51,7 @@ public class Monstre implements Personnage {
 		this.portee = po;
 
 	}
+
 	/**
 	 * Constructeur sans param�tre
 	 */
@@ -241,22 +242,55 @@ public class Monstre implements Personnage {
 		if (labi.etreAccessible(x, y) && (this.etreMort() != true)) {
 			this.posX = x;
 			this.posY = y;
-			
+
 		}
-		
+
+	}
+
+	public void Venere(Heros h) {
+		if (this.getDistance(h) == 2) {
+			if (labi.etreAccessible(h.getPosX() - 1, h.getPosY() - 1)) {
+				this.posX = h.getPosX() - 1;
+				this.posY = h.getPosY() - 1;
+				while (h.etreMort() == false) {
+					this.attaquer(h);
+				}
+			} else if (labi.etreAccessible(h.getPosX() + 1, h.getPosY() + 1)) {
+				this.posX = h.getPosX() + 1;
+				this.posY = h.getPosY() + 1;
+				while (h.etreMort() == false) {
+					this.attaquer(h);
+				}
+
+			} else if (labi.etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
+				this.posX = h.getPosX() + 1;
+				this.posY = h.getPosY() - 1;
+				while (h.etreMort() == false) {
+					this.attaquer(h);
+				}
+
+			} else if (labi.etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
+				this.posX = h.getPosX();
+				this.posY = h.getPosY();
+				while (h.etreMort() == false) {
+					this.attaquer(h);
+				}
+			}
+
+		}
 	}
 
 	public boolean isCollider() {
 		return asCollider;
 	}
-	public String getType()
-	{
+
+	public String getType() {
 		return "MONSTER";
-		
+
 	}
+
 	public void setCollider(boolean asCollider) {
 		this.asCollider = asCollider;
 	}
-	
 
 }
