@@ -1,6 +1,8 @@
 package Labyrinthe;
 
+import Personnages.Fantome;
 import Personnages.Monstre;
+import Personnages.Troll;
 
 public class GenerationLaby {
 	private Labyrinthe l;
@@ -30,8 +32,15 @@ public class GenerationLaby {
 		Monstre m = new Monstre(l);
 		m.setPosX(0);
 		m.setPosY(4);
-		
+		Monstre m1 = new Troll(l);
+		m1.setPosX(10);
+		m1.setPosY(10);
+		Monstre m2 = new Fantome(l);
+		m2.setPosX(12);
+		m2.setPosY(11);
 		l.addMonstre(m);
+		l.addMonstre(m1);
+		l.addMonstre(m2);
 	}
 
 	public void generationAleatoire() {
@@ -41,7 +50,6 @@ public class GenerationLaby {
 				if (r == 1) {
 					l.addCase(new Case(i, y));
 				} else if (r == 2) {
-
 					l.addCase(new CaseDeclencheuse(i, y));
 				}
 			}

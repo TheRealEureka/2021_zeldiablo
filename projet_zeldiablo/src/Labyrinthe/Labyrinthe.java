@@ -6,8 +6,8 @@ import Personnages.Monstre;
 
 public class Labyrinthe {
 	
-	private int largeur;
-	private int hauteur; 
+	public  int largeur;
+	public  int hauteur; 
 	public Amulette amulette;
 	private ArrayList<Case> tab;
 	private ArrayList<Monstre> mon;
@@ -28,7 +28,7 @@ public class Labyrinthe {
 			this.largeur = l;
 		}
 		
-		this.amulette = new Amulette(3,4,this,null,"amulette");
+		this.amulette = new Amulette(3,4,this,"amulette");
 	}
 	
 	

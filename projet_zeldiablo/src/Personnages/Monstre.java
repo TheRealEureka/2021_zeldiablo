@@ -23,7 +23,7 @@ public class Monstre implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
-
+	private boolean asCollider = true;
 	private static final int LIMIT_X = 15;
 	private static final int LIMIT_Y = 15;
 
@@ -204,31 +204,52 @@ public class Monstre implements Personnage {
 
 	@Override
 	public void deplacer(Commande commande) {
+		int x = this.posX;
+		int y = this.posY;
 		if (commande.gauche) {
-			this.posX--;
-			if (this.posX < 0)
-				this.posX = 0;
+			x--;
+			if (x < 0)
+				x = 0;
 		}
 
 		if (commande.droite) {
-			this.posX++;
-			if (this.posX > LIMIT_X)
-				this.posX = LIMIT_X;
+			x++;
+			if (x > LIMIT_X)
+				x = LIMIT_X;
 		}
 
 		if (commande.haut) {
-			this.posY--;
-			if (this.posY < 0) {
-				this.posY = 0;
+			y--;
+			if (y < 0) {
+				y = 0;
 			}
 		}
 
 		if (commande.bas) {
-			this.posY++;
-			if (this.posY > LIMIT_Y) {
-				this.posY = LIMIT_Y;
+			y++;
+			if (y > LIMIT_Y) {
+				y = LIMIT_Y;
 			}
 		}
+		if (labi.etreAccessible(x, y) && (this.etreMort() != true)) {
+			this.posX = x;
+			this.posY = y;
+			
+		}
+		
 	}
+
+	public boolean isCollider() {
+		return asCollider;
+	}
+	public String getType()
+	{
+		return "MONSTER";
+		
+	}
+	public void setCollider(boolean asCollider) {
+		this.asCollider = asCollider;
+	}
+	
 
 }

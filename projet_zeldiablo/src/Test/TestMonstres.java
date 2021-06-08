@@ -26,6 +26,7 @@ public class TestMonstres {
 	 */
 	@Test
 	public void testConstructeurMonstreNonVide() {
+		
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 

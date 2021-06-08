@@ -1,9 +1,16 @@
 package Personnages;
 
+import Labyrinthe.Labyrinthe;
+
 public class Troll extends Monstre{
-	public Troll()
+	public Troll(Labyrinthe l)
 	{
-		super();
+		super(l);
+	}
+	public String getType()
+	{
+		return "TROLL";
+		
 	}
 	
 
