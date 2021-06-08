@@ -258,6 +258,8 @@ public class Heros implements Personnage {
 			}
 
 		}
+
+
 		if (labi.etreAccessible(x, y)) {
 			this.posX = x;
 			this.posY = y;
