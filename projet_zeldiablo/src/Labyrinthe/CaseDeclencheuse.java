@@ -1,5 +1,6 @@
 package Labyrinthe;
 
+import Effet.Effet;
 import Personnages.Heros;
 import Personnages.Personnage;
 
@@ -23,8 +24,9 @@ public class CaseDeclencheuse extends Case{
 	}
 
 	@Override
-	public void effet(Heros heros) {
+	public void effet(Heros heros, Effet e) {
 		this.used=true;
+		e.effet(heros);
 	}
 	
 	
