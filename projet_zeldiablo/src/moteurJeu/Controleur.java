@@ -68,6 +68,10 @@ public class Controleur implements KeyListener {
 			this.commandeEnCours.bas = true;
 			this.commandeARetourner.bas = true;
 			break;
+		//ouvre l'inventaire 
+		case 'i':
+			this.commandeEnCours.i=true;
+			this.commandeARetourner.i=true;
 		}
 	
 
@@ -91,6 +95,8 @@ public class Controleur implements KeyListener {
 		case 's':
 			this.commandeEnCours.bas = false;
 			break;
+		case 'i':
+			this.commandeEnCours.i = false;
 		}
 
 	}

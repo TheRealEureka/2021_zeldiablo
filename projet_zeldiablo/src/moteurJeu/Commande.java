@@ -1,5 +1,7 @@
 package moteurJeu;
 
+import Personnages.Inventaire;
+
 /**
  * permet de representer une commande de l'utilisateur
  * 
@@ -15,7 +17,7 @@ public class Commande {
 	public boolean droite;
 	public boolean haut;
 	public boolean bas;
-	
+	public boolean  i;
 
 	public Commande()
 	{
@@ -32,7 +34,8 @@ public class Commande {
 		this.bas=commandeACopier.bas;
 		this.haut=commandeACopier.haut;
 		this.gauche=commandeACopier.gauche;
-		this.droite=commandeACopier.droite;		
+		this.droite=commandeACopier.droite;	
+		this.i=commandeACopier.i;
 	}
 	
 }
