@@ -30,7 +30,7 @@ public class MainPerso {
 		Labyrinthe lab = new Labyrinthe(15,15);
 		GenerationLaby gL = new GenerationLaby(lab);
 		lab.setAmulette(new Amulette(15,15, lab,"String"));
-		gL.labyTest();
+		gL.generationAleatoire();
 		Inventaire inv = new Inventaire ();
 		JeuPerso jeu = new JeuPerso(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);

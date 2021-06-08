@@ -21,7 +21,10 @@ public class EffetAjoutMonstre implements Effet{
 			nouveauX++;
 		}
 		
-		Monstre m = new Monstre(nouveauX, nouveauY, la, 20);
+		Monstre m = new Monstre(5, 22, la, 20);
+		m.setPosX(nouveauX);
+		m.setPosY(nouveauY);
+		
 	}
 
 }
