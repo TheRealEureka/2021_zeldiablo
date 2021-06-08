@@ -7,6 +7,9 @@ Les fonctionnalités seront les suivantes :
 - Thomas S
 1.4 Cases déclencheur x
 - Thomas DA
+	Tests : Test.TestEffets
+	Vérification des effets sur un héros pour ceux liés aux points de vies
+	Vérification des coordonnées pour la téléportation
 2.1 Génération de monstres immobiles
 - Thomas DA
     Tests : Test.TestMonstre
