@@ -28,7 +28,6 @@ public class GenerationLaby {
 		for (int i = 0; i < 15; i++) {
 			for (int y = 1; y < 15; y++) {
 			int r = (int) (Math.random() * 3);
-			System.out.println(r);
 			if (r == 1) {
 				l.addCase(new Case(i, y));
 			}else if (r == 2) {
