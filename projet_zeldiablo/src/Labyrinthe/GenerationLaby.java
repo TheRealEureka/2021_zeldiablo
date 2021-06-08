@@ -30,8 +30,8 @@ public class GenerationLaby {
 		
 		l.addCase(new CaseDeclencheuse(0, 1));
 		Monstre m = new Monstre(l);
-		m.setPosX(0);
-		m.setPosY(4);
+		m.setPosX(10);
+		m.setPosY(11);
 		Monstre m1 = new Troll(l);
 		m1.setPosX(10);
 		m1.setPosY(10);
