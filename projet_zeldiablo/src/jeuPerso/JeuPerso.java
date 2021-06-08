@@ -44,8 +44,8 @@ public class JeuPerso implements Jeu {
 
 	@Override
 	public boolean etreFini() {
-		// le jeu n'est jamais fini
-		return false;
+		
+		return pj.etreMort() || pj.aAmulette();
 	}
 
 	/**
