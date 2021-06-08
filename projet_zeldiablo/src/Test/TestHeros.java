@@ -98,7 +98,7 @@ public class TestHeros {
 		Monstre m = new Monstre(10, 4, labyrinthe, 2);
 		m.attaquer(h);
 		boolean res = h.etreMort();
-		assertEquals("Heros meurt", true, res);
+		assertEquals("Heros meurt pas", true, res);
 	}
 
 }

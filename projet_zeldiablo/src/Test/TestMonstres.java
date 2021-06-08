@@ -79,4 +79,43 @@ public class TestMonstres {
 		boolean res = m.attaquer(h);
 		assertEquals("Monstre attaque le deuxi�me", true, res);
 	}
+
+	/**
+	 * Test la mort du heros normalement
+	 */
+	@Test
+	public void test_Mort_Heros_ok() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Monstre m = new Monstre(10, 5, labyrinthe, 2);
+		h.attaquer(m);
+		boolean res = m.etreMort();
+		assertEquals("Heros meurt", true, res);
+	}
+
+	/**
+	 * Pas asseza de degats
+	 */
+	@Test
+	public void test_Mort_Heros_Pasok() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Monstre m = new Monstre(10, 4, labyrinthe, 2);
+		h.attaquer(m);
+		boolean res = m.etreMort();
+		assertEquals("Heros meurt pas", true, res);
+	}
+
+	/**
+	 * Pas asseza de degats
+	 */
+	@Test
+	public void test_Mort_Heros_null() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h;
+		Monstre m = null;
+		boolean res = m.etreMort();
+		assertEquals("Monstre null", false, res);
+	}
+
 }
