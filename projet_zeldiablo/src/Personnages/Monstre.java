@@ -1,3 +1,4 @@
+
 package Personnages;
 
 import Labyrinthe.Amulette;

@@ -5,19 +5,16 @@ import Personnages.Heros;
 public class Case {
 	private int x,y;
 	private boolean collider;
-	private String type;
 	public Case(int _x,int _y) {
 			this.x=_x;
 			this.y=_y;
 			this.collider = true;
-			this.type="MUR";
 	}
 	
-	public Case(int _x,int _y, boolean col, String type) {
+	public Case(int _x,int _y, boolean col) {
 		this.x=_x;
 		this.y=_y;
 		this.collider=col;
-		this.type = type;
 	}
 
 	public int getX() {
@@ -45,11 +42,7 @@ public class Case {
 	}
 
 	public String getType() {
-		return this.type;
-	}
-	public void setType(String t)
-	{
-		this.type=t;
+		return "MUR";
 	}
 
 	
