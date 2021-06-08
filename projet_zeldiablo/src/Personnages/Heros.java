@@ -137,6 +137,7 @@ public class Heros implements Personnage {
 
 	public Labyrinthe getLab() {
 		return this.labi;
+		
 	}
 
 	@Override
