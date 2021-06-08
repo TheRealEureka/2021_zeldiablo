@@ -106,16 +106,4 @@ public class TestMonstres {
 		assertEquals("Heros meurt pas", true, res);
 	}
 
-	/**
-	 * Pas asseza de degats
-	 */
-	@Test
-	public void test_Mort_Monstre_null() {
-		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h;
-		Monstre m = null;
-		boolean res = m.etreMort();
-		assertEquals("Monstre null", false, res);
-	}
-
 }
