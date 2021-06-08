@@ -18,6 +18,16 @@ public class Inventaire {
 		tab[index]=null;
 	}
 	
+	public void toutVider() {
+		for (int i = 0; i<=2 ; i++) {
+			this.tab[i]=null;
+		}
+	}
+	
+	public Objet getTab(int index) {
+		return tab[index];
+	}
+	
 	public String toString() {
 		StringBuffer bf = new StringBuffer();
 		for (int i = 0; i<=2 ; i++) {
@@ -25,5 +35,7 @@ public class Inventaire {
 		}
 		return bf.toString();
 	}
+
+	
 
 }

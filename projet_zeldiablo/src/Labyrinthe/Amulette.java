@@ -1,15 +1,20 @@
 package Labyrinthe;
 
+import java.awt.image.BufferedImage;
+
 import Personnages.Personnage;
 
-public class Amulette implements Objet {
+public class Amulette extends Objet {
 
 	private int x;
 	private int y;
 	private Personnage porteur;
+	private String nom; 
+	private BufferedImage bi;
 
-	public Amulette(int xc, int yc, Labyrinthe labi) {
+	public Amulette(int xc, int yc, Labyrinthe labi, BufferedImage b, String n) {
 
+		super (n,b);
 		if (this.x > labi.getHauteur()) {
 			this.x = 10;
 		} else {

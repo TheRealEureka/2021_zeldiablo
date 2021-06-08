@@ -1,10 +1,30 @@
 package Labyrinthe;
 
+import java.awt.image.BufferedImage;
+
 import Personnages.Personnage;
 
-public interface Objet {
+public abstract class Objet {
 
-	public void porteurPrends(Personnage p);
-	public void porteurPose();
-	public String toString();
+	private String nom; 
+	private BufferedImage bi;
+	private int x;
+	private int y;
+	
+	public Objet (String n, BufferedImage b) {
+		this.nom=n;
+		this.bi=b;
+	}
+	
+	public abstract void porteurPrends(Personnage p);
+	public abstract void porteurPose();
+	public abstract String toString();
+	
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public BufferedImage getBi() {
+		return this.bi;
+	}
 }

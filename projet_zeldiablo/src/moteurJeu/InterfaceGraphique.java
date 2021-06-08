@@ -1,6 +1,11 @@
 package moteurJeu;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  * cree une interface graphique avec son controleur et son afficheur.
@@ -39,7 +44,7 @@ public class InterfaceGraphique {
 		// creation panel
 		this.panel = new PanelDessin(x, y, afficheurUtil);
 		f.setContentPane(this.panel);
-
+		
 		// ajout du controleur
 		Controleur controlleurGraph = new Controleur();
 		this.controleur = controlleurGraph;
