@@ -136,14 +136,6 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * M�thode etreMort pour v�rifier si le h�ros est mort
-	 */
-	@Override
-	public boolean etreMort() {
-		return this.pointsAttaque <= 0;
-	}
-
-	/**
 	 * M�thode qui retourne les points de d�gats du monstre
 	 * 
 	 * @return pointsAttaque du h�ros
