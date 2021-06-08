@@ -48,8 +48,8 @@ public class Case {
 
 	
 
-	public void effet(Heros heros, Effet e) {
-
+	public void effet(Heros heros) {
+		// TODO Auto-generated method stub
 		
 	}
 	
