@@ -88,4 +88,17 @@ public class TestHeros {
 		assertEquals("Heros meurt", true, res);
 	}
 
+	/**
+	 * Pas asseza de degats
+	 */
+	@Test
+	public void test_Mort_Heros_Pasok() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Monstre m = new Monstre(10, 4, labyrinthe, 2);
+		m.attaquer(h);
+		boolean res = h.etreMort();
+		assertEquals("Heros meurt", true, res);
+	}
+
 }
