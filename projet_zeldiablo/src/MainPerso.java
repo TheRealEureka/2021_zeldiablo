@@ -3,6 +3,7 @@ import java.util.Scanner;
 import Labyrinthe.Case;
 import Labyrinthe.GenerationLaby;
 import Labyrinthe.Labyrinthe;
+import Personnages.Inventaire;
 import jeuPerso.DessinPerso;
 import jeuPerso.JeuPerso;
 import moteurJeu.MoteurGraphique;
@@ -27,8 +28,10 @@ public class MainPerso {
 		// creation du jeu 
 		Labyrinthe lab = new Labyrinthe(15,15);
 		GenerationLaby gL = new GenerationLaby(lab);
+		
 		gL.labyTest();
-		JeuPerso jeu = new JeuPerso(lab);
+		Inventaire inv = new Inventaire ();
+		JeuPerso jeu = new JeuPerso(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 
 		// classe qui lance le moteur de jeu generique

@@ -21,8 +21,9 @@ public class JeuPerso implements Jeu {
 	/**
 	 * constructeur de jeu avec un Personnage
 	 */
-	public JeuPerso(Labyrinthe l) {
+	public JeuPerso(Labyrinthe l, Inventaire i) {
 		this.pj=new Heros(l);
+		this.inv=i;
 	}
 
 	/**
