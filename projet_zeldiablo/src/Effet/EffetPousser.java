@@ -15,25 +15,25 @@ public class EffetPousser implements Effet{
 			if (!la.etreAccessible(h.getPosX()+longeur, h.getPosY())) {
 				h.subirDegats(5);
 			}
-			h.setPosXY(h.getPosX()+longeur, h.getPosY());
+			h.setPosX(h.getPosX()+longeur);
 			break;
 		case 1:
 			if (!la.etreAccessible(h.getPosX()-longeur, h.getPosY())) {
 				h.subirDegats(5);
 			}
-			h.setPosXY(h.getPosX()-longeur, h.getPosY());
+			h.setPosX(h.getPosX()-longeur);
 			break;
 		case 2:
 			if (!la.etreAccessible(h.getPosX(), h.getPosY()+longeur)) {
 				h.subirDegats(5);
 			}
-			h.setPosXY(h.getPosX(), h.getPosY()+longeur);
+			h.setPosY(h.getPosY() + longeur);
 			break;
 		case 3:
 			if (!la.etreAccessible(h.getPosX(), h.getPosY()-longeur)) {
 				h.subirDegats(5);
 			}
-			h.setPosXY(h.getPosX(), h.getPosY()-longeur);
+			h.setPosY(h.getPosY() - longeur);
 			break;
 			
 		}

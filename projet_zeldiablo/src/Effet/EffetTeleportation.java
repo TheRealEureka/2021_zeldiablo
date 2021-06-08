@@ -15,7 +15,8 @@ public class EffetTeleportation implements Effet{
 			y = (int) (Math.random() * 15);
 		}
 		
-		h.setPosXY(x, y);
+		h.setPosX(x);
+		h.setPosY(y);
 	}
 
 }
