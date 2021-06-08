@@ -248,6 +248,14 @@ public class Heros implements Personnage {
 					labi.getTab().get(i).effet(this);
 					}
 				}
+			if(labi.getAmulette()!=null)
+			{
+				if(labi.getAmulette().getX()==this.posX && labi.getAmulette().getY()==this.posY && this.amul == null)
+				{
+					labi.getAmulette().porteurPrends(this);
+					this.prendreAmulette(labi.getAmulette());
+				}
+			}
 			}
 		}
 		//mise en place de l'ia des monstres 

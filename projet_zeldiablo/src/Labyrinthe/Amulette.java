@@ -62,7 +62,11 @@ public class Amulette extends Objet {
 	public int getY() {
 		return this.y;
 	}
-
+	public void setPos(int x, int y)
+	{
+		this.x = x;
+		this.y = y;
+	}
 	public void porteurPrends(Personnage p) {
 		if (p.getPosX() == this.x && p.getPosY() == this.y) {
 			this.porteur = p;

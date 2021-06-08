@@ -43,6 +43,20 @@ public class Inventaire {
 		}
 		return o;
 	}
+	public void setObj(int idx, Objet o)
+	{
+		if(idx>=0 && idx<tab.length)
+		{
+			tab[idx] = o;
+		}
+	}
+	public void removeObj(int idx)
+	{
+		if(idx>=0 && idx<tab.length)
+		{
+			tab[idx] = null;
+		}
+	}
 	public int getSize()
 	{
 		return tab.length;

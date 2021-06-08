@@ -41,7 +41,14 @@ public class JeuPerso implements Jeu {
 	 */
 	public void evoluer(Commande commande) {
 		this.getPj().deplacer(commande);
-
+		if(this.pj.getAmulette()!=null)
+		{
+			this.inv.setObj(1, this.pj.getAmulette());
+		}
+		else
+		{
+			this.inv.removeObj(1);
+		}
 	}
 
 	@Override
