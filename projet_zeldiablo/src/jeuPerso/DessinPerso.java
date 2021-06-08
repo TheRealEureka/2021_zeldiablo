@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import Labyrinthe.Case;
 import Labyrinthe.Labyrinthe;
+import Personnages.Monstre;
 import Personnages.Personnage;
 import moteurJeu.DessinJeu;
 
@@ -36,6 +37,7 @@ public class DessinPerso implements DessinJeu {
 	private BufferedImage stone = null;
 	private BufferedImage cd_off = null;
 	private BufferedImage cd_on = null;
+	private BufferedImage monstre = null;
 	private String source =  "src/images/";
 	/**
 	 * appelle constructeur parent
@@ -51,6 +53,7 @@ public class DessinPerso implements DessinJeu {
 			stone =  ImageIO.read(new File(source+"stone.png"));
 			cd_off =  ImageIO.read(new File(source+"cd_off.png"));
 			cd_on =  ImageIO.read(new File(source+"cd_on.png"));
+			monstre =  ImageIO.read(new File(source+"monstre.png"));
 
 		} catch (IOException e) {
 		}
@@ -99,6 +102,10 @@ public class DessinPerso implements DessinJeu {
 			//crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(cd_off, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
+		case "MONSTER" :
+			crayon.drawImage(monstre, x * TAILLE_CASE, y * TAILLE_CASE, null);
+
+			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
@@ -113,11 +120,15 @@ public class DessinPerso implements DessinJeu {
 		Personnage pj = jeu.getPj();
 		this.dessinerObjet("BACKGROUND",0, 0, im);
 		ArrayList<Case> tab = laby.getTab();
+		ArrayList<Monstre> mon = laby.getMonstre();
 		for (int i = 0; i < tab.size(); i++) {
 			this.dessinerObjet(tab.get(i).getType(), tab.get(i).getX(), tab.get(i).getY(), im);
 		}
+		for (int i = 0; i < mon.size(); i++) {
+			this.dessinerObjet("MONSTER", mon.get(i).getPosX(), mon.get(i).getPosY(), im);
+		}
 		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
-
+		
 	}
 
 }

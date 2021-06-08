@@ -1,5 +1,7 @@
 package Labyrinthe;
 
+import Personnages.Monstre;
+
 public class GenerationLaby {
 	private Labyrinthe l;
 	public GenerationLaby(Labyrinthe l)
@@ -20,7 +22,9 @@ public class GenerationLaby {
 			l.addCase(new Case(i,7));		
 		}
 		l.addCase(new CaseDeclencheuse(0,1));
-		
+		Monstre m = new Monstre();
+		m.setPosXY(0, 3);
+		l.addMonstre(m);
 	}
 	
 	
@@ -36,6 +40,7 @@ public class GenerationLaby {
 			}
 		}
 	}
+	
 		
 		
 	}
