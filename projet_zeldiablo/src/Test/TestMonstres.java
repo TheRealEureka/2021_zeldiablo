@@ -84,11 +84,11 @@ public class TestMonstres {
 	 * Test la mort du heros normalement
 	 */
 	@Test
-	public void test_Mort_Heros_ok() {
+	public void test_Mort_Monstre_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
 		Monstre m = new Monstre(10, 5, labyrinthe, 2);
-		h.attaquer(m);
+		m.subirDegats(6);
 		boolean res = m.etreMort();
 		assertEquals("Heros meurt", true, res);
 	}
@@ -97,11 +97,11 @@ public class TestMonstres {
 	 * Pas asseza de degats
 	 */
 	@Test
-	public void test_Mort_Heros_Pasok() {
+	public void test_Mort_Monstre_Pasok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
 		Monstre m = new Monstre(10, 4, labyrinthe, 2);
-		h.attaquer(m);
+		m.subirDegats(4);
 		boolean res = m.etreMort();
 		assertEquals("Heros meurt pas", true, res);
 	}
@@ -110,7 +110,7 @@ public class TestMonstres {
 	 * Pas asseza de degats
 	 */
 	@Test
-	public void test_Mort_Heros_null() {
+	public void test_Mort_Monstre_null() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h;
 		Monstre m = null;
