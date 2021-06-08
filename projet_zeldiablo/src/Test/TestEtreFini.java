@@ -17,7 +17,9 @@ public class TestEtreFini {
 		JeuPerso p = new JeuPerso(la);
 		p.getPj().setPosX(3);
 		p.getPj().setPosY(3);
+		a.porteurPrends(p.getPj());
 		p.getPj().prendreAmulette(a);
+		
 		assertTrue("Le jeu devrait etre fini", p.etreFini());
 	}
 	
@@ -28,7 +30,7 @@ public class TestEtreFini {
 		JeuPerso p = new JeuPerso(la);
 		p.getPj().setPosX(3);
 		p.getPj().setPosY(3);
-		assertFalse("Le jeu devrait etre fini", p.etreFini());
+		assertFalse("Le jeu ne devrait etre fini", p.etreFini());
 	}
 	
 	@Test

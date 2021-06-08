@@ -185,7 +185,7 @@ public class Heros implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.etreMort() != true)
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (!this.etreMort())
 				&& (this.labi == a.getLab())) {
 			this.amul = a;
 			res = true;
@@ -193,7 +193,7 @@ public class Heros implements Personnage {
 		return res;
 	}
 
-	public boolean herosGagne(Amulette a) {
+	public boolean herosGagne() {
 		boolean res = false;
 		if ((this.amul != null) && (this.etreMort() != true)) {
 			res = true;

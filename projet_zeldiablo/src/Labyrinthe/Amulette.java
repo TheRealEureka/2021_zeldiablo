@@ -30,7 +30,7 @@ public class Amulette extends Objet {
 	public Amulette(int xc, int yc, Labyrinthe labi, String n) {
 
 		super (n);
-
+		
 		if (this.x > labi.getHauteur()) {
 			this.x = 10;
 		} else {
@@ -41,6 +41,7 @@ public class Amulette extends Objet {
 		} else {
 			this.y = yc;
 		}
+		this.labyrinthe = labi;
 	}
 
 	public int getX() {
