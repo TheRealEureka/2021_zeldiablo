@@ -234,7 +234,7 @@ public class Heros implements Personnage {
 		if (commande.bas) {
 			y++;
 			if (y >= LIMIT_Y) {
-				y = LIMIT_Y;
+				y = LIMIT_Y ;
 			}
 
 		}
