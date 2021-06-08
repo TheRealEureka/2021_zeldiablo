@@ -57,6 +57,7 @@ public class GenerationLaby {
 			}
 		}
 		
+		
 		for (int i = 0; i < 4; i++) {
 			int r = (int) (Math.random() * 3);
 			int x = (int) (Math.random() * l.getLargeur());
@@ -89,7 +90,6 @@ public class GenerationLaby {
 				break;
 			}
 		}
-
 	}
 	
 }

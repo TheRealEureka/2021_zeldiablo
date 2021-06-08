@@ -8,11 +8,12 @@ public class EffetAjoutMonstre implements Effet{
 
 	@Override
 	public void effet(Heros h) {
+		
 		Labyrinthe la = h.getLab();
 		int x = h.getPosX();
 		int y = h.getPosY();
 		
-		int nouveauX = x++;
+		int nouveauX = x+1;
 		int nouveauY = y;
 		while (!la.etreAccessible(nouveauX, nouveauY)) {
 			if (x == la.getLargeur()) {
@@ -24,7 +25,7 @@ public class EffetAjoutMonstre implements Effet{
 		Monstre m = new Monstre(5, 22, la, 20);
 		m.setPosX(nouveauX);
 		m.setPosY(nouveauY);
-		
+		la.addMonstre(m);
 	}
 
 }
