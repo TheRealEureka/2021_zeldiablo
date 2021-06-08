@@ -8,7 +8,7 @@ public class EffetPoison implements Effet{
 	public void effet(Heros h) {
 		int i = 4;
 		while (i > 0) {
-			h.subirDegats((int) (h.getVie() * 0.2));
+			h.subirDegats((int) (h.getVie() * 0.02));
 			i--;
 		}
 		
