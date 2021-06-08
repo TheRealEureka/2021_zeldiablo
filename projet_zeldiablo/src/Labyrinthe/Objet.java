@@ -8,8 +8,8 @@ public abstract class Objet {
 
 	private String nom; 
 	private BufferedImage bi;
-	private int x;
-	private int y;
+	private int x,y;
+
 	
 	public Objet (String n) {
 		this.nom=n;
