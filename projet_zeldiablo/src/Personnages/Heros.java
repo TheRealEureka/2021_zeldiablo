@@ -19,7 +19,7 @@ public class Heros implements Personnage {
 	private int posX;
 	private int posY;
 	private Amulette amul;
-
+	private boolean deplacement;
 	private final static int LIMIT_X = 15;
 	private final static int LIMIT_Y = 15;
 
@@ -37,6 +37,7 @@ public class Heros implements Personnage {
 		this.pointsAttaque = pA;
 		this.labi = la;
 		this.portee = po;
+		this.deplacement = true;
 	}
 
 	/**
@@ -47,6 +48,7 @@ public class Heros implements Personnage {
 		this.vie = 150;
 		this.pointsAttaque = 20;
 		this.portee = 1;
+		this.deplacement = true;
 	}
 
 	/**
@@ -61,6 +63,7 @@ public class Heros implements Personnage {
 		this.vie = v;
 		this.pointsAttaque = pA;
 		this.portee = pO;
+		this.deplacement = true;
 
 	}
 
@@ -75,6 +78,7 @@ public class Heros implements Personnage {
 		this.pointsAttaque = 20;
 		this.portee = 1;
 		this.labi = la;
+		this.deplacement = true;
 	}
 
 	/**
@@ -204,6 +208,7 @@ public class Heros implements Personnage {
 
 	@Override
 	public void deplacer(Commande commande) {
+		if (this.deplacement) {
 		int x = this.posX;
 		int y = this.posY;
 
@@ -241,6 +246,7 @@ public class Heros implements Personnage {
 			if (i != -1) {
 				if (labi.getTab().get(i).getType() == "DEC") {
 					labi.getTab().get(i).effet(this);
+					}
 				}
 			}
 		}
@@ -259,5 +265,13 @@ public class Heros implements Personnage {
 
 		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
 		return distance;
+	}
+	
+	public void bloquerDeplacement() {
+		this.deplacement = false;
+	}
+	
+	public void autoriserDeplacement() {
+		this.deplacement = true;
 	}
 }
