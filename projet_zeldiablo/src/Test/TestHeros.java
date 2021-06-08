@@ -75,4 +75,17 @@ public class TestHeros {
 		assertEquals("Monstre attaque le deuxi�me", true, res);
 	}
 
+	/**
+	 * Test la mort du heros normalement
+	 */
+	@Test
+	public void test_Mort_Heros_ok() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Monstre m = new Monstre(10, 5, labyrinthe, 2);
+		m.attaquer(h);
+		boolean res = h.etreMort();
+		assertEquals("Heros meurt", true, res);
+	}
+
 }
