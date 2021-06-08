@@ -58,10 +58,11 @@ public class MoteurGraphique {
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
 			this.jeu.evoluer(c);
-			// affiche le jeu
+			// affiche le jeu 
 			this.gui.dessiner();
 			// met en attente
 			Thread.sleep(50);
+			// salut mon pote
 		}
 	}
 
