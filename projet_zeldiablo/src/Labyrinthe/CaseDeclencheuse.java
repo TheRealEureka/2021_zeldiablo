@@ -5,7 +5,7 @@ import Personnages.Heros;
 
 public class CaseDeclencheuse extends Case{
 	private boolean used = false;
-	private static final Effet[] tab = {new EffetGagnerPv(), new EffetPoison(), new EffetTeleportation()};
+	private static final Effet[] tab = {new EffetAjoutMonstre(), new EffetBlocage(),new EffetGagnerPv(), new EffetPoison(), new EffetTeleportation()};
 	public CaseDeclencheuse(int _x, int _y) {
 		super(_x, _y, false);
 	}
