@@ -52,6 +52,7 @@ public class Monstre implements Personnage {
 		this.pointsAttaque = 20;
 		this.portee = 1;
 	}
+
 	/**
 	 * Constructeur avec param�tre
 	 * 
@@ -70,6 +71,7 @@ public class Monstre implements Personnage {
 	public int getPortee() {
 		return portee;
 	}
+
 	/**
 	 * M�thode getVie pour r�cup�rer la vie du monstre
 	 */
@@ -102,8 +104,7 @@ public class Monstre implements Personnage {
 		if ((this.vie == 0) && (this != null)) {
 			this.poserAmulette();
 			int idx = this.labi.getIndexMonster(this);
-			if(idx!=-1)
-			{
+			if (idx != -1) {
 				this.labi.removeMonstre(idx);
 			}
 			res = true;
@@ -134,14 +135,15 @@ public class Monstre implements Personnage {
 
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
-		if ((this != null) && (victime != null) && (victime.getVie() > 0)
-				&& (this.vie > 0) && (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
+		if ((this != null) && (victime != null) && (victime.getVie() > 0) && (this.vie > 0)
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
 		}
 		return res;
 	}
+
 	/**
 	 * @param victime Heros cible de l'attaque
 	 * @return la distance entre l'attaquant et l'attaqu�.
@@ -159,10 +161,10 @@ public class Monstre implements Personnage {
 		this.posX = posX;
 	}
 
-	public Amulette getAmulette()
-	{
+	public Amulette getAmulette() {
 		return this.amul;
 	}
+
 	/**
 	 * @param posY the posY to set
 	 */
@@ -226,17 +228,5 @@ public class Monstre implements Personnage {
 			}
 		}
 	}
-
-	@Override
-	public void setPosX(int x) {
-		this.posX = x;
-	}
-
-	@Override
-	public void setPosY(int y) {
-	this.posY = y;
-	}
-
-
 
 }
