@@ -250,6 +250,12 @@ public class Heros implements Personnage {
 				}
 			}
 		}
+		//mise en place de l'ia des monstres 
+		 int t = this.labi.getMonstre().size();
+		 for (int i = 0; i<t; i++) {
+			 Monstre m = this.labi.getMonstre().get(i);
+			 m.charger(this);
+		 }
 	}
 
 	public boolean etreMort() {
