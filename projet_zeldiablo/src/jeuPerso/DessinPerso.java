@@ -83,6 +83,7 @@ public class DessinPerso implements DessinJeu {
 			crayon.fillRect(0, 401, 400, 50);
 			crayon.setColor(Color.BLACK);
 			crayon.drawString("Inventaire",180,410);
+			crayon.drawString("PV : "+jeu.getPj().getVie(),0,410);
 			BufferedImage img1;
 			BufferedImage img2;
 			Objet o1 = jeu.getInv().getObj(1);

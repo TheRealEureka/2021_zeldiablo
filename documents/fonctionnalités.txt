@@ -35,12 +35,16 @@ Les fonctionnalités seront les suivantes :
     Génération de monstres, mises des points de vies à 0 et vérification de leurs mort
 6.1 Fin du jeu : mort du héros x
 - Kévin BC
+	Tests : Test.TestHeros
+	vérification de la méthode avec 0 et >0 de vie.
 6.2 Mise en place de l'amulette x
 - Thomas S
 6.3 Acquisition de l'amulette x
 - Thomas S
 6.4 Fin du jeu : victoire du héros x
 - Clément P
+	Tests : TestsHeros
+	vérification de la méthode avec et sans amulette.
 7.1 Inventaire
 - Thomas DA
 7.4 Affichage de l'inventaire
