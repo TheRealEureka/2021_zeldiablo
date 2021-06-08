@@ -1,5 +1,6 @@
 package Labyrinthe;
 
+import Effet.Effet;
 import Personnages.Heros;
 
 public class Case {
@@ -46,8 +47,10 @@ public class Case {
 	}
 
 	
-	public void effet(Heros heros) {
-	//LAISSER VIDE, K.	
+
+	public void effet(Heros heros, Effet e) {
+
+		
 	}
 	
 	
