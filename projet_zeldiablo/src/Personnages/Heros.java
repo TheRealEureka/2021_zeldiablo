@@ -118,7 +118,6 @@ public class Heros implements Personnage {
 	 * @return la distance entre l'attaquant et l'attaqu�.
 	 */
 
-
 	/**
 	 * M�thode pour faire perdre des points de vies au monstre
 	 * 
@@ -231,7 +230,7 @@ public class Heros implements Personnage {
 
 	@Override
 	public void deplacer(Commande commande) {
-		int x =this.posX;
+		int x = this.posX;
 		int y = this.posY;
 		if (commande.gauche) {
 			x--;
@@ -257,23 +256,28 @@ public class Heros implements Personnage {
 			if (y >= LIMIT_Y) {
 				y = LIMIT_Y;
 			}
-			
+
 		}
-		if(labi.etreAccessible(x,y))
-		{
-			this.posX=x;
+		if (labi.etreAccessible(x, y)) {
+			this.posX = x;
 			this.posY = y;
-			int i = labi.getIndex(x,y);
-			if(i!=-1)
-			{
-			if(labi.getTab().get(i).getType()=="DEC")
-			{
-				labi.getTab().get(i).effet(this);
-			}
+			int i = labi.getIndex(x, y);
+			if (i != -1) {
+				if (labi.getTab().get(i).getType() == "DEC") {
+					labi.getTab().get(i).effet(this);
+				}
 			}
 		}
 	}
 
+	public boolean mort() {
+		boolean res = false;
+		if (this.vie <= 0) {
+			res = true;
+
+		}
+		return res;
+	}
 
 	public int getDistance(Personnage victime) {
 
