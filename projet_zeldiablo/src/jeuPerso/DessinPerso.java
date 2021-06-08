@@ -65,18 +65,21 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-	
 		switch (s) {
 		case "BACKGROUND" : 
 			for(int i = 0 ; i <= 15 ; i++)
 			{
-				for(int t = 0 ; t<= 15 ;t++)
+				for(int t = 0 ; t<= 16 ;t++)
 				{
 					crayon.drawImage(background, i * TAILLE_CASE, t * TAILLE_CASE, null);
-					
-					
 				}
 			}
+			break;
+		case "INV_UI" :
+			crayon.setColor(Color.GRAY);
+			crayon.fillRect(0, 401, 400, 50);
+
+			
 			break;
 		case "PJ":
 			// crayon.setColor(Color.blue);
@@ -131,6 +134,8 @@ public class DessinPerso implements DessinJeu {
 		for (int i = 0; i < mon.size(); i++) {
 			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(), im);
 		}
+		this.dessinerObjet("INV_UI", 0, 0, im);
+
 		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
 		
 	}
