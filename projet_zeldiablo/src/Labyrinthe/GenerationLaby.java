@@ -44,12 +44,14 @@ public class GenerationLaby {
 	}
 
 	public void generationAleatoire() {
+		int caseDec = 0;
 		for (int i = 0; i < 15; i++) {
 			for (int y = 1; y < 15; y++) {
-				int r = (int) (Math.random() * 3);
+				int r = (int) (Math.random() * 6);
 				if (r == 1) {
 					l.addCase(new Case(i, y));
-				} else if (r == 2) {
+				} else if (r == 4 && caseDec < 22) {
+					caseDec++;
 					l.addCase(new CaseDeclencheuse(i, y));
 				}
 			}
