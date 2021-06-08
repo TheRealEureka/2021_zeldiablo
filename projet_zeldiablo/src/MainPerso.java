@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import Labyrinthe.Amulette;
 import Labyrinthe.Case;
 import Labyrinthe.GenerationLaby;
 import Labyrinthe.Labyrinthe;
@@ -28,7 +29,7 @@ public class MainPerso {
 		// creation du jeu 
 		Labyrinthe lab = new Labyrinthe(15,15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		
+		lab.setAmulette(new Amulette(15,15, lab,"String"));
 		gL.labyTest();
 		Inventaire inv = new Inventaire ();
 		JeuPerso jeu = new JeuPerso(lab, inv);
