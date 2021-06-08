@@ -71,21 +71,21 @@ public class GenerationLaby {
 				m.setPosX(x);
 				m.setPosY(y);
 				l.addMonstre(m);
-				l.bloquerAcces(x, y);
+			
 				break;
 			case 1:
 				Monstre t = new Troll(l);
 				t.setPosX(x);
 				t.setPosY(y);
 				l.addMonstre(t);
-				l.bloquerAcces(x, y);
+		
 				break;
 			case 2:
 				Monstre mn = new Monstre(l);
 				mn.setPosX(x);
 				mn.setPosY(y);
 				l.addMonstre(mn);
-				l.bloquerAcces(x, y);
+			
 				break;
 			}
 		}
