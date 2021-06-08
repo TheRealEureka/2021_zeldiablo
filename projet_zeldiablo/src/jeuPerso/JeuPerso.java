@@ -53,6 +53,7 @@ public class JeuPerso implements Jeu {
 	 * 
 	 * @return personnage du jeu
 	 */
+	
 	public Personnage getPj() {
 		return pj;
 	}
