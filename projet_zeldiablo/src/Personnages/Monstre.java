@@ -35,11 +35,13 @@ public class Monstre implements Personnage {
 	 * @param la labyrinthe du monstre
 	 * @param po portee du monstre
 	 */
-	public Monstre(int v, int pA, Labyrinthe la, int po) {
+	public Monstre(int v, int pA, Labyrinthe la, int po, int posX, int posY) {
 		this.vie = v;
 		this.pointsAttaque = pA;
 		this.labi = la;
 		this.portee = po;
+		this.posX = posX;
+		this.posY = posY;
 	}
 
 	/**
@@ -50,20 +52,6 @@ public class Monstre implements Personnage {
 		this.pointsAttaque = 20;
 		this.portee = 1;
 	}
-
-	/**
-	 * Constructeur avec param�tre pour la vie du monstre
-	 * 
-	 * @param v  vie du monstre
-	 * @param pA degats du monstre
-	 * @param pO portee du monstre
-	 */
-	public Monstre(int v, int pA, int pO) {
-		this.vie = v;
-		this.pointsAttaque = pA;
-		this.portee = pO;
-	}
-
 	/**
 	 * Constructeur avec param�tre
 	 * 
@@ -82,25 +70,6 @@ public class Monstre implements Personnage {
 	public int getPortee() {
 		return portee;
 	}
-
-	/**
-	 * @param portee the portee to set
-	 */
-	public void setPortee(int portee) {
-		this.portee = portee;
-	}
-
-	/**
-	 * M�thode setVie pour changer la vie du monstre
-	 * 
-	 * @param v nouvelle vie du monstre
-	 */
-	@Override
-	public void setVie(int v) {
-		this.vie = v;
-
-	}
-
 	/**
 	 * M�thode getVie pour r�cup�rer la vie du monstre
 	 */
@@ -132,6 +101,11 @@ public class Monstre implements Personnage {
 		boolean res = false;
 		if (this.vie == 0) {
 			this.poserAmulette();
+			int idx = this.labi.getIndexMonster(this);
+			if(idx!=-1)
+			{
+				this.labi.removeMonstre(idx);
+			}
 			res = true;
 
 		}
@@ -149,16 +123,6 @@ public class Monstre implements Personnage {
 		return this.pointsAttaque;
 	}
 
-	@Override
-	public boolean etreDansLabyrinthe(Labyrinthe lab) {
-		boolean res = false;
-		if (lab != null) {
-			res = this.labi == lab;
-		}
-
-		return res;
-	}
-
 	public Labyrinthe getLab() {
 		return this.labi;
 	}
@@ -170,7 +134,7 @@ public class Monstre implements Personnage {
 
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
-		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
+		if ((this != null) && (victime != null) && (victime.getVie() > 0)
 				&& (this.vie > 0) && (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
@@ -178,14 +142,6 @@ public class Monstre implements Personnage {
 		}
 		return res;
 	}
-
-	@Override
-	public void setPosXY(int x, int y) {
-		this.posX = x;
-		this.posY = y;
-
-	}
-
 	/**
 	 * @param victime Heros cible de l'attaque
 	 * @return la distance entre l'attaquant et l'attaqu�.
@@ -203,6 +159,10 @@ public class Monstre implements Personnage {
 		this.posX = posX;
 	}
 
+	public Amulette getAmulette()
+	{
+		return this.amul;
+	}
 	/**
 	 * @param posY the posY to set
 	 */
@@ -218,14 +178,6 @@ public class Monstre implements Personnage {
 	@Override
 	public int getPosY() {
 		return this.posY;
-	}
-
-	@Override
-	public boolean aAmulette() {
-		boolean res = false;
-		if (this.amul != null)
-			res = true;
-		return res;
 	}
 
 	public boolean prendreAmulette(Amulette a) {
@@ -274,5 +226,7 @@ public class Monstre implements Personnage {
 			}
 		}
 	}
+
+
 
 }

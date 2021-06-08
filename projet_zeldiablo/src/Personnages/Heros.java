@@ -78,17 +78,6 @@ public class Heros implements Personnage {
 	}
 
 	/**
-	 * M�thode setVie pour changer la vie du Heros
-	 * 
-	 * @param v nouvelle vie du Heros
-	 */
-	@Override
-	public void setVie(int v) {
-		this.vie = v;
-
-	}
-
-	/**
 	 * M�thode getVie pour r�cup�rer la vie du Heros
 	 */
 	@Override
@@ -104,7 +93,7 @@ public class Heros implements Personnage {
 	@Override
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
-		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
+		if ((this != null) && (victime != null) &&  (victime.getVie() > 0)
 				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
@@ -145,20 +134,6 @@ public class Heros implements Personnage {
 		return this.pointsAttaque;
 	}
 
-	/**
-	 * M�thode qui v�rifie si le heros est dans le labyrinthe
-	 * 
-	 * @param lab labyrinthe � v�rifier
-	 */
-	@Override
-	public boolean etreDansLabyrinthe(Labyrinthe lab) {
-		boolean res = false;
-		if (lab != null) {
-			res = this.labi == lab;
-		}
-
-		return res;
-	}
 
 	public Labyrinthe getLab() {
 		return this.labi;
@@ -183,12 +158,6 @@ public class Heros implements Personnage {
 		this.portee = portee;
 	}
 
-	@Override
-	public void setPosXY(int x, int y) {
-		this.posX = x;
-		this.posY = y;
-
-	}
 
 	@Override
 	public int getPosX() {
@@ -201,11 +170,9 @@ public class Heros implements Personnage {
 	}
 
 	@Override
-	public boolean aAmulette() {
-		boolean res = false;
-		if (this.amul != null)
-			res = true;
-		return res;
+	public Amulette getAmulette() {
+
+		return this.amul;
 	}
 
 	public boolean prendreAmulette(Amulette a) {
