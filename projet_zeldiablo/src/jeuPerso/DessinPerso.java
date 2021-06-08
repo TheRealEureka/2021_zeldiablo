@@ -1,6 +1,7 @@
 package jeuPerso;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import Labyrinthe.Case;
+import Labyrinthe.Objet;
 import Labyrinthe.Labyrinthe;
 import Personnages.Monstre;
 import Personnages.Personnage;
@@ -76,8 +78,12 @@ public class DessinPerso implements DessinJeu {
 			}
 			break;
 		case "INV_UI" :
-			crayon.setColor(Color.GRAY);
+			crayon.setColor(new Color(61,223,120));
 			crayon.fillRect(0, 401, 400, 50);
+			crayon.setColor(Color.BLACK);
+			crayon.drawString("Inventaire",180,410);
+			BufferedImage o1 = jeu.getInv().getObj(1).getBi();
+			
 
 			
 			break;
