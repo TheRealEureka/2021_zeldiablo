@@ -56,11 +56,11 @@ public class DessinPerso implements DessinJeu {
 		BufferedImage cd_on = null;
 
 		try {
-			image = ImageIO.read(new File("src\\images\\2.png"));
-			background =  ImageIO.read(new File("src\\images\\background.png"));
-			stone =  ImageIO.read(new File("src\\images\\stone.png"));
-			cd_off =  ImageIO.read(new File("src\\images\\cd_off.png"));
-			cd_on =  ImageIO.read(new File("src\\images\\cd_on.png"));
+			image = ImageIO.read(new File("src/images/2.png"));
+			background =  ImageIO.read(new File("src/images/background.png"));
+			stone =  ImageIO.read(new File("src/images/stone.png"));
+			cd_off =  ImageIO.read(new File("src/images/cd_off.png"));
+			cd_on =  ImageIO.read(new File("src/images/cd_on.png"));
 
 		} catch (IOException e) {
 		}
