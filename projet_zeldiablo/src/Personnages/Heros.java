@@ -105,7 +105,7 @@ public class Heros implements Personnage {
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.etreDansLabyrinthe(this.labi)) && (victime.getVie() > 0)
-				&& (this.getPortee() >= this.getDistance(victime)) && (this.EtreMort() != true)) {
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
@@ -210,7 +210,7 @@ public class Heros implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.EtreMort() != true)) {
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.etreMort() != true)) {
 			this.amul = a;
 			res = true;
 		}
@@ -219,7 +219,7 @@ public class Heros implements Personnage {
 
 	public boolean herosGagne(Amulette a) {
 		boolean res = false;
-		if ((this.amul != null) && (this.EtreMort() != true)) {
+		if ((this.amul != null) && (this.etreMort() != true)) {
 			res = true;
 
 		}
@@ -258,7 +258,7 @@ public class Heros implements Personnage {
 
 		}
 
-		if (labi.etreAccessible(x, y) && (this.EtreMort() != true)) {
+		if (labi.etreAccessible(x, y) && (this.etreMort() != true)) {
 			this.posX = x;
 			this.posY = y;
 			int i = labi.getIndex(x, y);
@@ -270,7 +270,7 @@ public class Heros implements Personnage {
 		}
 	}
 
-	public boolean EtreMort() {
+	public boolean etreMort() {
 		boolean res = false;
 		if (this.vie == 0) {
 			res = true;
