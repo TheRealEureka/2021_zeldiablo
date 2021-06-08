@@ -33,18 +33,7 @@ public class TestHeros {
 		assertEquals("h�ros ne subis pas de d�gats", false, res);
 	}
 
-	/**
-	 * Test l'action attaquer quand la distance est trop grande
-	 */
-	@Test
-	public void test_attaquer_PasOk() {
-		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros();
-		Monstre m = new Monstre();
-		boolean res = m.attaquer(h);
-		System.out.println(m.etreDansLabyrinthe(h.getLab()));
-		assertEquals("Monstre ne peux pas attaque le deuxi�me", false, res);
-	}
+
 
 	/**
 	 * Test l'action attaquer quand la portee n'est pas sufisante
@@ -57,8 +46,10 @@ public class TestHeros {
 		h.setLabyrinthe(labyrinthe);
 		m.setLabyrinthe(labyrinthe);
 		h.setPortee(2);
-		h.setPosXY(0, 0);
-		m.setPosXY(10, 10);
+		h.setPosX(0);
+		h.setPosY(0);
+		m.setPosX(10);
+		m.setPosY(10);
 		boolean res = m.attaquer(h);
 		assertEquals("h�ros ne subis pas de d�gats", false, res);
 	}
@@ -70,7 +61,7 @@ public class TestHeros {
 	public void test_attaquer_OK() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(10, 3, labyrinthe, 2);
+		Monstre m = new Monstre();
 		boolean res = h.attaquer(m);
 		assertEquals("Monstre attaque le deuxi�me", true, res);
 	}
@@ -82,7 +73,7 @@ public class TestHeros {
 	public void test_Mort_Heros_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(10, 5, labyrinthe, 2);
+		Monstre m = new Monstre();
 		m.attaquer(h);
 		boolean res = h.etreMort();
 		assertEquals("Heros meurt", true, res);
@@ -95,10 +86,10 @@ public class TestHeros {
 	public void test_Mort_Heros_Pasok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(10, 4, labyrinthe, 2);
+		Monstre m = new Monstre();
 		m.attaquer(h);
 		boolean res = h.etreMort();
-		assertEquals("Heros meurt", true, res);
+		assertEquals("Heros meurt pas", true, res);
 	}
 
 }

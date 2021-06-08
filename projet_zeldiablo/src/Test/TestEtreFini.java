@@ -15,7 +15,8 @@ public class TestEtreFini {
 		Labyrinthe la = new Labyrinthe(15, 15);
 		Amulette a = new Amulette(3, 3, la);
 		JeuPerso p = new JeuPerso(la);
-		p.getPj().setPosXY(3, 3);
+		p.getPj().setPosX(3);
+		p.getPj().setPosY(3);
 		p.getPj().prendreAmulette(a);
 		assertTrue("Le jeu devrait etre fini", p.etreFini());
 	}
@@ -25,7 +26,8 @@ public class TestEtreFini {
 		Labyrinthe la = new Labyrinthe(15, 15);
 		Amulette a = new Amulette(3, 3, la);
 		JeuPerso p = new JeuPerso(la);
-		p.getPj().setPosXY(3, 3);
+		p.getPj().setPosX(3);
+		p.getPj().setPosY(3);
 		assertFalse("Le jeu devrait etre fini", p.etreFini());
 	}
 	
