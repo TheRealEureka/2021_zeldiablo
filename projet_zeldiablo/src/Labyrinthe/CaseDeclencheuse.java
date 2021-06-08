@@ -19,6 +19,7 @@ public class CaseDeclencheuse extends Case{
 		{
 			res = "DEC";
 		}
+		return res;
 	}
 
 	@Override
