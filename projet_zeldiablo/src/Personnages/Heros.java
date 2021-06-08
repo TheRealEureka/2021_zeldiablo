@@ -149,7 +149,15 @@ public class Heros implements Personnage {
 	public int getPortee() {
 		return portee;
 	}
+	@Override
+	public void setPosX(int x) {
+		this.posX = x;
+	}
 
+	@Override
+	public void setPosY(int y) {
+	this.posY = y;
+	}
 	/**
 	 * @param portee the portee to set
 	 */

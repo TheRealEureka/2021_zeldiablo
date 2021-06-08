@@ -227,6 +227,16 @@ public class Monstre implements Personnage {
 		}
 	}
 
+	@Override
+	public void setPosX(int x) {
+		this.posX = x;
+	}
+
+	@Override
+	public void setPosY(int y) {
+	this.posY = y;
+	}
+
 
 
 }
