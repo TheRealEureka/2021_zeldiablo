@@ -58,6 +58,13 @@ public class Labyrinthe {
 		}
 		return idx;
 	}
+	public void setAmulette(Amulette a)
+	{
+		if(a!=null)
+		{
+			this.amulette =a;
+		}
+	}
 	public void addMonstre(Monstre m)
 	{
 		if(m!=null)

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
+import Personnages.Inventaire;
 import jeuPerso.JeuPerso;
 
 public class TestEtreFini {
@@ -14,7 +15,7 @@ public class TestEtreFini {
 	public void testEtreFini_OK_Amulette() {
 		Labyrinthe la = new Labyrinthe(15, 15);
 		Amulette a = new Amulette(3, 3, la, "Amulette");
-		JeuPerso p = new JeuPerso(la);
+		JeuPerso p = new JeuPerso(la, new Inventaire());
 		p.getPj().setPosX(3);
 		p.getPj().setPosY(3);
 		a.porteurPrends(p.getPj());
@@ -27,7 +28,7 @@ public class TestEtreFini {
 	public void testEtreFini_PasOk_Amulette() {
 		Labyrinthe la = new Labyrinthe(15, 15);
 		Amulette a = new Amulette(3, 3, la, "Amulette");
-		JeuPerso p = new JeuPerso(la);
+		JeuPerso p = new JeuPerso(la, new Inventaire());
 		p.getPj().setPosX(3);
 		p.getPj().setPosY(3);
 		assertFalse("Le jeu ne devrait etre fini", p.etreFini());
@@ -37,7 +38,7 @@ public class TestEtreFini {
 	public void testEtreFini_Ok_Mort() {
 		Labyrinthe la = new Labyrinthe(15, 15);
 		Amulette a = new Amulette(3, 3, la, "Amulette");
-		JeuPerso p = new JeuPerso(la);
+		JeuPerso p = new JeuPerso(la, new Inventaire());
 		p.getPj().subirDegats(200);
 		System.out.println(p.getPj().etreMort());
 		assertTrue("Le jeu devrait etre fini", p.etreFini());
