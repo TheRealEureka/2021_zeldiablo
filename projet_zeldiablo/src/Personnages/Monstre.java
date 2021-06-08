@@ -44,6 +44,13 @@ public class Monstre implements Personnage {
 		this.posY = posY;
 	}
 
+	public Monstre(int v, int pA, Labyrinthe la, int po) {
+		this.vie = v;
+		this.pointsAttaque = pA;
+		this.labi = la;
+		this.portee = po;
+
+	}
 	/**
 	 * Constructeur sans param�tre
 	 */

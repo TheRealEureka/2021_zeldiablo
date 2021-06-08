@@ -14,10 +14,11 @@ public class TestTrolls {
 	 */
 	@Test
 	public void testConstructeurVide() {
-		Troll t = new Troll();
+		Labyrinthe l = new Labyrinthe(15,15);
+		Troll t = new Troll(l);
 		assertEquals("Le Troll devrait avoir 3 point de vie", 3, t.getVie());
-		assertEquals("Le Troll devrait avoir une portee de 1", 3, t.getVie());
-		assertEquals("Le Troll devrait avoir les degats à 2", 3, t.getVie());
+		assertEquals("Le Troll devrait avoir une portee de 1", 1, t.getPortee());
+		assertEquals("Le Troll devrait avoir les degats a 2", 2, t.getPointsAttaque());
 
 	}
 
