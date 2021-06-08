@@ -17,7 +17,7 @@ public class TestHeros {
 	@Test
 	public void test_subirDegats_OK() {
 
-		Heros h = new Heros("Stib", 5, 2, 4);
+		Heros h = new Heros("Stib", 5, 2, null, 4, null);
 		h.subirDegats(5);
 		boolean res = h.getVie() == 0;
 		assertEquals("h�ros subis d�gats", true, res);
@@ -28,7 +28,7 @@ public class TestHeros {
 	 */
 	@Test
 	public void test_subirDegats_PasOK() {
-		Heros h = new Heros("Stib", 5, 2, 4);
+		Heros h = new Heros("Stib", 5, 2, null, 4, null);
 		h.subirDegats(-5);
 		boolean res = h.getVie() == 0;
 		assertEquals("h�ros ne subis pas de d�gats", false, res);
@@ -60,9 +60,8 @@ public class TestHeros {
 	@Test
 	public void test_attaquer_OK() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 2, labyrinthe, 4, null);
 		Monstre m = new Monstre();
-		h.setLabyrinthe(labyrinthe);
 		m.setLabyrinthe(labyrinthe);
 		h.setPosX(0);
 		h.setPosY(0);
@@ -78,7 +77,7 @@ public class TestHeros {
 	@Test
 	public void test_Mort_Heros_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
 		Monstre m = new Monstre(3, 6, labyrinthe, 5, 0, 0);
 		h.setPosX(1);
 		h.setPosY(0);
@@ -93,7 +92,7 @@ public class TestHeros {
 	@Test
 	public void test_Mort_Heros_Pasok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
 		Monstre m = new Monstre(15, 4, labyrinthe, 5, 0, 0);
 		h.setPosX(1);
 		h.setPosY(0);
@@ -108,7 +107,7 @@ public class TestHeros {
 	@Test
 	public void test_HeroGagne_Ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
 		Amulette a = new Amulette(0, 1, labyrinthe, "Amulette");
 		h.setPosX(0);
 		h.setPosY(1);
@@ -124,7 +123,7 @@ public class TestHeros {
 	@Test
 	public void test_HeroGagne_PasOk() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
 
 		boolean res = h.herosGagne();
 

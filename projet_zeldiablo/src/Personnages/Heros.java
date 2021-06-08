@@ -3,22 +3,16 @@ package Personnages;
 import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
+import moteurJeu.Jeu;
 
-public class Heros implements Personnage {
+public class Heros extends Personnage implements Jeu {
 
 	/**
 	 * Attributs : Vie : la vie du heros PointsAttaque : les degats du Heros labi :
 	 * le labyrinte dans lequel se trouve le Heros
 	 */
 	private String nom;
-	private int vie;
-	private int pointsAttaque;
-	private Labyrinthe labi;
-	private int portee;
-	private Monstre monstre;
-	private int posX;
-	private int posY;
-	private Amulette amul;
+	private Inventaire inv;
 	private boolean deplacement;
 	private final static int LIMIT_X = 15;
 	private final static int LIMIT_Y = 15;
@@ -31,26 +25,22 @@ public class Heros implements Personnage {
 	 * @param la labyrinthe du Heros
 	 * @param po portee du Heros
 	 */
-	public Heros(String n, int v, int pA, Labyrinthe la, int po) {
+	public Heros(String n, int pv, int degats, Labyrinthe lab, int portee, int posX, int posY, Inventaire i) {
+		super(pv, degats, lab, portee, posX, posY);
 		this.nom = n;
-		this.vie = v;
-		this.pointsAttaque = pA;
-		this.labi = la;
-		this.portee = po;
 		this.deplacement = true;
+		this.inv = i;
+
 	}
 
-	/**
-	 * Constructeur sans param�tre
-	 */
+	
 	public Heros() {
-		this.nom = "Stib";
-		this.vie = 150;
-		this.pointsAttaque = 20;
-		this.portee = 1;
+		super();
+		this.nom = "BOB";
 		this.deplacement = true;
-	}
+	
 
+	}
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -58,12 +48,11 @@ public class Heros implements Personnage {
 	 * @param pA degats du Heros
 	 * @param po portee du heros
 	 */
-	public Heros(String n, int v, int pA, int pO) {
+	public Heros(String n, int pv, int degats, Labyrinthe lab, int portee, Inventaire i) {
+		super(pv, degats, lab, portee);
 		this.nom = n;
-		this.vie = v;
-		this.pointsAttaque = pA;
-		this.portee = pO;
 		this.deplacement = true;
+		this.inv = i;
 
 	}
 
@@ -72,220 +61,108 @@ public class Heros implements Personnage {
 	 * 
 	 * @param la labyrinthe du Heros
 	 */
-	public Heros(Labyrinthe la) {
+	public Heros(Labyrinthe la, Inventaire i) {
+		super(la);
+		this.inv = i;
 		this.nom = "Stib";
-		this.vie = 150;
-		this.pointsAttaque = 20;
-		this.portee = 1;
-		this.labi = la;
 		this.deplacement = true;
-	}
-
-	/**
-	 * M�thode getVie pour r�cup�rer la vie du Heros
-	 */
-	@Override
-	public int getVie() {
-		return this.vie;
-	}
-
-	/**
-	 * M�thode attaquer pour attaquer un autre personnage
-	 * 
-	 * @param cible, cible vis�e par l'attaque
-	 */
-	@Override
-	public boolean attaquer(Personnage victime) {
-		boolean res = false;
-		if ((this != null) && (victime != null) && (victime.getVie() > 0)
-				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)
-				&& (this.labi == victime.getLab())) {
-			victime.subirDegats(this.pointsAttaque);
-			res = true;
-
-		}
-		return res;
-	}
-
-	/**
-	 * @param victime Monstre cible de l'attaque
-	 * @return la distance entre l'attaquant et l'attaqu�.
-	 */
-
-	/**
-	 * M�thode pour faire perdre des points de vies au monstre
-	 * 
-	 * @param degats les points de vie � faire perdre
-	 */
-	@Override
-	public void subirDegats(int degats) {
-		if (this.vie - degats < 0) {
-			this.vie = 0;
-		} else {
-			this.vie -= degats;
-		}
-
-	}
-
-	/**
-	 * M�thode qui retourne les points de d�gats du monstre
-	 * 
-	 * @return pointsAttaque du h�ros
-	 */
-	@Override
-	public int getPointsAttaque() {
-		return this.pointsAttaque;
-	}
-
-	public Labyrinthe getLab() {
-		return this.labi;
-
-	}
-
-	@Override
-	public void setLabyrinthe(Labyrinthe lab) {
-		this.labi = lab;
-	}
-
-	/**
-	 * @return the portee
-	 */
-	public int getPortee() {
-		return portee;
-	}
-
-	@Override
-	public void setPosX(int x) {
-		this.posX = x;
-	}
-
-	@Override
-	public void setPosY(int y) {
-		this.posY = y;
-	}
-
-	/**
-	 * @param portee the portee to set
-	 */
-	public void setPortee(int portee) {
-		this.portee = portee;
-	}
-
-	@Override
-	public int getPosX() {
-		return this.posX;
-	}
-
-	@Override
-	public int getPosY() {
-		return this.posY;
-	}
-
-	@Override
-	public Amulette getAmulette() {
-
-		return this.amul;
-	}
-
-	public boolean prendreAmulette(Amulette a) {
-		boolean res = false;
-		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (!this.etreMort())
-				&& (this.labi == a.getLab())) {
-			this.amul = a;
-			res = true;
-		}
-		return res;
 	}
 
 	public boolean herosGagne() {
 		boolean res = false;
-		if ((this.amul != null) && (this.etreMort() != true)) {
+		if ((this.getAmulette() != null) && (this.etreMort() != true)) {
 			res = true;
 
 		}
 		return res;
 	}
 
-	@Override
 	public void deplacer(Commande commande) {
 		if (this.deplacement) {
-		int x = this.posX;
-		int y = this.posY;
+			int x = this.getPosX();
+			int y = this.getPosY();
 
-		if (commande.gauche) {
-			x--;
-			if (x < 0)
-				x = 0;
-		}
-
-		if (commande.droite) {
-			x++;
-			if (x >= LIMIT_X)
-				x = LIMIT_X;
-		}
-
-		if (commande.haut) {
-			y--;
-			if (y < 0) {
-				y = 0;
-			}
-		}
-
-		if (commande.bas) {
-			y++;
-			if (y >= LIMIT_Y) {
-				y = LIMIT_Y ;
+			if (commande.gauche) {
+				x--;
+				if (x < 0)
+					x = 0;
 			}
 
-		}
+			if (commande.droite) {
+				x++;
+				if (x >= LIMIT_X)
+					x = LIMIT_X;
+			}
 
-		if (labi.etreAccessible(x, y) && (this.etreMort() != true)) {
-			this.posX = x;
-			this.posY = y;
-			int i = labi.getIndex(x, y);
-			if (i != -1) {
-				if (labi.getTab().get(i).getType() == "DEC") {
-					labi.getTab().get(i).effet(this);
+			if (commande.haut) {
+				y--;
+				if (y < 0) {
+					y = 0;
+				}
+			}
+
+			if (commande.bas) {
+				y++;
+				if (y >= LIMIT_Y) {
+					y = LIMIT_Y;
+				}
+
+			}
+
+			if (this.getLab().etreAccessible(x, y) && (this.etreMort() != true)) {
+				this.setPosX(x);
+				this.setPosY(y);
+				int i = this.getLab().getIndex(x, y);
+				if (i != -1) {
+					if (this.getLab().getTab().get(i).getType() == "DEC") {
+						this.getLab().getTab().get(i).effet(this);
 					}
 				}
-			if(labi.getAmulette()!=null)
-			{
-				if(labi.getAmulette().getX()==this.posX && labi.getAmulette().getY()==this.posY && this.amul == null)
-				{
-					labi.getAmulette().porteurPrends(this);
-					this.prendreAmulette(labi.getAmulette());
+				if (this.getLab().getAmulette() != null) {
+					if (this.getLab().getAmulette().getX() == this.getPosX()
+							&& this.getLab().getAmulette().getY() == this.getPosY() && this.getAmulette() == null) {
+						this.getLab().getAmulette().porteurPrends(this);
+						this.prendreAmulette(this.getLab().getAmulette());
+					}
 				}
 			}
-			}
 		}
-		//mise en place de l'ia des monstres 
-		 /*int t = this.labi.getMonstre().size();
-		 for (int i = 0; i<t; i++) {
-			 Monstre m = this.labi.getMonstre().get(i);
-			 m.charger(this);
-		 }*/
+		// mise en place de l'ia des monstres
+		/*
+		 * int t = this.labi.getMonstre().size(); for (int i = 0; i<t; i++) { Monstre m
+		 * = this.labi.getMonstre().get(i); m.charger(this); }
+		 */
 	}
 
-	public boolean etreMort() {
-		boolean res = false;
-		if (this.vie == 0) {
-			res = true;
-
-		}
-		return res;
-	}
-
-	public int getDistance(Personnage victime) {
-
-		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
-		return distance;
-	}
-	
 	public void bloquerDeplacement() {
 		this.deplacement = false;
 	}
-	
+
 	public void autoriserDeplacement() {
 		this.deplacement = true;
+	}
+
+	@Override
+	public String getType() {
+		return "PJ";
+	}
+
+	@Override
+	public void evoluer(Commande commande) {
+		this.deplacer(commande);
+		if (this.getAmulette() != null) {
+			this.inv.setObj(1, this.getAmulette());
+		} else {
+			this.inv.removeObj(1);
+		}
+	}
+
+	public Inventaire getInv() {
+		return this.inv;
+	}
+
+	@Override
+	public boolean etreFini() {
+		return this.etreMort() || this.getAmulette() != null;
 	}
 }

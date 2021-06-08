@@ -2,6 +2,7 @@ package Labyrinthe;
 
 import Effet.*;
 import Personnages.Heros;
+import Personnages.Personnage;
 
 public class CaseDeclencheuse extends Case {
 	private boolean used = false;
@@ -23,7 +24,7 @@ public class CaseDeclencheuse extends Case {
 	}
 
 	@Override
-	public void effet(Heros heros) {
+	public void effet(Personnage heros) {
 		this.used = true;
 		int r = (int) (Math.random() * tab.length);
 		Effet e = tab[r];

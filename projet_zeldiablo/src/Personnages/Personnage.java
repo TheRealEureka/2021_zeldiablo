@@ -4,35 +4,162 @@ import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
 
-public interface Personnage {
+public abstract class Personnage {
 
-	public int getVie();
+	private int vie;
+	private int pointsAttaque;
+	private Labyrinthe labi;
+	private int portee;
+	private int posX = 0;
+	private int posY = 0;
+	private Amulette amul;
+	private boolean asCollider = true;
 
-	public boolean attaquer(Personnage victime);
+	public Personnage(int pv, int degats, Labyrinthe lab, int portee, int posX, int posY) {
+		this.vie = pv;
+		this.pointsAttaque = degats;
+		this.labi = lab;
+		this.portee = portee;
+		this.posX = posX;
+		this.posY = posY;
 
-	public void subirDegats(int v);
+	}
 
-	public boolean etreMort();
+	public Personnage(int pv, int degats, Labyrinthe lab, int portee) {
+		this.vie = pv;
+		this.pointsAttaque = degats;
+		this.labi = lab;
+		this.portee = portee;
 
-	public int getPointsAttaque();
+	}
 
-	public void setLabyrinthe(Labyrinthe lab);
+	public Personnage(Labyrinthe l) {
+		this.vie = 150;
+		this.pointsAttaque = 20;
+		this.portee = 1;
+		this.labi = l;
+	}
 
-	public Labyrinthe getLab();
+	public Personnage() {
+		this.vie = 150;
+		this.pointsAttaque = 20;
+		this.portee = 1;
+	}
 
-	public int getPosX();
+	public void subirDegats(int degats) {
+		if (this.vie - degats < 0) {
+			this.vie = 0;
+		} else {
+			this.vie -= degats;
+		}
+	}
 
-	public int getPosY();
+	public boolean attaquer(Personnage victime) {
+		boolean res = false;
+		if ((this != null) && (victime != null) && (victime.getVie() > 0)
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)
+				&& (this.labi == victime.getLab())) {
+			victime.subirDegats(this.pointsAttaque);
+			res = true;
 
-	public void setPosX(int x);
+		}
+		return res;
+	}
 
-	public void setPosY(int y);
+	public int getDistance(Personnage victime) {
 
-	public Amulette getAmulette();
+		int distance = Math.abs(this.posX - victime.getPosX()) + Math.abs(this.posY - victime.getPosY());
+		return distance;
+	}
 
-	public boolean prendreAmulette(Amulette a);
+	public boolean etreMort() {
+		boolean res = false;
+		if (this.vie == 0) {
+			res = true;
 
-	public int getDistance(Personnage victime);
+		}
+		return res;
+	}
 
-	public void deplacer(Commande commande);
+	public boolean prendreAmulette(Amulette a) {
+		boolean res = false;
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this != null)
+				&& (this.labi == a.getLab())) {
+			this.amul = a;
+			res = true;
+		}
+		return res;
+
+	}
+
+	public void poserAmulette() {
+		if ((this.amul != null) && (this != null)) {
+			amul.porteurPose();
+			this.amul = null;
+
+		}
+	}
+
+	public int getPointsAttaque() {
+		return this.pointsAttaque;
+	}
+
+	public Labyrinthe getLab() {
+		return this.labi;
+
+	}
+
+	public void setLabyrinthe(Labyrinthe lab) {
+		this.labi = lab;
+	}
+
+	public int getVie() {
+		return this.vie;
+	}
+
+	public int getPortee() {
+		return portee;
+	}
+
+	public void setPosX(int x) {
+		this.posX = x;
+	}
+
+	public void setPosY(int y) {
+		this.posY = y;
+	}
+
+	public void setPortee(int portee) {
+		this.portee = portee;
+	}
+
+	public int getPosX() {
+		return this.posX;
+	}
+
+	public int getPosY() {
+		return this.posY;
+	}
+
+	public Amulette getAmulette() {
+
+		return this.amul;
+	}
+
+	public boolean isCollider() {
+		return asCollider;
+	}
+
+	public void setCollider(boolean asCollider) {
+		this.asCollider = asCollider;
+	}
+
+	public abstract String getType();
+
+	public abstract void bloquerDeplacement();
+
+	public abstract void autoriserDeplacement();
+
+	public abstract boolean etreFini();
+
 }

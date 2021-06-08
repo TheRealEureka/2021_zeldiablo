@@ -1,8 +1,9 @@
 package Effet;
 
 import Personnages.Heros;
+import Personnages.Personnage;
 
 public interface Effet {
-	public void effet(Heros h);
+	public void effet(Personnage h);
 	
 }

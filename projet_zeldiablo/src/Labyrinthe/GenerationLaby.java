@@ -27,7 +27,8 @@ public class GenerationLaby {
 			}
 		}
 		
-		
+		l.setAmulette(new Amulette(15, 15, l, "String"));
+
 		l.addCase(new CaseDeclencheuse(0, 1));
 		Monstre m = new Monstre(l);
 		m.setPosX(10);

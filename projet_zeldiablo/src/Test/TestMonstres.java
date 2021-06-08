@@ -40,7 +40,7 @@ public class TestMonstres {
 	 */
 	public void test_subirDegats_OK() {
 
-		Heros h = new Heros("Stib", 5, 2, 4);
+		Heros h = new Heros("Stib", 5, 2, null, 4, null);
 		h.subirDegats(5);
 		boolean res = h.getVie() == 0;
 		assertEquals("h�ros subis d�gats", true, res);
@@ -50,7 +50,7 @@ public class TestMonstres {
 	 * Test l'action subir d�gats quand les degats subis sont � 0
 	 */
 	public void test_subirDegats_PasOK() {
-		Heros h = new Heros("Stib", 5, 2, 4);
+		Heros h = new Heros("Stib", 5, 2, null, 4, null);
 		h.subirDegats(-5);
 		boolean res = h.getVie() == 0;
 		assertEquals("h�ros ne subis pas de d�gats", false, res);
@@ -63,7 +63,7 @@ public class TestMonstres {
 	public void test_attaquer_PasOk() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Labyrinthe labyrinthe2 = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stinb", 5, 5, labyrinthe2, 2);
+		Heros h = new Heros("Stinb", 5, 5, labyrinthe2, 2, null);
 		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 		boolean res = m.attaquer(h);
 
@@ -90,7 +90,7 @@ public class TestMonstres {
 	@Test
 	public void test_Mort_Monstre_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
 		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 		m.subirDegats(6);
 		boolean res = m.etreMort();

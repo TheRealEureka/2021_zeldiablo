@@ -3,9 +3,11 @@ import java.util.Scanner;
 import Labyrinthe.Amulette;
 import Labyrinthe.GenerationLaby;
 import Labyrinthe.Labyrinthe;
+import Personnages.Heros;
 import Personnages.Inventaire;
+import Personnages.Personnage;
 import jeuPerso.DessinPerso;
-import jeuPerso.JeuPerso;
+import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
 
 /**
@@ -28,11 +30,10 @@ public class MainPerso {
 		// creation du jeu
 		Labyrinthe lab = new Labyrinthe(15, 15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		lab.setAmulette(new Amulette(15, 15, lab, "String"));
-		gL.generationAleatoire();
+		gL.labyTest();
 
 		Inventaire inv = new Inventaire();
-		JeuPerso jeu = new JeuPerso(lab, inv);
+		Jeu jeu = new Heros(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 
 		// classe qui lance le moteur de jeu generique

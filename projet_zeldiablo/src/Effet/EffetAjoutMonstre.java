@@ -4,12 +4,13 @@ import Labyrinthe.Labyrinthe;
 import Personnages.Fantome;
 import Personnages.Heros;
 import Personnages.Monstre;
+import Personnages.Personnage;
 import Personnages.Troll;
 
 public class EffetAjoutMonstre implements Effet{
 
 	@Override
-	public void effet(Heros h) {
+	public void effet(Personnage h) {
 		
 		Labyrinthe la = h.getLab();
 		int x = h.getPosX();
@@ -49,5 +50,7 @@ public class EffetAjoutMonstre implements Effet{
 		}
 		
 	}
+
+
 
 }

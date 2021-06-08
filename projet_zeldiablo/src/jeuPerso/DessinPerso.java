@@ -13,9 +13,11 @@ import javax.imageio.ImageIO;
 import Labyrinthe.Case;
 import Labyrinthe.Labyrinthe;
 import Labyrinthe.Objet;
+import Personnages.Heros;
 import Personnages.Monstre;
 import Personnages.Personnage;
 import moteurJeu.DessinJeu;
+import moteurJeu.Jeu;
 
 /**
  * un afficheur graphique associe au JeuTest fourni
@@ -32,32 +34,35 @@ public class DessinPerso implements DessinJeu {
 	/**
 	 * lien vers le jeu a afficher
 	 */
-	private JeuPerso jeu;
+	private Heros joueur;
 	private Labyrinthe laby;
 
 	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no;
-	private String source =  "src/images/";
+	private String source_lin =  "src/images/";
+
 	/**
 	 * appelle constructeur parent
 	 * 
 	 * @param j le jeutest a afficher
 	 */
-	public DessinPerso(JeuPerso j, Labyrinthe lab) {
-		this.jeu = j;
+	public DessinPerso(Jeu j, Labyrinthe lab) {
+		this.joueur = (Heros) j;
 		this.laby = lab;
 		try {
-			image = ImageIO.read(new File(source+"2.png"));
-			background =  ImageIO.read(new File(source+"background.png"));
-			stone =  ImageIO.read(new File(source+"stone.png"));
-			cd_off =  ImageIO.read(new File(source+"cd_off.png"));
-			cd_on =  ImageIO.read(new File(source+"cd_on.png"));
-			monstre =  ImageIO.read(new File(source+"monstre.png"));
-			troll =  ImageIO.read(new File(source+"troll.png"));
-			fantome =  ImageIO.read(new File(source+"fantome.png"));
-			amulette = ImageIO.read(new File(source+"totem.png"));
-			no = ImageIO.read(new File(source+"no.png"));
+			image = ImageIO.read(new File(source_lin+"2.png"));
+			background =  ImageIO.read(new File(source_lin+"background.png"));
+			stone =  ImageIO.read(new File(source_lin+"stone.png"));
+			cd_off =  ImageIO.read(new File(source_lin+"cd_off.png"));
+			cd_on =  ImageIO.read(new File(source_lin+"cd_on.png"));
+			monstre =  ImageIO.read(new File(source_lin+"monstre.png"));
+			troll =  ImageIO.read(new File(source_lin+"troll.png"));
+			fantome =  ImageIO.read(new File(source_lin+"fantome.png"));
+			amulette = ImageIO.read(new File(source_lin+"totem.png"));
+			no = ImageIO.read(new File(source_lin+"no.png"));
 
 		} catch (IOException e) {
+		
+			System.out.println("aya");
 		}
 	}
 
@@ -84,15 +89,15 @@ public class DessinPerso implements DessinJeu {
 			crayon.fillRect(0, 401, 400, 50);
 			crayon.setColor(Color.BLACK);
 			crayon.drawString("Inventaire",173,413);
-			crayon.drawString("PV : "+jeu.getPj().getVie(),0,413);
+			crayon.drawString("PV : "+joueur.getVie(),0,413);
 			BufferedImage img1 = no;
 			BufferedImage img2 = no;
-			Objet o1 = jeu.getInv().getObj(1);
+			Objet o1 = joueur.getInv().getObj(1);
 			if(o1!=null) {
 				img1 = o1.getBi(); 
 			}
 		
-			Objet o2 = jeu.getInv().getObj(2);
+			Objet o2 = joueur.getInv().getObj(2);
 			if(o2!=null) {
 				img2 = o2.getBi(); 
 			}
@@ -150,7 +155,7 @@ public class DessinPerso implements DessinJeu {
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
 	 */
 	public void dessiner(BufferedImage im) {
-		Personnage pj = jeu.getPj();
+		;
 		this.dessinerObjet("BACKGROUND",0, 0, im);
 		ArrayList<Case> tab = laby.getTab();
 		ArrayList<Monstre> mon = laby.getMonstre();
@@ -165,7 +170,7 @@ public class DessinPerso implements DessinJeu {
 		{
 		this.dessinerObjet("AMULETTE",laby.getAmulette().getX(),laby.getAmulette().getY(),im);
 		}
-		this.dessinerObjet("PJ", pj.getPosX(), pj.getPosY(), im);
+		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), im);
 		
 	}
 

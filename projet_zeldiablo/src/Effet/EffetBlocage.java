@@ -1,11 +1,12 @@
 package Effet;
 
 import Personnages.Heros;
+import Personnages.Personnage;
 
 public class EffetBlocage implements Effet {
 
 	@Override
-	public void effet(Heros h) {
+	public void effet(Personnage h) {
 		h.bloquerDeplacement();
 		int i = 10;
 		

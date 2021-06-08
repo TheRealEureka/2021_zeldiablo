@@ -2,6 +2,7 @@ package Labyrinthe;
 
 import Effet.Effet;
 import Personnages.Heros;
+import Personnages.Personnage;
 
 public class Case {
 	private int x,y;
@@ -48,7 +49,7 @@ public class Case {
 
 	
 
-	public void effet(Heros heros) {
+	public void effet(Personnage personnage) {
 		// TODO Auto-generated method stub
 		
 	}

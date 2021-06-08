@@ -2,11 +2,12 @@ package Effet;
 
 import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
+import Personnages.Personnage;
 
 public class EffetTeleportation implements Effet{
 
 	@Override
-	public void effet(Heros h) {
+	public void effet(Personnage h) {
 		
 		Labyrinthe la = h.getLab();
 		int x = (int) (Math.random() * la.getLargeur());
