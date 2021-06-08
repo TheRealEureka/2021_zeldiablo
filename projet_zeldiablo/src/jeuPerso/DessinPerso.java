@@ -31,6 +31,12 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private JeuPerso jeu;
 	private Labyrinthe laby;
+	private BufferedImage image = null;
+	private BufferedImage background = null;
+	private BufferedImage stone = null;
+	private BufferedImage cd_off = null;
+	private BufferedImage cd_on = null;
+	private String source =  "src/images/";
 	/**
 	 * appelle constructeur parent
 	 * 
@@ -39,6 +45,15 @@ public class DessinPerso implements DessinJeu {
 	public DessinPerso(JeuPerso j, Labyrinthe lab) {
 		this.jeu = j;
 		this.laby = lab;
+		try {
+			image = ImageIO.read(new File(source+"2.png"));
+			background =  ImageIO.read(new File(source+"background.png"));
+			stone =  ImageIO.read(new File(source+"stone.png"));
+			cd_off =  ImageIO.read(new File(source+"cd_off.png"));
+			cd_on =  ImageIO.read(new File(source+"cd_on.png"));
+
+		} catch (IOException e) {
+		}
 	}
 
 	/**
@@ -49,22 +64,7 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		BufferedImage image = null;
-		BufferedImage background = null;
-		BufferedImage stone = null;
-		BufferedImage cd_off = null;
-		BufferedImage cd_on = null;
-
-		try {
-			image = ImageIO.read(new File("src/images/2.png"));
-			background =  ImageIO.read(new File("src/images/background.png"));
-			stone =  ImageIO.read(new File("src/images/stone.png"));
-			cd_off =  ImageIO.read(new File("src/images/cd_off.png"));
-			cd_on =  ImageIO.read(new File("src/images/cd_on.png"));
-
-		} catch (IOException e) {
-		}
-
+	
 		switch (s) {
 		case "BACKGROUND" : 
 			for(int i = 0 ; i <= 15 ; i++)
