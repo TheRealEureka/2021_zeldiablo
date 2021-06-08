@@ -116,4 +116,18 @@ public class Labyrinthe {
 	{
 		return this.mon;
 	}
+
+
+	public int getIndexMonster(Monstre monstre) {
+		int res = -1;
+		for(int i = 0 ; i < this.mon.size() ; i++)
+		{
+			if(this.mon.get(i).equals(monstre))
+			{
+				res=i;
+				break;
+			}
+		}
+		return res;
+	}
 }
