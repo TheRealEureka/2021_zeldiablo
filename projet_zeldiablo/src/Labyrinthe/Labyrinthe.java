@@ -137,4 +137,12 @@ public class Labyrinthe {
 		}
 		return res;
 	}
+	
+	public void bloquerAcces(int x, int y) {
+		int i = getIndex(x,y);
+		if(i!=-1)
+		{
+			tab.get(i).setCollider(true);
+		}
+	}
 }
