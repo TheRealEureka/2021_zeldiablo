@@ -93,8 +93,9 @@ public class Heros implements Personnage {
 	@Override
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
-		if ((this != null) && (victime != null) &&  (victime.getVie() > 0)
-				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
+		if ((this != null) && (victime != null) && (victime.getVie() > 0)
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)
+				&& (this.labi == victime.getLab())) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
@@ -132,10 +133,9 @@ public class Heros implements Personnage {
 		return this.pointsAttaque;
 	}
 
-
 	public Labyrinthe getLab() {
 		return this.labi;
-		
+
 	}
 
 	@Override
@@ -149,6 +149,7 @@ public class Heros implements Personnage {
 	public int getPortee() {
 		return portee;
 	}
+
 	@Override
 	public void setPosX(int x) {
 		this.posX = x;
@@ -156,15 +157,15 @@ public class Heros implements Personnage {
 
 	@Override
 	public void setPosY(int y) {
-	this.posY = y;
+		this.posY = y;
 	}
+
 	/**
 	 * @param portee the portee to set
 	 */
 	public void setPortee(int portee) {
 		this.portee = portee;
 	}
-
 
 	@Override
 	public int getPosX() {
@@ -184,7 +185,8 @@ public class Heros implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.etreMort() != true)) {
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this.etreMort() != true)
+				&& (this.labi == a.getLab())) {
 			this.amul = a;
 			res = true;
 		}

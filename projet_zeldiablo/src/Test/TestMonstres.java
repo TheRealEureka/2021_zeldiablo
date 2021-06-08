@@ -26,7 +26,9 @@ public class TestMonstres {
 	 */
 	@Test
 	public void testConstructeurMonstreNonVide() {
-		Monstre m = new Monstre(3500, 150, 42);
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
+
 		int res = m.getVie();
 		assertEquals("Le points de vies devrait etre de 3500", 3500, res);
 		assertEquals("Les degats devrait etre de 150", 150, m.getPointsAttaque());
@@ -59,10 +61,11 @@ public class TestMonstres {
 	@Test
 	public void test_attaquer_PasOk() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros();
-		Monstre m = new Monstre();
+		Labyrinthe labyrinthe2 = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stinb", 5, 5, labyrinthe2, 2);
+		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 		boolean res = m.attaquer(h);
-		System.out.println(m.etreDansLabyrinthe(h.getLab()));
+
 		assertEquals("Monstre ne peux pas attaque le deuxi�me", false, res);
 	}
 
@@ -87,7 +90,7 @@ public class TestMonstres {
 	public void test_Mort_Monstre_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(10, 5, labyrinthe, 2);
+		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 		m.subirDegats(6);
 		boolean res = m.etreMort();
 		assertEquals("Heros meurt", true, res);
@@ -99,11 +102,10 @@ public class TestMonstres {
 	@Test
 	public void test_Mort_Monstre_Pasok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
-		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(10, 4, labyrinthe, 2);
+		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 		m.subirDegats(4);
 		boolean res = m.etreMort();
-		assertEquals("Heros meurt pas", true, res);
+		assertEquals("Heros meurt pas", false, res);
 	}
 
 }

@@ -6,7 +6,6 @@ import moteurJeu.Commande;
 
 public interface Personnage {
 
-
 	public int getVie();
 
 	public boolean attaquer(Personnage victime);
@@ -19,10 +18,12 @@ public interface Personnage {
 
 	public void setLabyrinthe(Labyrinthe lab);
 
+	public Labyrinthe getLab();
+
 	public int getPosX();
 
 	public int getPosY();
-	
+
 	public void setPosX(int x);
 
 	public void setPosY(int y);

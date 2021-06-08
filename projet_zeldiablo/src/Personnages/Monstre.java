@@ -136,7 +136,8 @@ public class Monstre implements Personnage {
 	public boolean attaquer(Personnage victime) {
 		boolean res = false;
 		if ((this != null) && (victime != null) && (victime.getVie() > 0) && (this.vie > 0)
-				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)) {
+				&& (this.getPortee() >= this.getDistance(victime)) && (this.etreMort() != true)
+				&& (this.labi == victime.getLab())) {
 			victime.subirDegats(this.pointsAttaque);
 			res = true;
 
@@ -184,7 +185,8 @@ public class Monstre implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this != null)) {
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this != null)
+				&& (this.labi == a.getLab())) {
 			this.amul = a;
 			res = true;
 		}

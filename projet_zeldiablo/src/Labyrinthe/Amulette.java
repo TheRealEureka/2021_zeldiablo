@@ -9,12 +9,27 @@ public class Amulette extends Objet {
 	private int x;
 	private int y;
 	private Personnage porteur;
-	private String nom; 
+	private String nom;
 	private BufferedImage bi;
+	private Labyrinthe labyrinthe;
+
+	/**
+	 * @return the labyrinthe
+	 */
+	public Labyrinthe getLab() {
+		return labyrinthe;
+	}
+
+	/**
+	 * @param labyrinthe the labyrinthe to set
+	 */
+	public void setLabyrinthe(Labyrinthe labyrinthe) {
+		this.labyrinthe = labyrinthe;
+	}
 
 	public Amulette(int xc, int yc, Labyrinthe labi, BufferedImage b, String n) {
 
-		super (n,b);
+		super(n, b);
 		if (this.x > labi.getHauteur()) {
 			this.x = 10;
 		} else {
@@ -47,7 +62,7 @@ public class Amulette extends Objet {
 			this.porteur = null;
 		}
 	}
-	
+
 	public String toString() {
 		return "Amulette";
 	}
