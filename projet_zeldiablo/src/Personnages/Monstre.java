@@ -130,7 +130,7 @@ public class Monstre implements Personnage {
 	public boolean etreMort() {
 
 		boolean res = false;
-		if (this.vie == 0) {
+		if ((this.vie == 0) && (this != null)) {
 			this.poserAmulette();
 			res = true;
 
@@ -230,7 +230,7 @@ public class Monstre implements Personnage {
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
-		if (a.getX() == this.getPosX() && a.getY() == this.getPosY() && a != null) {
+		if ((a.getX() == this.getPosX()) && (a.getY() == this.getPosY()) && (a != null) && (this != null)) {
 			this.amul = a;
 			res = true;
 		}
@@ -239,7 +239,7 @@ public class Monstre implements Personnage {
 	}
 
 	public void poserAmulette() {
-		if (this.amul != null) {
+		if ((this.amul != null) && (this != null)) {
 			amul.porteurPose();
 			this.amul = null;
 
