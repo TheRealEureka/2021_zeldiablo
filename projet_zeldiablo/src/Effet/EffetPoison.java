@@ -6,10 +6,12 @@ public class EffetPoison implements Effet{
 
 	@Override
 	public void effet(Heros h) {
-		int i = 4;
-		while (i > 0) {
-			h.subirDegats((int) (h.getVie() * 0.02));
-			i--;
+		int i = 0;
+		int dgt = (int) (h.getVie() * 0.02);
+		while (i < 4) {
+			
+			h.subirDegats(dgt);
+			i++;
 		}
 		
 	}
