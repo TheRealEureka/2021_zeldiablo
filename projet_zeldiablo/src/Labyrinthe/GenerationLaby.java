@@ -56,6 +56,40 @@ public class GenerationLaby {
 				}
 			}
 		}
+		
+		for (int i = 0; i < 4; i++) {
+			int r = (int) (Math.random() * 3);
+			int x = (int) (Math.random() * l.getLargeur());
+			int y = (int) (Math.random() * l.getHauteur());
+			while (!l.etreAccessible(x, y)) {
+				x = (int) (Math.random() * l.getLargeur());
+				y = (int) (Math.random() * l.getLargeur());
+			}
+			switch(r) {
+			case 0:
+				Monstre m = new Fantome(l);
+				m.setPosX(x);
+				m.setPosY(y);
+				l.addMonstre(m);
+			
+				break;
+			case 1:
+				Monstre t = new Troll(l);
+				t.setPosX(x);
+				t.setPosY(y);
+				l.addMonstre(t);
+		
+				break;
+			case 2:
+				Monstre mn = new Monstre(l);
+				mn.setPosX(x);
+				mn.setPosY(y);
+				l.addMonstre(mn);
+			
+				break;
+			}
+		}
 
 	}
+	
 }
