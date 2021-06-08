@@ -2,7 +2,7 @@ package Labyrinthe;
 
 import Personnages.Personnage;
 
-public class Amulette {
+public class Amulette implements Objet {
 
 	private int x;
 	private int y;
@@ -30,14 +30,14 @@ public class Amulette {
 		return this.y;
 	}
 
-	public void porteurPrendsAmulette(Personnage p) {
+	public void porteurPrends(Personnage p) {
 		if (p.getPosX() == this.x && p.getPosY() == this.y) {
 			this.porteur = p;
 			p.prendreAmulette(this);
 		}
 	}
 
-	public void porteurPoseAmulette() {
+	public void porteurPose() {
 		if (this.porteur != null) {
 			this.porteur = null;
 		}

@@ -228,7 +228,7 @@ public class Monstre implements Personnage {
 
 	public void poserAmulette() {
 		if (this.amul != null) {
-			amul.porteurPoseAmulette();
+			amul.porteurPose();
 			this.amul = null;
 
 		}
