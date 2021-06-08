@@ -114,12 +114,10 @@ public class Heros implements Personnage {
 	 */
 	@Override
 	public void subirDegats(int degats) {
-		if (degats < 0) {
-			degats = 0;
-		} else if (this.vie - degats < 0) {
+		if (this.vie - degats < 0) {
 			this.vie = 0;
-		} else if ((this.vie > 0)) {
-			this.vie = this.vie - degats;
+		} else {
+			this.vie -= degats;
 		}
 
 	}
