@@ -35,7 +35,7 @@ public class DessinPerso implements DessinJeu {
 	private JeuPerso jeu;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette;
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no;
 	private String source =  "src/images/";
 	/**
 	 * appelle constructeur parent
@@ -55,6 +55,7 @@ public class DessinPerso implements DessinJeu {
 			troll =  ImageIO.read(new File(source+"troll.png"));
 			fantome =  ImageIO.read(new File(source+"fantome.png"));
 			amulette = ImageIO.read(new File(source+"totem.png"));
+			no = ImageIO.read(new File(source+"no.png"));
 
 		} catch (IOException e) {
 		}
@@ -82,19 +83,24 @@ public class DessinPerso implements DessinJeu {
 			crayon.setColor(new Color(61,223,120));
 			crayon.fillRect(0, 401, 400, 50);
 			crayon.setColor(Color.BLACK);
-			crayon.drawString("Inventaire",180,410);
-			crayon.drawString("PV : "+jeu.getPj().getVie(),0,410);
-			BufferedImage img1;
-			BufferedImage img2;
+			crayon.drawString("Inventaire",173,413);
+			crayon.drawString("PV : "+jeu.getPj().getVie(),0,413);
+			BufferedImage img1 = no;
+			BufferedImage img2 = no;
 			Objet o1 = jeu.getInv().getObj(1);
 			if(o1!=null) {
 				img1 = o1.getBi(); 
 			}
+		
 			Objet o2 = jeu.getInv().getObj(2);
 			if(o2!=null) {
 				img2 = o2.getBi(); 
 			}
-			
+		
+			crayon.drawRect(173, 415, 25, 25);
+			crayon.drawImage(img1, 173, 415, null);
+			crayon.drawRect(202, 415, 25, 25);
+			crayon.drawImage(img2, 202, 415, null);
 
 			
 			break;
