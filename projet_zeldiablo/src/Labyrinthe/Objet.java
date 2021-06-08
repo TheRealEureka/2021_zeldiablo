@@ -6,4 +6,5 @@ public interface Objet {
 
 	public void porteurPrends(Personnage p);
 	public void porteurPose();
+	public String toString();
 }

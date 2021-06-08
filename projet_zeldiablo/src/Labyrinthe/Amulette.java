@@ -42,5 +42,9 @@ public class Amulette implements Objet {
 			this.porteur = null;
 		}
 	}
+	
+	public String toString() {
+		return "Amulette";
+	}
 
 }
