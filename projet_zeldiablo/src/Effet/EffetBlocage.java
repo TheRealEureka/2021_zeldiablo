@@ -19,7 +19,7 @@ public class EffetBlocage implements Effet {
 			}
 		}
 		h.autoriserDeplacement();
-	
+		
 	}
 
 }
