@@ -45,6 +45,7 @@ public class EffetAjoutMonstre implements Effet{
 			la.addMonstre(m);
 			break;
 			
+			
 		}
 		
 	}
