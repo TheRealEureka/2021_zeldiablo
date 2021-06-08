@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import Labyrinthe.Amulette;
-import Labyrinthe.Case;
 import Labyrinthe.GenerationLaby;
 import Labyrinthe.Labyrinthe;
 import Personnages.Inventaire;
@@ -26,12 +25,13 @@ public class MainPerso {
 	 * @throws InterruptedException en cas de soucis de methode thread.sleep()
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		// creation du jeu 
-		Labyrinthe lab = new Labyrinthe(15,15);
+		// creation du jeu
+		Labyrinthe lab = new Labyrinthe(15, 15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		lab.setAmulette(new Amulette(15,15, lab,"String"));
-		gL.generationAleatoire();
-		Inventaire inv = new Inventaire ();
+		lab.setAmulette(new Amulette(15, 15, lab, "String"));
+		gL.labyTest();
+
+		Inventaire inv = new Inventaire();
 		JeuPerso jeu = new JeuPerso(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 

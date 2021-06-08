@@ -247,7 +247,7 @@ public class Monstre implements Personnage {
 
 	}
 
-	public void Venere(Heros h) {
+	public void charger(Heros h) {
 		if (this.getDistance(h) == 2) {
 			if (labi.etreAccessible(h.getPosX() - 1, h.getPosY() - 1)) {
 				this.posX = h.getPosX() - 1;
