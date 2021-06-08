@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import Labyrinthe.Amulette;
 import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
 import Personnages.Monstre;
@@ -36,6 +37,7 @@ public class TestHeros {
 	/**
 	 * Test l'action attaquer quand la portee n'est pas sufisante
 	 */
+	@Test
 	public void test_attaquer_Portee() {
 
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
@@ -60,6 +62,12 @@ public class TestHeros {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
 		Monstre m = new Monstre();
+		h.setLabyrinthe(labyrinthe);
+		m.setLabyrinthe(labyrinthe);
+		h.setPosX(0);
+		h.setPosY(0);
+		m.setPosX(1);
+		m.setPosY(0);
 		boolean res = h.attaquer(m);
 		assertEquals("Monstre attaque le deuxiï¿½me", true, res);
 	}
@@ -71,7 +79,7 @@ public class TestHeros {
 	public void test_Mort_Heros_ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
-		Monstre m = new Monstre(3, 4, labyrinthe, 5, 0, 0);
+		Monstre m = new Monstre(3, 6, labyrinthe, 5, 0, 0);
 		h.setPosX(1);
 		h.setPosY(0);
 		m.attaquer(h);
@@ -92,6 +100,36 @@ public class TestHeros {
 		m.attaquer(h);
 		boolean res = h.etreMort();
 		assertEquals("Heros meurt pas", false, res);
+	}
+
+	/**
+	 * Test herogagne quand tout est opérationnel
+	 */
+	@Test
+	public void test_HeroGagne_Ok() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+		Amulette a = new Amulette(0, 1, labyrinthe, "Amulette");
+		h.setPosX(0);
+		h.setPosY(1);
+		h.prendreAmulette(a);
+		boolean res = h.herosGagne();
+		assertEquals("Amueltte récupéré", true, res);
+
+	}
+
+	/**
+	 * Test herosGagne quand il n'a pas d'amulette
+	 */
+	@Test
+	public void test_HeroGagne_PasOk() {
+		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
+		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2);
+
+		boolean res = h.herosGagne();
+
+		assertEquals("Le héros n'a pas l'amulette", false, res);
+
 	}
 
 }
