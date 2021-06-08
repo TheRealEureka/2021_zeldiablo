@@ -10,7 +10,6 @@ public class Inventaire {
 		this.tab = new Objet [2];
 	}
 	
-<<<<<<< HEAD
 	public void Ouvrir() {
 		
 	}
@@ -37,7 +36,6 @@ public class Inventaire {
 		return bf.toString();
 	}
 
-=======
 	public Objet getObj(int idx)
 	{
 		Objet o = null;
@@ -52,7 +50,6 @@ public class Inventaire {
 		return tab.length;
 	}
 	
->>>>>>> branch 'master' of https://gitlab.univ-lorraine.fr/daprile3u/2021_coo_zeldiablo_bullycimbaluria_daprile_perrin_stibling.git
 	
 
 }

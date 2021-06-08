@@ -12,9 +12,9 @@ public class Amulette extends Objet {
 	private String nom; 
 	private BufferedImage bi;
 
-	public Amulette(int xc, int yc, Labyrinthe labi, BufferedImage b, String n) {
+	public Amulette(int xc, int yc, Labyrinthe labi, String n) {
 
-		super (n,b);
+		super (n);
 		if (this.x > labi.getHauteur()) {
 			this.x = 10;
 		} else {
@@ -47,7 +47,11 @@ public class Amulette extends Objet {
 			this.porteur = null;
 		}
 	}
-	
+	public BufferedImage getBi()
+	{
+		return this.bi;
+		
+	}
 	public String toString() {
 		return "Amulette";
 	}

@@ -11,20 +11,17 @@ public abstract class Objet {
 	private int x;
 	private int y;
 	
-	public Objet (String n, BufferedImage b) {
+	public Objet (String n) {
 		this.nom=n;
-		this.bi=b;
 	}
 	
 	public abstract void porteurPrends(Personnage p);
 	public abstract void porteurPose();
 	public abstract String toString();
-	
+	public abstract BufferedImage getBi();
+
 	public String getNom() {
 		return this.nom;
 	}
 	
-	public BufferedImage getBi() {
-		return this.bi;
-	}
 }
