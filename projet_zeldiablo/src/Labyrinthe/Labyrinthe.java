@@ -2,15 +2,20 @@ package Labyrinthe;
 
 import java.util.ArrayList;
 
+import Personnages.Monstre;
+
 public class Labyrinthe {
 	
 	private int largeur;
 	private int hauteur; 
 	public Amulette amulette;
 	private ArrayList<Case> tab;
-	
+	private ArrayList<Monstre> mon;
+
 	public Labyrinthe(int l, int h) {
 		tab = new ArrayList<Case>();
+		mon = new ArrayList<Monstre>();
+
 		if (this.hauteur>15 || this.hauteur<10) {
 			this.hauteur = 10;
 		}else {
@@ -53,7 +58,24 @@ public class Labyrinthe {
 		}
 		return idx;
 	}
+	public void addMonstre(Monstre m)
+	{
+		if(m!=null)
+		{
+			this.mon.add(m);
+		}
+	}
 	
+	public void removeMonstre(int idx)
+	{
+		try
+		{
+			this.mon.remove(idx);
+		}
+		catch(Exception e)
+		{	
+		}
+	}
 	public boolean addCase(Case c)
 	{
 		boolean place = false;
@@ -89,5 +111,9 @@ public class Labyrinthe {
 	public ArrayList<Case> getTab()
 	{
 		return this.tab;
+	}
+	public ArrayList<Monstre> getMonstre()
+	{
+		return this.mon;
 	}
 }

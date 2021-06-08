@@ -27,7 +27,7 @@ public class MainPerso {
 		// creation du jeu 
 		Labyrinthe lab = new Labyrinthe(15,15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		gL.generationAleatoire();
+		gL.labyTest();
 		JeuPerso jeu = new JeuPerso(lab);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 
