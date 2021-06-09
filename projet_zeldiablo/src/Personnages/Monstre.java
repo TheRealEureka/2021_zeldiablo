@@ -15,6 +15,8 @@ public class Monstre extends Personnage {
 
 	private final static int LIMIT_X = 15;
 	private final static int LIMIT_Y = 15;
+	private  int deltaT = 0;
+	private int tpsAttaque = 150;
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
 	 * 
@@ -90,36 +92,41 @@ public class Monstre extends Personnage {
 	}
 
 	public void charger(Heros h) {
-		if (this.getDistance(h) == 2) {
+		if (this.getDistance(h) <= this.getPortee() ) {
+			
+			if(deltaT >= tpsAttaque)
+			{
+				this.attaquer(h);
+
 			if (this.getLab().etreAccessible(h.getPosX() - 1, h.getPosY() - 1)) {
-				this.setPosX(h.getPosX() - 1);
-				this.setPosY(h.getPosY() - 1);
-				while (h.etreMort() == false) {
-					this.attaquer(h);
-				}
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() + 1)) {
-				this.setPosX(h.getPosX() + 1);
-				this.setPosY(h.getPosY() + 1);
-				while (h.etreMort() == false) {
-					this.attaquer(h);
-				}
-
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
-				this.setPosX(h.getPosX() + 1);
-				this.setPosY(h.getPosY() - 1);
-				while (h.etreMort() == false) {
-					this.attaquer(h);
-				}
-
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
 				this.setPosX(h.getPosX());
-				this.setPosY(h.getPosY());
-				while (h.etreMort() == false) {
-					this.attaquer(h);
-				}
-			}
+				this.setPosY(h.getPosY() - 1);
+				
+			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() + 1)) {
+				this.setPosX(h.getPosX());
+				this.setPosY(h.getPosY() + 1);
+				
 
+			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
+				this.setPosX(h.getPosX() + 1);
+				this.setPosY(h.getPosY());
+				
+
+			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
+				this.setPosX(h.getPosX()-1);
+				this.setPosY(h.getPosY());
+				
+			}
+			deltaT=0;
+			
+			}
+			else
+			{
+				deltaT+=50;
+
+			}
 		}
+	
 	}
 
 
@@ -133,7 +140,6 @@ public class Monstre extends Personnage {
 
 	public void autoriserDeplacement() {}
 
-	@Override
 	public boolean etreFini() {return false;}
 
 

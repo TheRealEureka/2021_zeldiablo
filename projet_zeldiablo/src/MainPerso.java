@@ -35,7 +35,7 @@ public class MainPerso {
 		Inventaire inv = new Inventaire();
 		Jeu jeu = new Heros(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
-
+		lab.setPers(jeu);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
 		// lance la boucle de jeu qui tourne jusque la fin du jeu

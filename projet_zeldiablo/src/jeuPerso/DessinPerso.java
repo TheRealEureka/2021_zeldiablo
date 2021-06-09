@@ -166,6 +166,7 @@ public class DessinPerso implements DessinJeu {
 			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(), im);
 		}
 		this.dessinerObjet("INV_UI", 0, 0, im);
+		laby.tourJeu();
 		if(laby.getAmulette()!=null)
 		{
 		this.dessinerObjet("AMULETTE",laby.getAmulette().getX(),laby.getAmulette().getY(),im);

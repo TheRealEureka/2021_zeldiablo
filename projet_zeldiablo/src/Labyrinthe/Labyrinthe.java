@@ -2,13 +2,16 @@ package Labyrinthe;
 
 import java.util.ArrayList;
 
+import Personnages.Heros;
 import Personnages.Monstre;
+import moteurJeu.Jeu;
 
 public class Labyrinthe {
 	
-	public  int largeur;
-	public  int hauteur; 
-	public Amulette amulette;
+	private  int largeur;
+	private  int hauteur; 
+	private Amulette amulette;
+	private Heros pers; 
 	private ArrayList<Case> tab;
 	private ArrayList<Monstre> mon;
 
@@ -32,6 +35,16 @@ public class Labyrinthe {
 	}
 	
 	
+	public Heros getPers() {
+		return pers;
+	}
+
+
+	public void setPers(Jeu pers) {
+		this.pers = (Heros) pers;
+	}
+
+
 	public boolean etreAccessible(int x, int y) {
 		boolean resultat=true;
 		int i = getIndex(x,y);
@@ -138,6 +151,12 @@ public class Labyrinthe {
 		return res;
 	}
 	
+	public void tourJeu()
+	{
+		for (int i = 0; i < this.mon.size(); i++) {
+			mon.get(i).charger(pers);
+		}
+	}
 	
 	
 }
