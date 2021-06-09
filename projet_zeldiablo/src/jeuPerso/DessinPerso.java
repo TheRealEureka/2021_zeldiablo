@@ -37,8 +37,8 @@ public class DessinPerso implements DessinJeu {
 	private Heros joueur;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no;
-	private String source_lin =  "src/images/";
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood;
+	private String source_lin = "src/images/";
 
 	/**
 	 * appelle constructeur parent
@@ -49,19 +49,20 @@ public class DessinPerso implements DessinJeu {
 		this.joueur = (Heros) j;
 		this.laby = lab;
 		try {
-			image = ImageIO.read(new File(source_lin+"2.png"));
-			background =  ImageIO.read(new File(source_lin+"background.png"));
-			stone =  ImageIO.read(new File(source_lin+"stone.png"));
-			cd_off =  ImageIO.read(new File(source_lin+"cd_off.png"));
-			cd_on =  ImageIO.read(new File(source_lin+"cd_on.png"));
-			monstre =  ImageIO.read(new File(source_lin+"monstre.png"));
-			troll =  ImageIO.read(new File(source_lin+"troll.png"));
-			fantome =  ImageIO.read(new File(source_lin+"fantome.png"));
-			amulette = ImageIO.read(new File(source_lin+"totem.png"));
-			no = ImageIO.read(new File(source_lin+"no.png"));
+			image = ImageIO.read(new File(source_lin + "2.png"));
+			background = ImageIO.read(new File(source_lin + "background.png"));
+			stone = ImageIO.read(new File(source_lin + "stone.png"));
+			cd_off = ImageIO.read(new File(source_lin + "cd_off.png"));
+			cd_on = ImageIO.read(new File(source_lin + "cd_on.png"));
+			monstre = ImageIO.read(new File(source_lin + "monstre.png"));
+			troll = ImageIO.read(new File(source_lin + "troll.png"));
+			fantome = ImageIO.read(new File(source_lin + "fantome.png"));
+			amulette = ImageIO.read(new File(source_lin + "totem.png"));
+			no = ImageIO.read(new File(source_lin + "no.png"));
+			wood = ImageIO.read(new File(source_lin + "wood.png"));
 
 		} catch (IOException e) {
-		
+
 			System.out.println("aya");
 		}
 	}
@@ -75,41 +76,47 @@ public class DessinPerso implements DessinJeu {
 	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		switch (s) {
-		case "BACKGROUND" : 
-			for(int i = 0 ; i <= 15 ; i++)
-			{
-				for(int t = 0 ; t<= 16 ;t++)
-				{
+		case "BACKGROUND":
+			for (int i = 0; i <= 15; i++) {
+				for (int t = 0; t <= 16; t++) {
 					crayon.drawImage(background, i * TAILLE_CASE, t * TAILLE_CASE, null);
 				}
 			}
 			break;
-		case "INV_UI" :
-			crayon.setColor(new Color(61,223,120));
-			crayon.fillRect(0, 401, 400, 50);
+		case "INV_UI":
+			Font myFont = new Font("Serif", Font.BOLD, 16);
+			crayon.setFont(myFont);
+
+			// crayon.setColor(new Color(61,223,120));
+			// crayon.fillRect(0, 401, 400, 50);
+			for (int i = 0; i <= 15; i++) {
+				for (int t = 16; t <= 19; t++) {
+					crayon.drawImage(wood, i * TAILLE_CASE, t * TAILLE_CASE, null);
+
+				}
+			}
 			crayon.setColor(Color.BLACK);
-			crayon.drawString("Inventaire",173,413);
-			if(!joueur.etreMort()) {
-			crayon.drawString("PV : "+joueur.getVie(),0,413);
+			crayon.drawString("Inventaire", 160, 413);
+			if (!joueur.etreMort()) {
+				crayon.drawString("PV : " + joueur.getVie(), 3, 416);
 			}
 			BufferedImage img1 = no;
 			BufferedImage img2 = no;
 			Objet o1 = joueur.getInv().getObj(1);
-			if(o1!=null) {
-				img1 = o1.getBi(); 
+			if (o1 != null) {
+				img1 = o1.getBi();
 			}
-		
-			Objet o2 = joueur.getInv().getObj(2);
-			if(o2!=null) {
-				img2 = o2.getBi(); 
-			}
-		
-			crayon.drawRect(173, 415, 25, 25);
-			crayon.drawImage(img1, 173, 415, null);
-			crayon.drawRect(202, 415, 25, 25);
-			crayon.drawImage(img2, 202, 415, null);
 
-			
+			Objet o2 = joueur.getInv().getObj(2);
+			if (o2 != null) {
+				img2 = o2.getBi();
+			}
+
+			crayon.drawRect(173, 417, 25, 25);
+			crayon.drawImage(img1, 173, 417, null);
+			crayon.drawRect(202, 417, 25, 25);
+			crayon.drawImage(img2, 202, 417, null);
+
 			break;
 		case "PJ":
 			// crayon.setColor(Color.blue);
@@ -117,39 +124,38 @@ public class DessinPerso implements DessinJeu {
 			crayon.drawImage(image, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "MUR":
-			//crayon.setColor(Color.gray);
-			//crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			// crayon.setColor(Color.gray);
+			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(stone, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			crayon.setColor(Color.black);
 			crayon.drawRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			break;
 		case "DEC":
-			//crayon.setColor(Color.green);
-			//crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			// crayon.setColor(Color.green);
+			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(cd_on, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "DEC_USED":
-			//crayon.setColor(Color.red);
-			//crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			// crayon.setColor(Color.red);
+			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(cd_off, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
-		case "MONSTER" :
+		case "MONSTER":
 			crayon.drawImage(monstre, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
-		case "TROLL" :
+		case "TROLL":
 			crayon.drawImage(troll, x * TAILLE_CASE, y * TAILLE_CASE, null);
 
 			break;
-		case "GHOST" :
+		case "GHOST":
 			crayon.drawImage(fantome, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
-		case "AMULETTE" : 
+		case "AMULETTE":
 			crayon.drawImage(amulette, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		default:
 			throw new AssertionError("objet inexistant");
 		}
-		
 
 	}
 
@@ -157,7 +163,7 @@ public class DessinPerso implements DessinJeu {
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
 	 */
 	public void dessiner(BufferedImage im) {
-		this.dessinerObjet("BACKGROUND",0, 0, im);
+		this.dessinerObjet("BACKGROUND", 0, 0, im);
 		ArrayList<Case> tab = laby.getTab();
 		ArrayList<Monstre> mon = laby.getMonstre();
 		for (int i = 0; i < tab.size(); i++) {
@@ -168,12 +174,11 @@ public class DessinPerso implements DessinJeu {
 		}
 		this.dessinerObjet("INV_UI", 0, 0, im);
 		laby.tourJeu();
-		if(laby.getAmulette()!=null)
-		{
-		this.dessinerObjet("AMULETTE",laby.getAmulette().getX(),laby.getAmulette().getY(),im);
+		if (laby.getAmulette() != null) {
+			this.dessinerObjet("AMULETTE", laby.getAmulette().getX(), laby.getAmulette().getY(), im);
 		}
 		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), im);
-		
+
 	}
 
 }
