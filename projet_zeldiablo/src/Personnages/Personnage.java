@@ -79,7 +79,6 @@ public abstract class Personnage {
 	public boolean etreMort() {
 		boolean res = false;
 		if (this.vie == 0) {
-			
 			res = true;
 
 		}
