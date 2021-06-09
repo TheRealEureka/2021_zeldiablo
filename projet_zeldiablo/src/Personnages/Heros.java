@@ -165,4 +165,6 @@ public class Heros extends Personnage implements Jeu {
 	public boolean etreFini() {
 		return this.etreMort() || this.getAmulette() != null;
 	}
+	
+	
 }

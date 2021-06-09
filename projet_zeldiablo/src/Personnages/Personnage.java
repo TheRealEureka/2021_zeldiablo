@@ -14,7 +14,11 @@ public abstract class Personnage {
 	private int posY = 0;
 	private Amulette amul;
 	private boolean asCollider = true;
-
+	
+	private int deltaT = 0;
+	private int tpsTimer = 100;
+	private int tpsMax = 0;
+	private boolean subir = false;
 	public Personnage(int pv, int degats, Labyrinthe lab, int portee, int posX, int posY) {
 		this.vie = pv;
 		this.pointsAttaque = degats;
@@ -161,5 +165,28 @@ public abstract class Personnage {
 	public abstract void autoriserDeplacement();
 
 	public abstract boolean etreFini();
+
+	public void setSubirPoison(boolean h)
+	{
+		this.subir=h;
+	}
+	public void subirPoison() {
+		int dgt = (int) (this.getVie() * 0.02);
+		if(deltaT >= tpsTimer && tpsMax <= 4 && subir)
+		{
+			//subir
+			deltaT =0;
+		}
+		else
+		{
+			deltaT+=50;
+			tpsMax+=50;
+		}
+		if(tpsMax >= 4 )
+		{
+			subir=false;
+		}
+		
+	}
 
 }

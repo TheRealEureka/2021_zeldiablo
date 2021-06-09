@@ -155,6 +155,7 @@ public class Labyrinthe {
 	{
 		for (int i = 0; i < this.mon.size(); i++) {
 			mon.get(i).charger(pers);
+			pers.subirPoison();
 		}
 	}
 	
