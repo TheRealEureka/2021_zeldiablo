@@ -1,4 +1,9 @@
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Labyrinthe.Amulette;
 import Labyrinthe.GenerationLaby;
@@ -7,6 +12,7 @@ import Personnages.Heros;
 import Personnages.Inventaire;
 import Personnages.Personnage;
 import jeuPerso.DessinPerso;
+import jeuPerso.Fin;
 import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
 
@@ -42,7 +48,6 @@ public class MainPerso {
 		moteur.lancerJeu(400, 450);
 
 		// lorsque le jeu est fini
-		
 		System.out.println("Fin du Jeu - appuyer sur entree");
 		Scanner sc = new Scanner(System.in);
 		sc.nextLine();

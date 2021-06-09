@@ -173,7 +173,7 @@ public class GenerationLaby {
 		
 		
 		
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 15; i++) {
 			int x = (int) (Math.random() * l.getLargeur());
 			int y = (int) (Math.random() * l.getHauteur());
 			while (!l.etreAccessible(x, y)) {

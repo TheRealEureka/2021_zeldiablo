@@ -157,7 +157,6 @@ public class DessinPerso implements DessinJeu {
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
 	 */
 	public void dessiner(BufferedImage im) {
-		;
 		this.dessinerObjet("BACKGROUND",0, 0, im);
 		ArrayList<Case> tab = laby.getTab();
 		ArrayList<Monstre> mon = laby.getMonstre();

@@ -15,8 +15,12 @@ public class Monstre extends Personnage {
 
 	private final static int LIMIT_X = 15;
 	private final static int LIMIT_Y = 15;
-	private  int deltaT = 0;
+	private int deltaT = 0;
+	private int deltaT2 = 0;
+
 	private int tpsAttaque = 150;
+	private int tpsDep = 500;
+
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
 	 * 
@@ -27,14 +31,11 @@ public class Monstre extends Personnage {
 	 */
 	public Monstre(int pv, int degats, Labyrinthe lab, int portee, int posX, int posY) {
 		super(pv, degats, lab, portee, posX, posY);
-		
 
-	
 	}
 
 	public Monstre(int pv, int degats, Labyrinthe lab, int portee) {
 		super(pv, degats, lab, portee);
-
 
 	}
 
@@ -54,7 +55,6 @@ public class Monstre extends Personnage {
 		super(la);
 	}
 
-	
 	public void deplacer(Commande commande) {
 		int x = this.getPosX();
 		int y = this.getPosY();
@@ -84,77 +84,95 @@ public class Monstre extends Personnage {
 			}
 		}
 		if ((this.etreMort() != true)) {
-			if(this.isCollider())
-			{
-				if(this.getLab().etreAccessible(x, y))
-				{
+			if (this.isCollider()) {
+				if (this.getLab().etreAccessible(x, y)) {
 					this.setPosX(x);
 					this.setPosY(y);
 				}
-		
-			}
-			else
-			{
+
+			} else {
 				this.setPosX(x);
 				this.setPosY(y);
 			}
-		
 
 		}
 
 	}
 
 	public void charger(Heros h) {
-		if (this.getDistance(h) <= this.getPortee() ) {
-			
-			if(deltaT >= tpsAttaque)
-			{
-				this.attaquer(h);
+		Commande c = new Commande();
+		if (!this.etreMort()) {
+			if (deltaT >= tpsDep) {
+				int dir = (int) (Math.random() * 5);
+				switch (dir) {
+				case 0:
+					c.haut = true;
+					break;
+				case 1:
+					c.bas = true;
+					break;
+				case 2:
+					c.droite = true;
+					break;
+				case 3:
+					c.gauche = true;
+					break;
+				}
 
-			if (this.getLab().etreAccessible(h.getPosX() - 1, h.getPosY() - 1)) {
-				this.setPosX(h.getPosX());
-				this.setPosY(h.getPosY() - 1);
-				
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() + 1)) {
-				this.setPosX(h.getPosX());
-				this.setPosY(h.getPosY() + 1);
-				
+				this.deplacer(c);
 
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
-				this.setPosX(h.getPosX() + 1);
-				this.setPosY(h.getPosY());
-				
-
-			} else if (this.getLab().etreAccessible(h.getPosX() + 1, h.getPosY() - 1)) {
-				this.setPosX(h.getPosX()-1);
-				this.setPosY(h.getPosY());
-				
+				deltaT = 0;
+			} else {
+				deltaT += 50;
 			}
-			deltaT=0;
-			
-			}
-			else
-			{
-				deltaT+=50;
 
+			if (this.getDistance(h) <= this.getPortee()) {
+
+				if (deltaT2 >= tpsAttaque) {
+					this.attaquer(h);
+					deltaT2 = 0;
+
+				} else {
+					deltaT2 += 50;
+
+				}
+			} else {
+				int diffX = this.getPosX() - h.getPosX();
+				int diffY = this.getPosY() - h.getPosY();
+
+				if (diffX == 1 && diffY == 0) {
+					c.off();
+					c.haut = true;
+				}
+				if (diffX == -1 && diffY == 0) {
+					c.off();
+					c.bas = true;
+				}
+				if (diffY == 1 && diffY == 0) {
+					c.off();
+					c.droite = true;
+				}
+				if (diffY == -1 && diffY == 0) {
+					c.off();
+					c.gauche = true;
+				}
 			}
 		}
-	
 	}
-
 
 	public String getType() {
 		return "MONSTER";
 
 	}
 
-	
-	public void bloquerDeplacement() {}
+	public void bloquerDeplacement() {
+	}
 
-	public void autoriserDeplacement() {}
+	public void autoriserDeplacement() {
+	}
 
-	public boolean etreFini() {return false;}
-
-
+	public boolean etreFini() {
+		return false;
+	}
 
 }

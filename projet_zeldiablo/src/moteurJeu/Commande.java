@@ -39,5 +39,11 @@ public class Commande {
 		this.i=commandeACopier.i;
 		this.attaque=commandeACopier.attaque;
 	}
-	
+	public void off()
+	{
+		this.bas=false;
+		this.haut = false;
+		this.droite=false;
+		this.gauche = false;
+	}
 }
