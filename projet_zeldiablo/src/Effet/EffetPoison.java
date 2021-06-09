@@ -9,6 +9,7 @@ public class EffetPoison implements Effet{
 	public void effet(Personnage h) {
 		
 		h.setSubirPoison(true);
+		h.subirPoison();
 		
 	}
 	
