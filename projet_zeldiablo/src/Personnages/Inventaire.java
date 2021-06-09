@@ -10,29 +10,15 @@ public class Inventaire {
 		this.tab = new Objet [2];
 	}
 	
-	public void Ouvrir() {
-		
-	}
 	
-	public void vider(int index) {
-		tab[index]=null;
-	}
+	
 	
 	public void toutVider() {
-		for (int i = 0; i<=2 ; i++) {
+		for (int i = 0; i<tab.length ; i++) {
 			this.tab[i]=null;
 		}
 	}
 	
-	
-	
-	public String toString() {
-		StringBuffer bf = new StringBuffer();
-		for (int i = 0; i<=2 ; i++) {
-			bf.append(tab[i].toString());
-		}
-		return bf.toString();
-	}
 
 	public Objet getObj(int idx)
 	{
