@@ -31,7 +31,7 @@ public class TestEffets {
 		
 		e.effet(h);
 		System.out.println(h.getVie());
-		assertEquals("Les points de vies ne sont pas bons", 135, h.getVie());
+		assertEquals("Les points de vies ne sont pas bons", 138, h.getVie());
 	}
 	
 	
