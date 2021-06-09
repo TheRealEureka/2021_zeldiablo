@@ -12,7 +12,7 @@ import Personnages.Heros;
 import Personnages.Inventaire;
 import Personnages.Personnage;
 import jeuPerso.DessinPerso;
-import jeuPerso.Fin;
+
 import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
 
