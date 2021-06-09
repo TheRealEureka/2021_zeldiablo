@@ -28,7 +28,10 @@ public class CaseDeclencheuse extends Case {
 		this.used = true;
 		int r = (int) (Math.random() * tab.length);
 		Effet e = tab[r];
+		int er = (int) (Math.random() * 2);
+		if (er == 1) {
 		e.effet(heros);
+		}
 	}
 
 }
