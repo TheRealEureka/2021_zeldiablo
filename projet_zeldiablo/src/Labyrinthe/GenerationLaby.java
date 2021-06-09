@@ -170,7 +170,8 @@ public class GenerationLaby {
 			}
 		}
 		l.addCase(new Case(11, 14));
-		
+		l.addCase(new Case(14, 5));
+
 		
 		
 		for (int i = 0; i < 15; i++) {

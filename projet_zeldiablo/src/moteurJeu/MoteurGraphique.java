@@ -64,6 +64,8 @@ public class MoteurGraphique {
 			Thread.sleep(50);
 			// salut mon pote
 		}
+		this.gui.dessiner();
+
 	}
 
 }

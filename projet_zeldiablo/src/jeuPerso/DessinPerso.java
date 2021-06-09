@@ -37,7 +37,7 @@ public class DessinPerso implements DessinJeu {
 	private Heros joueur;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood;
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead;
 	private String source_lin = "src/images/";
 
 	/**
@@ -49,7 +49,7 @@ public class DessinPerso implements DessinJeu {
 		this.joueur = (Heros) j;
 		this.laby = lab;
 		try {
-			image = ImageIO.read(new File(source_lin + "2.png"));
+			image = ImageIO.read(new File(source_lin + "pers.png"));
 			background = ImageIO.read(new File(source_lin + "background.png"));
 			stone = ImageIO.read(new File(source_lin + "stone.png"));
 			cd_off = ImageIO.read(new File(source_lin + "cd_off.png"));
@@ -60,6 +60,7 @@ public class DessinPerso implements DessinJeu {
 			amulette = ImageIO.read(new File(source_lin + "totem.png"));
 			no = ImageIO.read(new File(source_lin + "no.png"));
 			wood = ImageIO.read(new File(source_lin + "wood.png"));
+			dead = ImageIO.read(new File(source_lin + "dead.png"));
 
 		} catch (IOException e) {
 
@@ -97,8 +98,18 @@ public class DessinPerso implements DessinJeu {
 			}
 			crayon.setColor(Color.BLACK);
 			crayon.drawString("Inventaire", 160, 413);
-			if (!joueur.etreMort()) {
-				crayon.drawString("PV : " + joueur.getVie(), 3, 416);
+			crayon.drawString("PV : " + joueur.getVie(), 3, 416);
+			if(joueur.etreMort())
+			{
+				crayon.setColor(new Color(0, 0, 0, 150));
+				crayon.fillRect(0, 150, 400, 60);
+				crayon.setColor(Color.RED);
+				Font f = new Font("Serif", Font.BOLD, 50);
+				crayon.setFont(f);
+				crayon.drawString("WASTED", 85, 197);
+				
+
+				
 			}
 			BufferedImage img1 = no;
 			BufferedImage img2 = no;
@@ -111,6 +122,7 @@ public class DessinPerso implements DessinJeu {
 			if (o2 != null) {
 				img2 = o2.getBi();
 			}
+			crayon.setColor(Color.BLACK);
 
 			crayon.drawRect(173, 417, 25, 25);
 			crayon.drawImage(img1, 173, 417, null);
@@ -119,25 +131,25 @@ public class DessinPerso implements DessinJeu {
 
 			break;
 		case "PJ":
-			// crayon.setColor(Color.blue);
-			// crayon.fillOval(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			if(!this.joueur.etreMort())
+			{
 			crayon.drawImage(image, x * TAILLE_CASE, y * TAILLE_CASE, null);
+			}
+			else
+			{
+			crayon.drawImage(dead, x * TAILLE_CASE, y * TAILLE_CASE, null);
+
+			}
 			break;
 		case "MUR":
-			// crayon.setColor(Color.gray);
-			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(stone, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			crayon.setColor(Color.black);
 			crayon.drawRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			break;
 		case "DEC":
-			// crayon.setColor(Color.green);
-			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(cd_on, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "DEC_USED":
-			// crayon.setColor(Color.red);
-			// crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			crayon.drawImage(cd_off, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "MONSTER":
@@ -172,12 +184,14 @@ public class DessinPerso implements DessinJeu {
 		for (int i = 0; i < mon.size(); i++) {
 			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(), im);
 		}
-		this.dessinerObjet("INV_UI", 0, 0, im);
-		laby.tourJeu();
 		if (laby.getAmulette() != null) {
 			this.dessinerObjet("AMULETTE", laby.getAmulette().getX(), laby.getAmulette().getY(), im);
 		}
 		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), im);
+
+		this.dessinerObjet("INV_UI", 0, 0, im);
+		laby.tourJeu();
+		
 
 	}
 
