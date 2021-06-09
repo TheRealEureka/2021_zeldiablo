@@ -161,6 +161,19 @@ public class Monstre extends Personnage {
 			}
 		}
 	}
+	public boolean etreMort() {
+		boolean res = false;
+		if (this.getVie() == 0) {
+			int idx = this.getLab().getIndexMonster(this);
+			if(idx!=-1)
+			{
+				this.getLab().removeMonstre(idx);
+			}
+			res = true;
+
+		}
+		return res;
+	}
 
 	public String getType() {
 		return "MONSTER";

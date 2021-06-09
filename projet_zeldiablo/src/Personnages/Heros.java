@@ -145,6 +145,15 @@ public class Heros extends Personnage implements Jeu {
 	public void autoriserDeplacement() {
 		this.deplacement = true;
 	}
+	
+	public boolean etreMort() {
+		boolean res = false;
+		if (this.getVie() == 0) {
+			res = true;
+
+		}
+		return res;
+	}
 
 	@Override
 	public String getType() {

@@ -76,14 +76,7 @@ public abstract class Personnage {
 		return distance;
 	}
 
-	public boolean etreMort() {
-		boolean res = false;
-		if (this.vie == 0) {
-			res = true;
-
-		}
-		return res;
-	}
+	public abstract boolean etreMort();
 
 	public boolean prendreAmulette(Amulette a) {
 		boolean res = false;
