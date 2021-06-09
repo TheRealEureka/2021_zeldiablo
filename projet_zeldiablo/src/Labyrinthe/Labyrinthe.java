@@ -160,5 +160,18 @@ public class Labyrinthe {
 		}
 	}
 	
+	public Monstre monstreAProximite(Heros h){
+		Monstre res = null;
+			for (int i = 0; i < this.mon.size(); i++) {
+				Monstre m = this.mon.get(i);
+				if (h.getDistance(m) <= h.getPortee()) {
+					res = m;
+				}
+			
+			}
+		
+		
+		return res;
+	}
 	
 }

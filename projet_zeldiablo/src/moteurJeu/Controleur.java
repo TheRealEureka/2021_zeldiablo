@@ -106,7 +106,10 @@ public class Controleur implements KeyListener {
 	 * ne fait rien
 	 */
 	public void keyTyped(KeyEvent e) {
-
+		if (e.getKeyChar() == 'p') {
+			this.commandeARetourner.attaque = true;
+			this.commandeARetourner.attaque = true;
+		}
 	}
 
 }

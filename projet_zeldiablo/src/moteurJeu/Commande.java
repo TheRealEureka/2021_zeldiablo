@@ -18,6 +18,7 @@ public class Commande {
 	public boolean haut;
 	public boolean bas;
 	public boolean  i;
+	public boolean attaque;
 
 	public Commande()
 	{
@@ -36,6 +37,7 @@ public class Commande {
 		this.gauche=commandeACopier.gauche;
 		this.droite=commandeACopier.droite;	
 		this.i=commandeACopier.i;
+		this.attaque=commandeACopier.attaque;
 	}
 	
 }

@@ -108,6 +108,10 @@ public class Heros extends Personnage implements Jeu {
 				}
 
 			}
+			
+			if(commande.attaque) {
+				this.attaquer(this.getLab().monstreAProximite(this));
+			}
 
 			if (this.getLab().etreAccessible(x, y) && (this.etreMort() != true)) {
 				this.setPosX(x);
