@@ -19,7 +19,7 @@ public class Monstre extends Personnage {
 	private int deltaT2 = 0;
 
 	private int tpsAttaque = 150;
-	private int tpsDep = 500;
+	private int tpsDep = 400;
 
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
@@ -102,29 +102,7 @@ public class Monstre extends Personnage {
 	public void charger(Heros h) {
 		Commande c = new Commande();
 		if (!this.etreMort()) {
-			if (deltaT >= tpsDep) {
-				int dir = (int) (Math.random() * 5);
-				switch (dir) {
-				case 0:
-					c.haut = true;
-					break;
-				case 1:
-					c.bas = true;
-					break;
-				case 2:
-					c.droite = true;
-					break;
-				case 3:
-					c.gauche = true;
-					break;
-				}
-
-				this.deplacer(c);
-
-				deltaT = 0;
-			} else {
-				deltaT += 50;
-			}
+	
 
 			if (this.getDistance(h) <= this.getPortee()) {
 
@@ -139,23 +117,53 @@ public class Monstre extends Personnage {
 			} else {
 				int diffX = this.getPosX() - h.getPosX();
 				int diffY = this.getPosY() - h.getPosY();
-
-				if (diffX == 1 && diffY == 0) {
-					c.off();
-					c.haut = true;
-				}
-				if (diffX == -1 && diffY == 0) {
+				if(this.getDistance(h) > this.getPortee() && this.getDistance(h) <= 4)
+				{
+					System.out.println("Suivre");
+				if (diffX >= 1 && diffX<3 && diffY == 0) {
 					c.off();
 					c.bas = true;
 				}
-				if (diffY == 1 && diffY == 0) {
+				if (diffX <= -1 && diffX>-3 && diffY == 0) {
+					c.off();
+					c.haut = true;
+				}
+				if (diffY >= 1 && diffY<3&& diffY == 0) {
 					c.off();
 					c.droite = true;
 				}
-				if (diffY == -1 && diffY == 0) {
+				if (diffY <= -1 && diffY>-3 && diffY == 0) {
 					c.off();
 					c.gauche = true;
 				}
+				
+				
+				
+				
+				if (deltaT >= tpsDep) {
+					int dir = (int) (Math.random() * 5);
+					switch (dir) {
+					case 0:
+						c.haut = true;
+						break;
+					case 1:
+						c.bas = true;
+						break;
+					case 2:
+						c.droite = true;
+						break;
+					case 3:
+						c.gauche = true;
+						break;
+					}
+
+					this.deplacer(c);
+
+					deltaT = 0;
+				} else {
+					deltaT += 50;
+				}
+			}
 			}
 		}
 	}
