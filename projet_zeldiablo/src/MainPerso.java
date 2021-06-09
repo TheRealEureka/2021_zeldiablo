@@ -30,7 +30,7 @@ public class MainPerso {
 		// creation du jeu
 		Labyrinthe lab = new Labyrinthe(15, 15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		gL.labyTest();
+		gL.gen1();
 
 		Inventaire inv = new Inventaire();
 		Jeu jeu = new Heros(lab, inv);
@@ -42,6 +42,7 @@ public class MainPerso {
 		moteur.lancerJeu(400, 450);
 
 		// lorsque le jeu est fini
+		
 		System.out.println("Fin du Jeu - appuyer sur entree");
 		Scanner sc = new Scanner(System.in);
 		sc.nextLine();

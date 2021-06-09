@@ -83,9 +83,22 @@ public class Monstre extends Personnage {
 				y = LIMIT_Y;
 			}
 		}
-		if (this.getLab().etreAccessible(x, y) && (this.etreMort() != true)) {
-			this.setPosX(x);
-			this.setPosY(y);
+		if ((this.etreMort() != true)) {
+			if(this.isCollider())
+			{
+				if(this.getLab().etreAccessible(x, y))
+				{
+					this.setPosX(x);
+					this.setPosY(y);
+				}
+		
+			}
+			else
+			{
+				this.setPosX(x);
+				this.setPosY(y);
+			}
+		
 
 		}
 
