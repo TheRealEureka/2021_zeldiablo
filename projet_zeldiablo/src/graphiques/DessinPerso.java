@@ -39,7 +39,8 @@ public class DessinPerso implements DessinJeu {
 
 	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead,trap,sword;
 	private String source_lin = "src/images/";
-
+	private int deltaT=0;
+		private boolean isStarted = false;
 	/**
 	 * appelle constructeur parent
 	 * 
@@ -78,19 +79,22 @@ public class DessinPerso implements DessinJeu {
 	 */
 	private void dessinerObjet(String s, int x, int y, Personnage p, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		crayon.setColor(new Color(0, 0, 0, 150));
-		crayon.fillRect(0, 150, 400, 60);
-		crayon.setColor(Color.WHITE);
-		Font fa = new Font("Serif", Font.BOLD, 14);
-		crayon.setFont(fa);
-		crayon.drawString("Z - HAUT | S - BAS | D - DROITE | Q - GAUCHE | P - ATTAQUER", 0, 170);
-		Font fe = new Font("Serif", Font.BOLD, 20);
-		crayon.setFont(fe);
-		crayon.drawString("Le jeu demarrera dans 5 secondes", 85, 199);
 	
 		
-		
 		switch (s) {
+		case "START" :
+				crayon.setColor(new Color(0, 0, 0, 150));
+				crayon.fillRect(0, 150, 400, 60);
+				crayon.setColor(Color.WHITE);
+				Font fa = new Font("Serif", Font.BOLD, 14);
+				crayon.setFont(fa);
+				crayon.drawString("Z - HAUT | S - BAS | D - DROITE | Q - GAUCHE | P - ATTAQUER", 0, 170);
+				Font fe = new Font("Serif", Font.BOLD, 20);
+				crayon.setFont(fe);
+				crayon.drawString("Le jeu demarrera dans 5 secondes", 85, 199);
+		
+
+				break;
 		case "BACKGROUND":
 			for (int i = 0; i <= 15; i++) {
 				for (int t = 0; t <= 16; t++) {
@@ -232,6 +236,22 @@ public class DessinPerso implements DessinJeu {
 		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), null,im);
 
 		this.dessinerObjet("INV_UI", 0, 0,null, im);
+		
+		
+		if(!isStarted)
+		{
+			
+			this.dessinerObjet("START", 0, 0,null, im);
+			if(deltaT>5000)
+			{
+				this.isStarted=true;
+		
+			}
+			else
+			{
+				deltaT+=50;
+			}
+		}
 		laby.tourJeu();
 		
 
