@@ -18,6 +18,8 @@ public class Heros extends Personnage implements Jeu {
 	private final static int LIMIT_Y = 15;
 	private boolean hasEffect = false;
 	private String effect;
+	
+	
 	private int deltaT = 0;
 	private int tpsEffet = 100;
 
@@ -126,6 +128,9 @@ public class Heros extends Personnage implements Jeu {
 				if (i != -1) {
 					if (this.getLab().getTab().get(i).getType() == "DEC") {
 						this.getLab().getTab().get(i).effet(this);
+					}
+					if (this.getLab().getTab().get(i).getType() == "PORTE") {
+						this.getLab().getTab().get(i).ouvrir();
 					}
 				}
 				if (this.getLab().getAmulette() != null) {

@@ -6,45 +6,17 @@ import Personnages.Troll;
 
 public class GenerationLaby {
 	private Labyrinthe l;
-
+	private static int tour = 0;
+	private final static int NB_MAP=1;
 	public GenerationLaby(Labyrinthe l) {
 		this.l = l;
 	}
 
-	public void labyTest() {
 
-		for (int i = 0; i < 8; i++) {
-			l.addCase(new Case(1, i));
-			for(int y = 9 ; y < 16 ; y++ )
-			{
-			l.addCase(new Case(i, y));
-			}
-		}
-
-		for (int y = 7; y >= 0; y--) {
-			for (int i = 1; i <= 15; i++) {
-				l.addCase(new Case(i, y));
-			}
-		}
-		
-		l.setAmulette(new Amulette(15, 15, l, "Amul"));
-
-		l.addCase(new CaseDeclencheuse(0, 1));
-		Monstre m = new Monstre(l);
-		m.setPosX(10);
-		m.setPosY(11);
-		Monstre m1 = new Troll(l);
-		m1.setPosX(10);
-		m1.setPosY(10);
-		Monstre m2 = new Fantome(l);
-		m2.setPosX(12);
-		m2.setPosY(11);
-		l.addMonstre(m);
-		l.addMonstre(m1);
-		l.addMonstre(m2);
-	}
 
 	public void generationAleatoire() {
+		this.l.reset();
+		tour++;
 		int caseDec = 0;
 		for (int i = 0; i < 15; i++) {
 			for (int y = 1; y < 15; y++) {
@@ -95,7 +67,16 @@ public class GenerationLaby {
 	
 	public void gen1()
 	{
-		l.setAmulette(new Amulette(15, 6, l, "String"));
+		this.l.reset();
+		tour++;
+		if(tour>3)
+		{
+			l.setAmulette(new Amulette(15, 6, l, "String"));
+		}
+		else
+		{
+			l.addCase(new Porte(15,6,l));
+		}
 		for (int i = 0; i < 8; i++) {
 			l.addCase(new Case(1, i+1));
 			l.addCase(new Case(3, i+2));
@@ -141,7 +122,7 @@ public class GenerationLaby {
 			int r = (int) (Math.random() * 3);
 			int x = (int) (Math.random() * l.getLargeur()+1);
 			int y = (int) (Math.random() * l.getHauteur()+1);
-			while (!l.etreAccessible(x, y)) {
+			while (!l.etreAccessible(x, y) || (x==0 && y==0)) {
 				x = (int) (Math.random() * l.getLargeur());
 				y = (int) (Math.random() * l.getLargeur());
 			}
@@ -177,12 +158,26 @@ public class GenerationLaby {
 		for (int i = 0; i < 15; i++) {
 			int x = (int) (Math.random() * l.getLargeur());
 			int y = (int) (Math.random() * l.getHauteur());
-			while (!l.etreAccessible(x, y)) {
+			while (!l.etreAccessible(x, y)|| (x==0 && y==0)) {
 				x = (int) (Math.random() * l.getLargeur());
 				y = (int) (Math.random() * l.getHauteur());
 				}
 				l.addCase(new CaseDeclencheuse(x, y));	
 		}
+	}
+
+	public void labyRandom() {
+		this.l.reset();
+		int r = (int) (Math.random() * NB_MAP);
+		switch(r)
+		{
+		case 0:
+				this.gen1();
+				break;
+		default :
+			this.gen1();
+		}
+
 	}
 	
 }

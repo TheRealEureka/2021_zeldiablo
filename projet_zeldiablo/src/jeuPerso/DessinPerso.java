@@ -74,7 +74,7 @@ public class DessinPerso implements DessinJeu {
 	 * 
 	 * @throws IOException
 	 */
-	private void dessinerObjet(String s, int x, int y, BufferedImage im) {
+	private void dessinerObjet(String s, int x, int y, Personnage p, BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		switch (s) {
 		case "BACKGROUND":
@@ -153,17 +153,33 @@ public class DessinPerso implements DessinJeu {
 			crayon.drawImage(cd_off, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "MONSTER":
+			crayon.setColor(Color.white);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, 21, 3);
+			crayon.setColor(Color.red);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, (21*p.getVie())/p.getMaxVie(), 3);
 			crayon.drawImage(monstre, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "TROLL":
+			crayon.setColor(Color.white);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, 21, 3);
+			crayon.setColor(Color.red);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, (21*p.getVie())/p.getMaxVie(), 3);
 			crayon.drawImage(troll, x * TAILLE_CASE, y * TAILLE_CASE, null);
 
 			break;
 		case "GHOST":
+			crayon.setColor(Color.white);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, 21, 3);
+			crayon.setColor(Color.red);
+			crayon.fillRect(x * TAILLE_CASE+2, (y * TAILLE_CASE)-5, (21*p.getVie())/p.getMaxVie(), 3);
 			crayon.drawImage(fantome, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "AMULETTE":
 			crayon.drawImage(amulette, x * TAILLE_CASE, y * TAILLE_CASE, null);
+			break;
+		case "PORTE":
+			crayon.setColor(Color.black);
+			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
 			break;
 		default:
 			throw new AssertionError("objet inexistant");
@@ -175,21 +191,21 @@ public class DessinPerso implements DessinJeu {
 	 * methode dessiner redefinie de Afficheur retourne une image du jeu
 	 */
 	public void dessiner(BufferedImage im) {
-		this.dessinerObjet("BACKGROUND", 0, 0, im);
+		this.dessinerObjet("BACKGROUND", 0, 0,null, im);
 		ArrayList<Case> tab = laby.getTab();
 		ArrayList<Monstre> mon = laby.getMonstre();
 		for (int i = 0; i < tab.size(); i++) {
-			this.dessinerObjet(tab.get(i).getType(), tab.get(i).getX(), tab.get(i).getY(), im);
+			this.dessinerObjet(tab.get(i).getType(), tab.get(i).getX(), tab.get(i).getY(),null, im);
 		}
 		for (int i = 0; i < mon.size(); i++) {
-			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(), im);
+			this.dessinerObjet(mon.get(i).getType(), mon.get(i).getPosX(), mon.get(i).getPosY(),  mon.get(i),im);
 		}
 		if (laby.getAmulette() != null) {
-			this.dessinerObjet("AMULETTE", laby.getAmulette().getX(), laby.getAmulette().getY(), im);
+			this.dessinerObjet("AMULETTE", laby.getAmulette().getX(), laby.getAmulette().getY(), null, im);
 		}
-		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), im);
+		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), null,im);
 
-		this.dessinerObjet("INV_UI", 0, 0, im);
+		this.dessinerObjet("INV_UI", 0, 0,null, im);
 		laby.tourJeu();
 		
 

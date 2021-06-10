@@ -31,7 +31,6 @@ public class Labyrinthe {
 			this.largeur = l;
 		}
 		
-		this.amulette = new Amulette(3,4,this,"amulette");
 	}
 	
 	
@@ -172,6 +171,12 @@ public class Labyrinthe {
 		
 		
 		return res;
+	}
+	public void reset()
+	{
+		this.tab = new ArrayList<Case>();
+		this.mon = new ArrayList<Monstre>();
+		this.amulette = null;
 	}
 	
 }

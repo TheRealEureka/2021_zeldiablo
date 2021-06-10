@@ -7,6 +7,7 @@ import moteurJeu.Commande;
 public abstract class Personnage {
 
 	private int vie;
+	private int maxVie=1;
 	private int pointsAttaque;
 	private Labyrinthe labi;
 	private int portee;
@@ -18,6 +19,7 @@ public abstract class Personnage {
 	
 	public Personnage(int pv, int degats, Labyrinthe lab, int portee, int posX, int posY) {
 		this.vie = pv;
+		this.maxVie=pv;
 		this.pointsAttaque = degats;
 		this.labi = lab;
 		this.portee = portee;
@@ -31,6 +33,7 @@ public abstract class Personnage {
 		this.pointsAttaque = degats;
 		this.labi = lab;
 		this.portee = portee;
+		this.maxVie=pv;
 
 	}
 
@@ -39,12 +42,16 @@ public abstract class Personnage {
 		this.pointsAttaque = 20;
 		this.portee = 1;
 		this.labi = l;
+		this.maxVie=150;
+
 	}
 
 	public Personnage() {
 		this.vie = 150;
 		this.pointsAttaque = 20;
 		this.portee = 1;
+		this.maxVie=150;
+
 	}
 
 	public void subirDegats(int degats) {
@@ -134,7 +141,9 @@ public abstract class Personnage {
 	public int getPosY() {
 		return this.posY;
 	}
-
+	public int getMaxVie() {
+		return this.maxVie;
+	}
 	public Amulette getAmulette() {
 
 		return this.amul;

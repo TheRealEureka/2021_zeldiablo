@@ -49,12 +49,10 @@ public class Case {
 
 	
 
-	public void effet(Personnage personnage) {
-		// TODO Auto-generated method stub
-		
+	public void effet(Personnage personnage) {		
 	}
 	
-	
+	public void ouvrir() {}
 	
 	
 }
