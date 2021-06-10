@@ -180,14 +180,14 @@ public class Monstre extends Personnage {
 
 	}
 
-	public void bloquerDeplacement() {
-	}
-
-	public void autoriserDeplacement() {
-	}
 
 	public boolean etreFini() {
 		return false;
+	}
+
+	@Override
+	public void hasEffect(boolean b, String s) {
+		//Rien
 	}
 
 }

@@ -150,11 +150,9 @@ public abstract class Personnage {
 
 	public abstract String getType();
 
-	public abstract void bloquerDeplacement();
-
-	public abstract void autoriserDeplacement();
-
 	public abstract boolean etreFini();
+
+	public abstract void hasEffect(boolean b, String s);
 
 	
 

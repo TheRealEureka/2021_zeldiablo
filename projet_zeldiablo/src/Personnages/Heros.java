@@ -16,7 +16,13 @@ public class Heros extends Personnage implements Jeu {
 	private boolean deplacement;
 	private final static int LIMIT_X = 15;
 	private final static int LIMIT_Y = 15;
+	private boolean hasEffect = false;
+	private String effect;
+	private int deltaT = 0;
+	private int tpsEffet = 100;
 
+	private int tpsTotal = 0;
+	private int dureeEffet = 400;
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -113,7 +119,7 @@ public class Heros extends Personnage implements Jeu {
 				this.attaquer(this.getLab().monstreAProximite(this));
 			}
 
-			if (this.getLab().etreAccessible(x, y) && (this.etreMort() != true)) {
+			if (this.getLab().etreAccessible(x, y) && !this.etreMort() && deplacement) {
 				this.setPosX(x);
 				this.setPosY(y);
 				int i = this.getLab().getIndex(x, y);
@@ -138,13 +144,7 @@ public class Heros extends Personnage implements Jeu {
 		 */
 	}
 
-	public void bloquerDeplacement() {
-		this.deplacement = false;
-	}
 
-	public void autoriserDeplacement() {
-		this.deplacement = true;
-	}
 	
 	public boolean etreMort() {
 		boolean res = false;
@@ -168,8 +168,44 @@ public class Heros extends Personnage implements Jeu {
 		} else {
 			this.inv.removeObj(1);
 		}
+		this.effet();
+		
 	}
 
+	
+	public void effet()
+	{
+		if(this.hasEffect)
+		{
+			if(tpsTotal <= dureeEffet)
+			{
+			if(deltaT>=tpsEffet)
+			{
+				switch(this.effect)
+				{
+				case "POISON" :
+						this.subirDegats((int) (this.getVie() * 0.02));
+						break;
+				case "BLOCAGE" :
+					this.deplacement=false;
+					break;
+				}
+				deltaT=0;
+			}
+			else
+			{
+				deltaT+=50;
+				tpsTotal+=50;
+			}
+		}
+			else
+			{
+				tpsTotal = 0;
+				this.deplacement=true;
+				this.hasEffect = false;
+			}
+		}
+	}
 	public Inventaire getInv() {
 		return this.inv;
 	}
@@ -178,6 +214,15 @@ public class Heros extends Personnage implements Jeu {
 	public boolean etreFini() {
 		return this.etreMort() || this.getAmulette() != null;
 	}
-	
+
+
+	public void hasEffect(boolean b, String s)
+	{
+		this.hasEffect = b;
+		this.effect = s;
+	}
+
+
+
 	
 }
