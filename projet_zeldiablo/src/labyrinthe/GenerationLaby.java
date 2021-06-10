@@ -20,7 +20,6 @@ public class GenerationLaby {
 	{
 		this.l.reset();
 		tour = 0;
-		tour++;
 		if(tour>3)
 		{
 			l.setAmulette(new Amulette(15, 6, l));
@@ -121,16 +120,13 @@ public class GenerationLaby {
 	
 	public void gen2() {
 		this.l.reset();
-		tour = 0;
 		tour++;
-		if(tour>2 && tour < 4)
+		if(tour>3)
 		{
-			l.setEpee(new Epee(6,13, l));
+			l.setAmulette(new Amulette(14, 2, l));
 			
 		}
-		else if (tour > 5 && tour < 7){
-			l.setAmulette(new Amulette(14, 2, l));
-		}else {
+		else {
 			l.addCase(new Porte(14,4,l));
 		}
 		
@@ -230,15 +226,14 @@ public class GenerationLaby {
 	
 	public void gen3() {
 		tour++;
-		if(tour < 4)
+		if(tour > 3)
 		{
-			l.addCase(new Porte(14,4,l));
+			l.setAmulette(new Amulette(13, 12, l));
 			
 		}
-		else if (tour > 5 && tour < 7){
-			l.setAmulette(new Amulette(14, 2, l));
-		}else {
-			l.setEpee(new Epee(14, 2, l));
+			
+		else {
+			l.addCase(new Porte(13, 13, l));
 		}
 		l.addCase(new Case(0,4));
 		l.addCase(new Case(0,12));
