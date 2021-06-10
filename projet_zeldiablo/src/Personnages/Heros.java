@@ -21,6 +21,7 @@ public class Heros extends Personnage implements Jeu {
 	private final static int LIMIT_Y = 15;
 	private boolean hasEffect = false;
 	private String effect;
+	private boolean isPause = false;
 	
 	
 	private int deltaT = 0;
@@ -28,6 +29,12 @@ public class Heros extends Personnage implements Jeu {
 
 	private int tpsTotal = 0;
 	private int dureeEffet = 400;
+
+	private int deltaPause = 0;
+	private int tpsPause = 100;
+
+	private int tpsTot = 0;
+	private int dureePause = 600;
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -89,6 +96,7 @@ public class Heros extends Personnage implements Jeu {
 	}
 
 	public void deplacer(Commande commande) {
+		if (!this.isPause) {
 		if (this.deplacement) {
 			int x = this.getPosX();
 			int y = this.getPosY();
@@ -154,6 +162,7 @@ public class Heros extends Personnage implements Jeu {
 				}
 			}
 		}
+	}
 		// mise en place de l'ia des monstres
 		/*
 		 * int t = this.labi.getMonstre().size(); for (int i = 0; i<t; i++) { Monstre m
@@ -244,7 +253,35 @@ public class Heros extends Personnage implements Jeu {
 		this.effect = s;
 	}
 
+	public boolean isPause() {
+		return this.isPause;
+	}
+	
 
+	
+	public void pause() {
+		this.isPause = true;
+		/*if (this.isPause) {
+		if (tpsTot <= dureePause) {
+			if (deltaPause >= tpsPause) {
+				deltaPause = 0;
+			}else {
+				deltaPause += 50;
+				tpsPause += 50;
+				
+			}
+		}else {
+			tpsPause = 0;
+			this.deplacement = true;
+			this.isPause = false;
+			}
+		}*/
+		
+	
+	}
 
+	public void unPause() {
+		this.isPause = false;
+	}
 	
 }

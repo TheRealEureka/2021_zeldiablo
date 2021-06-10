@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -83,6 +84,7 @@ public class DessinPerso implements DessinJeu {
 		
 		switch (s) {
 		case "START" :
+				this.joueur.pause();
 				crayon.setColor(new Color(0, 0, 0, 150));
 				crayon.fillRect(0, 150, 400, 60);
 				crayon.setColor(Color.WHITE);
@@ -92,7 +94,7 @@ public class DessinPerso implements DessinJeu {
 				Font fe = new Font("Serif", Font.BOLD, 20);
 				crayon.setFont(fe);
 				crayon.drawString("Le jeu demarrera dans 5 secondes", 85, 199);
-		
+				
 
 				break;
 		case "BACKGROUND":
