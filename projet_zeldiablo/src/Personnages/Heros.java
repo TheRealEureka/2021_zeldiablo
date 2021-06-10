@@ -219,7 +219,7 @@ public class Heros extends Personnage implements Jeu {
 				deltaT+=50;
 				tpsTotal+=50;
 			}
-		}
+			}
 			else
 			{
 				tpsTotal = 0;

@@ -21,7 +21,6 @@ public class Inventaire {
 	public Objet getObj(int idx)
 	{
 		Objet o = null;
-		System.out.println(idx);
 		if(idx>=0 && idx<tab.length)
 		{
 

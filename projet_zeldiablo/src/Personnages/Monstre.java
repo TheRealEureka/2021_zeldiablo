@@ -114,27 +114,22 @@ public class Monstre extends Personnage {
 
 				}
 			} else {
-				int diffX = this.getPosX() - h.getPosX();
-				int diffY = this.getPosY() - h.getPosY();
-				if (this.getDistance(h) > this.getPortee() && this.getDistance(h) <= 4) {
-					if (diffX >= 1 && diffX < 3 && diffY == 0) {
-						c.off();
-						c.bas = true;
-					}
-					if (diffX <= -1 && diffX > -3 && diffY == 0) {
-						c.off();
-						c.haut = true;
-					}
-					if (diffY >= 1 && diffY < 3 && diffY == 0) {
-						c.off();
-						c.droite = true;
-					}
-					if (diffY <= -1 && diffY > -3 && diffY == 0) {
-						c.off();
-						c.gauche = true;
-					}
 
+				
 					if (deltaT >= tpsDep) {
+
+						if (this.getDistance(h) > this.getPortee() && this.getDistance(h) <= 5) {
+								if(this.getPosX()>h.getPosX())
+									c.gauche=true;
+								if(this.getPosX()<h.getPosX())
+									c.droite=true;
+								if(this.getPosY()<h.getPosY())
+									c.bas=c.bas = true;
+								if(this.getPosY()>h.getPosY())
+									c.haut=true;
+						}
+						if(this.getDistance(h) > 5)
+						{
 						int dir = (int) (Math.random() * 5);
 						switch (dir) {
 						case 0:
@@ -151,14 +146,17 @@ public class Monstre extends Personnage {
 							break;
 						}
 
-						this.deplacer(c);
 
+					} 
 						deltaT = 0;
-					} else {
+
+				}
+					else {
 						deltaT += 50;
 					}
-				}
 			}
+			this.deplacer(c);
+
 		}
 	}
 	public boolean etreMort() {
