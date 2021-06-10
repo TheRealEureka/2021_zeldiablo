@@ -55,19 +55,21 @@ public class MoteurGraphique {
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
 			// demande controle utilisateur
-			if (!this.jeu.isPause()) {
+			
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
+		
 			this.jeu.evoluer(c);
+			
 			// affiche le jeu 
+		
 			this.gui.dessiner();
+			
+			
 			// met en attente
 			Thread.sleep(50);
 			// salut mon pote
-			}else {
-				Thread.sleep(500);
-				this.jeu.unPause();
-			}
+			
 		}
 		this.gui.dessiner();
 

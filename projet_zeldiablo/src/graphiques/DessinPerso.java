@@ -93,7 +93,7 @@ public class DessinPerso implements DessinJeu {
 				crayon.drawString("Z - HAUT | S - BAS | D - DROITE | Q - GAUCHE | P - ATTAQUER", 0, 170);
 				Font fe = new Font("Serif", Font.BOLD, 20);
 				crayon.setFont(fe);
-				crayon.drawString("Le jeu demarrera dans 5 secondes", 85, 199);
+				crayon.drawString("Le jeu demarrera dans quelques secondes", 0, 200);
 				
 
 				break;
@@ -244,8 +244,10 @@ public class DessinPerso implements DessinJeu {
 		{
 			
 			this.dessinerObjet("START", 0, 0,null, im);
-			if(deltaT>5000)
-			{
+			if(deltaT>1000)
+			{	
+				
+				this.joueur.unPause();
 				this.isStarted=true;
 		
 			}

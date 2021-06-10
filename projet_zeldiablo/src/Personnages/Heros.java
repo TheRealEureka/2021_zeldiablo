@@ -30,11 +30,7 @@ public class Heros extends Personnage implements Jeu {
 	private int tpsTotal = 0;
 	private int dureeEffet = 400;
 
-	private int deltaPause = 0;
-	private int tpsPause = 100;
 
-	private int tpsTot = 0;
-	private int dureePause = 600;
 	/**
 	 * Constructeur avec param�tre pour la vie du Heros
 	 * 
@@ -261,21 +257,7 @@ public class Heros extends Personnage implements Jeu {
 	
 	public void pause() {
 		this.isPause = true;
-		/*if (this.isPause) {
-		if (tpsTot <= dureePause) {
-			if (deltaPause >= tpsPause) {
-				deltaPause = 0;
-			}else {
-				deltaPause += 50;
-				tpsPause += 50;
-				
-			}
-		}else {
-			tpsPause = 0;
-			this.deplacement = true;
-			this.isPause = false;
-			}
-		}*/
+		
 		
 	
 	}
