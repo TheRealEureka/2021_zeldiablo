@@ -123,12 +123,12 @@ public class GenerationLaby {
 		this.l.reset();
 		tour = 0;
 		tour++;
-		if(tour>2)
+		if(tour>2 && tour < 4)
 		{
 			l.setEpee(new Epee(6,13, l));
 			
 		}
-		else if (tour > 4 && tour < 5){
+		else if (tour > 5 && tour < 7){
 			l.setAmulette(new Amulette(14, 2, l));
 		}else {
 			l.addCase(new Porte(14,4,l));
