@@ -35,7 +35,7 @@ public class MainPerso extends JFrame{
 		// creation du jeu
 		Labyrinthe lab = new Labyrinthe(15, 15);
 		GenerationLaby gL = new GenerationLaby(lab);
-		gL.gen2();
+		gL.labyRandom();
 
 		Inventaire inv = new Inventaire();
 		Jeu jeu = new Heros(lab, inv);
