@@ -9,61 +9,24 @@ import objets.Epee;
 public class GenerationLaby {
 	private Labyrinthe l;
 	private static int tour = 0;
-	private final static int NB_MAP=1;
+	private final static int NB_MAP=2;
+	
 	public GenerationLaby(Labyrinthe l) {
 		this.l = l;
 	}
 
-
+	
 
 	public void generationAleatoire() {
-		this.l.reset();
-		tour++;
-		int caseDec = 0;
-		for (int i = 0; i < 15; i++) {
-			for (int y = 1; y < 15; y++) {
-				int r = (int) (Math.random() * 6);
-				if (r == 1) {
-					l.addCase(new Case(i, y));
-				} else if (r == 4 && caseDec < 22) {
-					caseDec++;
-					l.addCase(new CaseDeclencheuse(i, y));
-				}
-			}
-		}
-		
-		
-		for (int i = 0; i < 4; i++) {
-			int r = (int) (Math.random() * 3);
-			int x = (int) (Math.random() * l.getLargeur());
-			int y = (int) (Math.random() * l.getHauteur());
-			while (!l.etreAccessible(x, y)) {
-				x = (int) (Math.random() * l.getLargeur());
-				y = (int) (Math.random() * l.getLargeur());
-			}
-			switch(r) {
-			case 0:
-				Monstre m = new Fantome(l);
-				m.setPosX(x);
-				m.setPosY(y);
-				l.addMonstre(m);
-			
-				break;
-			case 1:
-				Monstre t = new Troll(l);
-				t.setPosX(x);
-				t.setPosY(y);
-				l.addMonstre(t);
-		
-				break;
-			case 2:
-				Monstre mn = new Monstre(l);
-				mn.setPosX(x);
-				mn.setPosY(y);
-				l.addMonstre(mn);
-			
-				break;
-			}
+		int r = (int) (Math.random() * NB_MAP);
+		System.out.println(r);
+		switch(r) {
+		case 0:
+			gen1();
+			break;
+		case 1:
+			gen2();
+			break;
 		}
 	}
 	
@@ -168,7 +131,82 @@ public class GenerationLaby {
 				l.addCase(new CaseDeclencheuse(x, y));	
 		}
 	}
+	
+	public void gen2() {
+		this.l.reset();
+		tour++;
+		if(tour>2)
+		{
+			l.setEpee(new Epee(11,14, l));
+			
+		}
+		else if (tour > 4){
+			l.setAmulette(new Amulette(15, 1, l));
+		}else {
+			l.addCase(new Porte(15,4,l));
+		}
+		
+		
+		
+		
+		for (int i = 0; i < 6; i++) {
+			int r = (int) (Math.random() * 3);
+			int x = (int) (Math.random() * l.getLargeur()+1);
+			int y = (int) (Math.random() * l.getHauteur()+1);
+			while (!l.etreAccessible(x, y) || (x==0 && y==0)) {
+				x = (int) (Math.random() * l.getLargeur());
+				y = (int) (Math.random() * l.getLargeur());
+			}
+			switch(r) {
+			case 0:
+				Monstre m = new Fantome(l);
+				m.setPosX(x);
+				m.setPosY(y);
+				l.addMonstre(m);
+			
+				break;
+			case 1:
+				Monstre t = new Troll(l);
+				t.setPosX(x);
+				t.setPosY(y);
+				l.addMonstre(t);
+		
+				break;
+			case 2:
+				Monstre mn = new Monstre(l);
+				mn.setPosX(x);
+				mn.setPosY(y);
+				l.addMonstre(mn);
+			
+				break;
+			}
+		}
+		
 
+		for (int i = 1; i < 15; i++) {
+			if (i < 14) {
+				l.addCase(new Case(i, 1));
+			}
+			l.addCase(new Case(i, 0));
+			l.addCase(new Case(i, 3));
+			l.addCase(new Case(i, 5));
+		}
+		
+		for (int i = 0; i < 15; i++) {
+			int x = (int) (Math.random() * l.getLargeur());
+			int y = (int) (Math.random() * l.getHauteur());
+			while (!l.etreAccessible(x, y)|| (x==0 && y==0)) {
+				x = (int) (Math.random() * l.getLargeur());
+				y = (int) (Math.random() * l.getHauteur());
+				}
+				l.addCase(new CaseDeclencheuse(x, y));	
+		}
+		
+		
+		for (int i = 0; i <= 15; i++) {
+			l.addCase(new Case(1, i));
+		}
+	}
 	public void labyRandom() {
 		this.l.reset();
 		int r = (int) (Math.random() * NB_MAP);
