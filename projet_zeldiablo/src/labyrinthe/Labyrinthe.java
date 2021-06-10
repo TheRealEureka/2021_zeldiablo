@@ -188,6 +188,8 @@ public class Labyrinthe {
 		this.tab = new ArrayList<Case>();
 		this.mon = new ArrayList<Monstre>();
 		this.amulette = null;
+		this.epee = null;
+
 	}
 	
 }

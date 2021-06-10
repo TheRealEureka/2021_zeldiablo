@@ -19,7 +19,7 @@ public class GenerationLaby {
 	public void gen1()
 	{
 		this.l.reset();
-		tour = 0;
+		tour ++;
 		if(tour>3)
 		{
 			l.setAmulette(new Amulette(15, 6, l));
@@ -28,7 +28,6 @@ public class GenerationLaby {
 		{
 			l.addCase(new Porte(15,6,l));
 		}
-		l.setEpee(new Epee(0,2, l));
 		for (int i = 0; i < 8; i++) {
 			l.addCase(new Case(1, i+1));
 			l.addCase(new Case(3, i+2));
@@ -391,12 +390,12 @@ public class GenerationLaby {
 	public void labyRandom() {
 		this.l.reset();
 		int r = (int) (Math.random() * NB_MAP);
-	
+		
 		switch(r)
 		{
 		case 0:
-				this.gen1();
-				break;
+			this.gen1();
+			break;
 		case 1:
 			this.gen2();
 			break;
@@ -406,6 +405,18 @@ public class GenerationLaby {
 			
 		default :
 			break;
+		}
+		if(tour==2)
+		{
+			int x = (int) (Math.random() * l.getLargeur()+1);
+			int y = (int) (Math.random() * l.getHauteur()+1);
+			while (!l.etreAccessible(x, y) || (x==0 && y==0)) {
+				x = (int) (Math.random() * l.getLargeur());
+				y = (int) (Math.random() * l.getLargeur());
+			}
+			System.out.println("Sword generated at x:"+x+" y:"+y);
+			l.setEpee(new Epee(x,y, l));
+
 		}
 
 	}
