@@ -16,20 +16,6 @@ public class GenerationLaby {
 	}
 
 	
-
-	public void generationAleatoire() {
-		int r = (int) (Math.random() * NB_MAP);
-		System.out.println(r);
-		switch(r) {
-		case 0:
-			gen1();
-			break;
-		case 1:
-			gen2();
-			break;
-		}
-	}
-	
 	public void gen1()
 	{
 		this.l.reset();
@@ -137,18 +123,18 @@ public class GenerationLaby {
 		tour++;
 		if(tour>2)
 		{
-			l.setEpee(new Epee(11,14, l));
+			l.setEpee(new Epee(6,13, l));
 			
 		}
 		else if (tour > 4){
-			l.setAmulette(new Amulette(15, 1, l));
+			l.setAmulette(new Amulette(14, 2, l));
 		}else {
-			l.addCase(new Porte(15,4,l));
+			l.addCase(new Porte(14,4,l));
 		}
 		
 		
 		
-		
+		/*
 		for (int i = 0; i < 6; i++) {
 			int r = (int) (Math.random() * 3);
 			int x = (int) (Math.random() * l.getLargeur()+1);
@@ -181,33 +167,36 @@ public class GenerationLaby {
 				break;
 			}
 		}
+		*/
+		for (int i = 1; i < 8; i++) {
+			l.addCase(new Case(i, 1));
+		}
 		
-
-		for (int i = 1; i < 15; i++) {
-			if (i < 14) {
-				l.addCase(new Case(i, 1));
-			}
-			l.addCase(new Case(i, 0));
+		for (int i = 9; i < 15; i++) {
+			l.addCase(new Case(i, 1));
+		}
+		
+		for (int i = 1; i <= 15; i++) {
+			l.addCase(new Case(15, i));
+			l.addCase(new Case(0, i));
+			l.addCase(new Case(i, 15));
+		}
+		
+		for (int i = 2; i < 12; i++) {
 			l.addCase(new Case(i, 3));
 			l.addCase(new Case(i, 5));
 		}
 		
+		l.addCase(new CaseDeclencheuse(12, 3));
+		l.addCase(new Case(13, 3));
+		l.addCase(new Case(14, 3));
+		l.addCase(new Case(11, 6));
+		l.addCase(new CaseDeclencheuse(12, 6));
 		
-		for (int i = 0; i < 15; i++) {
-			int x = (int) (Math.random() * l.getLargeur());
-			int y = (int) (Math.random() * l.getHauteur());
-			while (!l.etreAccessible(x, y)|| (x==0 && y==0)) {
-				x = (int) (Math.random() * l.getLargeur());
-				y = (int) (Math.random() * l.getHauteur());
-				}
-				l.addCase(new CaseDeclencheuse(x, y));	
+		for (int i = 3; i < 14; i++) {
+			l.addCase(new Case(13, i));
 		}
-		
-		
-		for (int i = 0; i <= 15; i++) {
-			l.addCase(new Case(1, i));
 		}
-	}
 	public void labyRandom() {
 		this.l.reset();
 		int r = (int) (Math.random() * NB_MAP);
@@ -216,6 +205,10 @@ public class GenerationLaby {
 		case 0:
 				this.gen1();
 				break;
+		case 1:
+			this.gen2();
+			break;
+			
 		default :
 			this.gen1();
 		}

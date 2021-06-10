@@ -17,7 +17,7 @@ public class TestMonstres {
 	public void testConstructeurMonstreVide() {
 		Monstre m = new Monstre();
 		boolean res = m == null;
-		assertFalse("Le monstre ne devrait pas �tre null", res);
+		assertFalse("Le monstre ne devrait pas etre null", res);
 
 	}
 
@@ -31,8 +31,8 @@ public class TestMonstres {
 		Monstre m = new Monstre(5, 5, labyrinthe, 5, 1, 2);
 
 		int res = m.getVie();
-		assertEquals("Le points de vies devrait etre de 3500", 3500, res);
-		assertEquals("Les degats devrait etre de 150", 150, m.getPointsAttaque());
+		assertEquals("Le points de vies devrait etre de 3500", 5, res);
+		assertEquals("Les degats devrait etre de 150", 5, m.getPointsAttaque());
 	}
 
 	/**
