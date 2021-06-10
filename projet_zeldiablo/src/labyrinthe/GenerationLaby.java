@@ -192,6 +192,7 @@ public class GenerationLaby {
 			l.addCase(new Case(i, 5));
 		}
 		
+		
 		for (int i = 0; i < 15; i++) {
 			int x = (int) (Math.random() * l.getLargeur());
 			int y = (int) (Math.random() * l.getHauteur());
