@@ -89,6 +89,7 @@ public class DessinPerso implements DessinJeu {
 		crayon.drawString("Le jeu demarrera dans 5 secondes", 85, 199);
 	
 		
+		
 		switch (s) {
 		case "BACKGROUND":
 			for (int i = 0; i <= 15; i++) {
