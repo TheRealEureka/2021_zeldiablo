@@ -17,9 +17,10 @@ public class Monstre extends Personnage {
 	private final static int LIMIT_Y = 15;
 	private int deltaT = 0;
 	private int deltaT2 = 0;
+	private int range = 5;
 
 	private int tpsAttaque = 400;
-	private int tpsDep = 250;
+	private int tpsDep = 350;
 
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre
@@ -118,7 +119,7 @@ public class Monstre extends Personnage {
 				
 					if (deltaT >= tpsDep) {
 
-						if (this.getDistance(h) > this.getPortee() && this.getDistance(h) <= 5) {
+						if (this.getDistance(h) > this.getPortee() && this.getDistance(h) <= range) {
 								if(this.getPosX()>h.getPosX())
 									c.gauche=true;
 								if(this.getPosX()<h.getPosX())
@@ -128,9 +129,9 @@ public class Monstre extends Personnage {
 								if(this.getPosY()>h.getPosY())
 									c.haut=true;
 						}
-						if(this.getDistance(h) > 5)
+						if(this.getDistance(h) > range)
 						{
-						int dir = (int) (Math.random() * 5);
+						int dir = (int) (Math.random() * 10);
 						switch (dir) {
 						case 0:
 							c.haut = true;
@@ -159,6 +160,14 @@ public class Monstre extends Personnage {
 
 		}
 	}
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
 	public boolean etreMort() {
 		boolean res = false;
 		if (this.getVie() == 0) {
