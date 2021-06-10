@@ -1,8 +1,8 @@
-package Labyrinthe;
+package labyrinthe;
 
-import Effet.*;
 import Personnages.Heros;
 import Personnages.Personnage;
+import effet.*;
 
 public class CaseDeclencheuse extends Case {
 	private boolean used = false;
@@ -28,10 +28,13 @@ public class CaseDeclencheuse extends Case {
 	public void effet(Personnage heros) {
 		this.used = true;
 		int r = (int) (Math.random() * tab.length);
-		Effet e = tab[r];
-		int er = (int) (Math.random() * 2);
-		
-		e.effet(heros);
+		if(r==0)
+		{
+			r = (int) (Math.random() * tab.length);
+
+		}
+	
+		tab[r].effet(heros);
 		
 	}
 

@@ -1,16 +1,20 @@
-package Labyrinthe;
+package labyrinthe;
 
 import java.util.ArrayList;
 
 import Personnages.Heros;
 import Personnages.Monstre;
 import moteurJeu.Jeu;
+import objets.Amulette;
+import objets.Epee;
 
 public class Labyrinthe {
 	
 	private  int largeur;
 	private  int hauteur; 
 	private Amulette amulette;
+	private Epee epee;
+
 	private Heros pers; 
 	private ArrayList<Case> tab;
 	private ArrayList<Monstre> mon;
@@ -72,10 +76,15 @@ public class Labyrinthe {
 	}
 	public void setAmulette(Amulette a)
 	{
-		if(a!=null)
-		{
+		
 			this.amulette =a;
-		}
+		
+	}
+	public void setEpee(Epee e)
+	{
+		
+			this.epee =e;
+		
 	}
 	public void addMonstre(Monstre m)
 	{
@@ -126,7 +135,9 @@ public class Labyrinthe {
 	public Amulette getAmulette() {
 		return this.amulette;
 	}
-	
+	public Epee getEpee() {
+		return this.epee;
+	}
 	public ArrayList<Case> getTab()
 	{
 		return this.tab;

@@ -1,8 +1,10 @@
-package Labyrinthe;
+package labyrinthe;
 
 import Personnages.Fantome;
 import Personnages.Monstre;
 import Personnages.Troll;
+import objets.Amulette;
+import objets.Epee;
 
 public class GenerationLaby {
 	private Labyrinthe l;
@@ -71,12 +73,13 @@ public class GenerationLaby {
 		tour++;
 		if(tour>3)
 		{
-			l.setAmulette(new Amulette(15, 6, l, "String"));
+			l.setAmulette(new Amulette(15, 6, l));
 		}
 		else
 		{
 			l.addCase(new Porte(15,6,l));
 		}
+		l.setEpee(new Epee(0,2, l));
 		for (int i = 0; i < 8; i++) {
 			l.addCase(new Case(1, i+1));
 			l.addCase(new Case(3, i+2));

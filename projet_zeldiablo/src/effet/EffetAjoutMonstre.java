@@ -1,11 +1,11 @@
-package Effet;
+package effet;
 
-import Labyrinthe.Labyrinthe;
 import Personnages.Fantome;
 import Personnages.Heros;
 import Personnages.Monstre;
 import Personnages.Personnage;
 import Personnages.Troll;
+import labyrinthe.Labyrinthe;
 
 public class EffetAjoutMonstre implements Effet{
 

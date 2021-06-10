@@ -1,6 +1,6 @@
 package moteurJeu;
 
-import Personnages.Inventaire;
+import objets.Inventaire;
 
 /**
  * permet de representer une commande de l'utilisateur

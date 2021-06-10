@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
 import Personnages.Monstre;
+import labyrinthe.Labyrinthe;
+import objets.Amulette;
 
 public class TestHeros {
 
@@ -108,7 +108,7 @@ public class TestHeros {
 	public void test_HeroGagne_Ok() {
 		Labyrinthe labyrinthe = new Labyrinthe(14, 14);
 		Heros h = new Heros("Stib", 5, 5, labyrinthe, 2, null);
-		Amulette a = new Amulette(0, 1, labyrinthe, "Amulette");
+		Amulette a = new Amulette(0, 1, labyrinthe);
 		h.setPosX(0);
 		h.setPosY(1);
 		h.prendreAmulette(a);

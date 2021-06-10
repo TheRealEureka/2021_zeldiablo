@@ -1,4 +1,4 @@
-package jeuPerso;
+package graphiques;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import Labyrinthe.Case;
-import Labyrinthe.Labyrinthe;
-import Labyrinthe.Objet;
 import Personnages.Heros;
 import Personnages.Monstre;
 import Personnages.Personnage;
+import labyrinthe.Case;
+import labyrinthe.Labyrinthe;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
+import objets.Objet;
 
 /**
  * un afficheur graphique associe au JeuTest fourni
@@ -37,7 +37,7 @@ public class DessinPerso implements DessinJeu {
 	private Heros joueur;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead,trap;
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead,trap,sword;
 	private String source_lin = "src/images/";
 
 	/**
@@ -62,6 +62,7 @@ public class DessinPerso implements DessinJeu {
 			wood = ImageIO.read(new File(source_lin + "wood.png"));
 			dead = ImageIO.read(new File(source_lin + "dead.png"));
 			trap = ImageIO.read(new File(source_lin + "trapdoor.png"));
+			sword = ImageIO.read(new File(source_lin + "sword.png"));
 
 		} catch (IOException e) {
 
@@ -118,12 +119,12 @@ public class DessinPerso implements DessinJeu {
 			}
 			BufferedImage img1 = no;
 			BufferedImage img2 = no;
-			Objet o1 = joueur.getInv().getObj(1);
+			Objet o1 = joueur.getInv().getObj(0);
 			if (o1 != null) {
 				img1 = o1.getBi();
 			}
 
-			Objet o2 = joueur.getInv().getObj(2);
+			Objet o2 = joueur.getInv().getObj(1);
 			if (o2 != null) {
 				img2 = o2.getBi();
 			}
@@ -182,6 +183,9 @@ public class DessinPerso implements DessinJeu {
 		case "AMULETTE":
 			crayon.drawImage(amulette, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
+		case "SWORD":
+			crayon.drawImage(sword, x * TAILLE_CASE, y * TAILLE_CASE, null);
+			break;
 		case "PORTE":
 			crayon.drawImage(stone, x * TAILLE_CASE, y * TAILLE_CASE, null);
 
@@ -209,6 +213,9 @@ public class DessinPerso implements DessinJeu {
 		}
 		if (laby.getAmulette() != null) {
 			this.dessinerObjet("AMULETTE", laby.getAmulette().getX(), laby.getAmulette().getY(), null, im);
+		}
+		if (laby.getEpee() != null) {
+			this.dessinerObjet("SWORD", laby.getEpee().getX(), laby.getEpee().getY(), null, im);
 		}
 		this.dessinerObjet("PJ", joueur.getPosX(), joueur.getPosY(), null,im);
 

@@ -1,6 +1,4 @@
-package Personnages;
-
-import Labyrinthe.Objet;
+package objets;
 
 public class Inventaire {
 	
@@ -23,16 +21,20 @@ public class Inventaire {
 	public Objet getObj(int idx)
 	{
 		Objet o = null;
+		System.out.println(idx);
 		if(idx>=0 && idx<tab.length)
 		{
+
 			o = tab[idx];
 		}
+
 		return o;
 	}
 	public void setObj(int idx, Objet o)
 	{
 		if(idx>=0 && idx<tab.length)
 		{
+
 			tab[idx] = o;
 		}
 	}
@@ -50,4 +52,5 @@ public class Inventaire {
 	
 	
 
+	
 }

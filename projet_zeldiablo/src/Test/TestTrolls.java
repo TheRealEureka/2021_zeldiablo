@@ -5,8 +5,8 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import Labyrinthe.Labyrinthe;
 import Personnages.Troll;
+import labyrinthe.Labyrinthe;
 
 public class TestTrolls {
 	/**

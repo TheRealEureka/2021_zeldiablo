@@ -4,18 +4,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
-import Personnages.Inventaire;
 import Personnages.Personnage;
+import labyrinthe.Labyrinthe;
+import objets.Amulette;
+import objets.Inventaire;
 
 public class TestEtreFini {
 
 	@Test
 	public void testEtreFini_OK_Amulette() {
 		Labyrinthe la = new Labyrinthe(15, 15);
-		Amulette a = new Amulette(3, 3, la, "Amulette");
+		Amulette a = new Amulette(3, 3, la);
 		Personnage p = new Heros(la, new Inventaire());
 		p.setPosX(3);
 		p.setPosY(3);
@@ -28,7 +28,7 @@ public class TestEtreFini {
 	@Test
 	public void testEtreFini_PasOk_Amulette() {
 		Labyrinthe la = new Labyrinthe(15, 15);
-		Amulette a = new Amulette(3, 3, la, "Amulette");
+		Amulette a = new Amulette(3, 3, la);
 		Personnage p = new Heros(la, new Inventaire());
 		p.setPosX(3);
 		p.setPosY(3);
@@ -38,7 +38,7 @@ public class TestEtreFini {
 	@Test
 	public void testEtreFini_Ok_Mort() {
 		Labyrinthe la = new Labyrinthe(15, 15);
-		Amulette a = new Amulette(3, 3, la, "Amulette");
+		Amulette a = new Amulette(3, 3, la);
 		Personnage p = new Heros(la, new Inventaire());
 		p.subirDegats(200);
 		System.out.println(p.etreMort());

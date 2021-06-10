@@ -1,4 +1,4 @@
-package Effet;
+package effet;
 
 import Personnages.Heros;
 import Personnages.Personnage;

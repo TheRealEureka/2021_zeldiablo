@@ -1,6 +1,6 @@
 package Personnages;
 
-import Labyrinthe.Labyrinthe;
+import labyrinthe.Labyrinthe;
 
 public class Troll extends Monstre{
 	public Troll(Labyrinthe l)

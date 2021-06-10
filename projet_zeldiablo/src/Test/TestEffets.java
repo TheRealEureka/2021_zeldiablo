@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Effet.Effet;
-import Effet.EffetGagnerPv;
-import Effet.EffetPoison;
-import Effet.EffetTeleportation;
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
+import effet.Effet;
+import effet.EffetGagnerPv;
+import effet.EffetPoison;
+import effet.EffetTeleportation;
+import labyrinthe.Labyrinthe;
 
 public class TestEffets {
 

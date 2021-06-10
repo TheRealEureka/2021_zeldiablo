@@ -5,16 +5,15 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.GenerationLaby;
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
-import Personnages.Inventaire;
 import Personnages.Personnage;
-import jeuPerso.DessinPerso;
-
+import graphiques.DessinPerso;
+import labyrinthe.GenerationLaby;
+import labyrinthe.Labyrinthe;
 import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
+import objets.Amulette;
+import objets.Inventaire;
 
 /**
  * class Main

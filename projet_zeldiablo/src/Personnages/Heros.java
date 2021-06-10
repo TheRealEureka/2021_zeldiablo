@@ -1,9 +1,12 @@
 package Personnages;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.Labyrinthe;
+import labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import objets.Amulette;
+import objets.Epee;
+import objets.Inventaire;
+import objets.Objet;
 
 public class Heros extends Personnage implements Jeu {
 
@@ -139,6 +142,15 @@ public class Heros extends Personnage implements Jeu {
 						this.getLab().getAmulette().porteurPrends(this);
 						this.prendreAmulette(this.getLab().getAmulette());
 					}
+		
+				}
+				if(this.getLab().getEpee()!=null)
+				{
+					if (this.getLab().getEpee().getX() == this.getPosX()
+							&& this.getLab().getEpee().getY() == this.getPosY()) {
+						this.getLab().getEpee().porteurPrends(this);
+						this.prendreEpee(this.getLab().getEpee());
+					}
 				}
 			}
 		}
@@ -169,14 +181,19 @@ public class Heros extends Personnage implements Jeu {
 	public void evoluer(Commande commande) {
 		this.deplacer(commande);
 		if (this.getAmulette() != null) {
-			this.inv.setObj(1, this.getAmulette());
+			this.inv.setObj(0, this.getAmulette());
 		} else {
-			this.inv.removeObj(1);
+			this.inv.removeObj(0);
 		}
 		this.effet();
 		
 	}
-
+	public void prendreEpee(Epee a)
+	{
+		a.porteurPrends(this);
+		this.inv.setObj(1, a);
+		this.getLab().setEpee(null);
+	}
 	
 	public void effet()
 	{
@@ -189,7 +206,7 @@ public class Heros extends Personnage implements Jeu {
 				switch(this.effect)
 				{
 				case "POISON" :
-						this.subirDegats((int) (this.getVie() * 0.02));
+						this.subirDegats((int) (this.getVie() * 0.005));
 						break;
 				case "BLOCAGE" :
 					this.deplacement=false;

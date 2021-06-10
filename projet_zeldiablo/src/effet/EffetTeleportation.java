@@ -1,8 +1,8 @@
-package Effet;
+package effet;
 
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
 import Personnages.Personnage;
+import labyrinthe.Labyrinthe;
 
 public class EffetTeleportation implements Effet{
 

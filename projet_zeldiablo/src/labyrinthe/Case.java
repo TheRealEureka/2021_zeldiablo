@@ -1,8 +1,8 @@
-package Labyrinthe;
+package labyrinthe;
 
-import Effet.Effet;
 import Personnages.Heros;
 import Personnages.Personnage;
+import effet.Effet;
 
 public class Case {
 	private int x,y;

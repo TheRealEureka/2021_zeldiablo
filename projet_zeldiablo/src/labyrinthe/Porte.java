@@ -1,4 +1,4 @@
-package Labyrinthe;
+package labyrinthe;
 
 public class Porte extends Case{
 	private Labyrinthe currentLabyrinthe;

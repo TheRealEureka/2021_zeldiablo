@@ -1,6 +1,6 @@
 package Personnages;
 
-import Labyrinthe.Labyrinthe;
+import labyrinthe.Labyrinthe;
 
 public class Fantome extends Monstre {
 	public Fantome(Labyrinthe l) {

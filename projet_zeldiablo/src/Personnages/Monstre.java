@@ -1,9 +1,9 @@
 
 package Personnages;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.Labyrinthe;
+import labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
+import objets.Amulette;
 
 /**
  * Classe Monstre qui implemente l'interface Personnage
@@ -18,8 +18,8 @@ public class Monstre extends Personnage {
 	private int deltaT = 0;
 	private int deltaT2 = 0;
 
-	private int tpsAttaque = 150;
-	private int tpsDep = 400;
+	private int tpsAttaque = 400;
+	private int tpsDep = 250;
 
 	/**
 	 * Constructeur avec param�tre pour la vie du monstre

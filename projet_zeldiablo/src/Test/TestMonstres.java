@@ -5,9 +5,9 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import Labyrinthe.Labyrinthe;
 import Personnages.Heros;
 import Personnages.Monstre;
+import labyrinthe.Labyrinthe;
 
 public class TestMonstres {
 	/**

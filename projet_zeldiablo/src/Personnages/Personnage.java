@@ -1,14 +1,18 @@
 package Personnages;
 
-import Labyrinthe.Amulette;
-import Labyrinthe.Labyrinthe;
+import labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
+import objets.Amulette;
 
 public abstract class Personnage {
 
 	private int vie;
 	private int maxVie=1;
 	private int pointsAttaque;
+	public void setPointsAttaque(int pointsAttaque) {
+		this.pointsAttaque = pointsAttaque;
+	}
+
 	private Labyrinthe labi;
 	private int portee;
 	private int posX = 0;
