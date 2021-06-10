@@ -37,7 +37,7 @@ public class DessinPerso implements DessinJeu {
 	private Heros joueur;
 	private Labyrinthe laby;
 
-	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead;
+	private BufferedImage troll, fantome, image, background, stone, cd_off, cd_on, monstre, amulette, no, wood,dead,trap;
 	private String source_lin = "src/images/";
 
 	/**
@@ -61,6 +61,7 @@ public class DessinPerso implements DessinJeu {
 			no = ImageIO.read(new File(source_lin + "no.png"));
 			wood = ImageIO.read(new File(source_lin + "wood.png"));
 			dead = ImageIO.read(new File(source_lin + "dead.png"));
+			trap = ImageIO.read(new File(source_lin + "trapdoor.png"));
 
 		} catch (IOException e) {
 
@@ -80,7 +81,11 @@ public class DessinPerso implements DessinJeu {
 		case "BACKGROUND":
 			for (int i = 0; i <= 15; i++) {
 				for (int t = 0; t <= 16; t++) {
-					crayon.drawImage(background, i * TAILLE_CASE, t * TAILLE_CASE, null);
+					if(laby.getIndex(i,t)==-1)
+					{
+						crayon.drawImage(background, i * TAILLE_CASE, t * TAILLE_CASE, null);
+
+					}
 				}
 			}
 			break;
@@ -178,8 +183,10 @@ public class DessinPerso implements DessinJeu {
 			crayon.drawImage(amulette, x * TAILLE_CASE, y * TAILLE_CASE, null);
 			break;
 		case "PORTE":
-			crayon.setColor(Color.black);
-			crayon.fillRect(x * TAILLE_CASE, y * TAILLE_CASE, TAILLE_CASE, TAILLE_CASE);
+			crayon.drawImage(stone, x * TAILLE_CASE, y * TAILLE_CASE, null);
+
+			crayon.drawImage(trap, x * TAILLE_CASE, y * TAILLE_CASE, null);
+
 			break;
 		default:
 			throw new AssertionError("objet inexistant");
