@@ -3,10 +3,8 @@ package Personnages;
 import labyrinthe.Labyrinthe;
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
-import objets.Amulette;
 import objets.Epee;
 import objets.Inventaire;
-import objets.Objet;
 
 public class Heros extends Personnage implements Jeu {
 
@@ -29,7 +27,6 @@ public class Heros extends Personnage implements Jeu {
 	private int tpsTotal = 0;
 	private int dureeEffet = 400;
 
-
 	/**
 	 * Constructeur avec paramï¿½tre pour la vie du Heros
 	 * 
@@ -46,14 +43,16 @@ public class Heros extends Personnage implements Jeu {
 
 	}
 
-	
+	/**
+	 * Permet la création d'un heros
+	 */
 	public Heros() {
 		super();
 		this.nom = "BOB";
 		this.deplacement = true;
-	
 
 	}
+
 	/**
 	 * Constructeur avec paramï¿½tre pour la vie du Heros
 	 * 
@@ -90,74 +89,77 @@ public class Heros extends Personnage implements Jeu {
 		return res;
 	}
 
+	/**
+	 * @param commande de type commande Permet de déplace le heros dans le
+	 *                 labyrinthe
+	 */
 	public void deplacer(Commande commande) {
 		if (!this.isPause) {
-		if (this.deplacement) {
-			int x = this.getPosX();
-			int y = this.getPosY();
+			if (this.deplacement) {
+				int x = this.getPosX();
+				int y = this.getPosY();
 
-			if (commande.gauche) {
-				x--;
-				if (x < 0)
-					x = 0;
-			}
-
-			if (commande.droite) {
-				x++;
-				if (x >= LIMIT_X)
-					x = LIMIT_X;
-			}
-
-			if (commande.haut) {
-				y--;
-				if (y < 0) {
-					y = 0;
-				}
-			}
-
-			if (commande.bas) {
-				y++;
-				if (y >= LIMIT_Y) {
-					y = LIMIT_Y;
+				if (commande.gauche) {
+					x--;
+					if (x < 0)
+						x = 0;
 				}
 
-			}
-			
-			if(commande.attaque) {
-				this.attaquer(this.getLab().monstreAProximite(this));
-			}
+				if (commande.droite) {
+					x++;
+					if (x >= LIMIT_X)
+						x = LIMIT_X;
+				}
 
-			if (this.getLab().etreAccessible(x, y) && !this.etreMort() && deplacement) {
-				this.setPosX(x);
-				this.setPosY(y);
-				int i = this.getLab().getIndex(x, y);
-				if (i != -1) {
-					if (this.getLab().getTab().get(i).getType() == "DEC") {
-						this.getLab().getTab().get(i).effet(this);
-					}
-					if (this.getLab().getTab().get(i).getType() == "PORTE") {
-						this.getLab().getTab().get(i).ouvrir();
+				if (commande.haut) {
+					y--;
+					if (y < 0) {
+						y = 0;
 					}
 				}
-				if (this.getLab().getAmulette() != null) {
-					if (this.getLab().getAmulette().getX() == this.getPosX()
-							&& this.getLab().getAmulette().getY() == this.getPosY() && this.getAmulette() == null) {
-						this.getLab().getAmulette().porteurPrends(this);
-						this.prendreAmulette(this.getLab().getAmulette());
+
+				if (commande.bas) {
+					y++;
+					if (y >= LIMIT_Y) {
+						y = LIMIT_Y;
 					}
-		
+
 				}
-				if(this.getLab().getEpee()!=null)
-				{
-					if (this.getLab().getEpee().getX() == this.getPosX()
-							&& this.getLab().getEpee().getY() == this.getPosY()) {
-						this.getLab().getEpee().porteurPrends(this);
-						this.prendreEpee(this.getLab().getEpee());
+
+				if (commande.attaque) {
+					this.attaquer(this.getLab().monstreAProximite(this));
+				}
+
+				if (this.getLab().etreAccessible(x, y) && !this.etreMort() && deplacement) {
+					this.setPosX(x);
+					this.setPosY(y);
+					int i = this.getLab().getIndex(x, y);
+					if (i != -1) {
+						if (this.getLab().getTab().get(i).getType() == "DEC") {
+							this.getLab().getTab().get(i).effet(this);
+						}
+						if (this.getLab().getTab().get(i).getType() == "PORTE") {
+							this.getLab().getTab().get(i).ouvrir();
+						}
+					}
+					if (this.getLab().getAmulette() != null) {
+						if (this.getLab().getAmulette().getX() == this.getPosX()
+								&& this.getLab().getAmulette().getY() == this.getPosY() && this.getAmulette() == null) {
+							this.getLab().getAmulette().porteurPrends(this);
+							this.prendreAmulette(this.getLab().getAmulette());
+						}
+
+					}
+					if (this.getLab().getEpee() != null) {
+						if (this.getLab().getEpee().getX() == this.getPosX()
+								&& this.getLab().getEpee().getY() == this.getPosY()) {
+							this.getLab().getEpee().porteurPrends(this);
+							this.prendreEpee(this.getLab().getEpee());
+						}
 					}
 				}
 			}
 		}
-	}
 		// mise en place de l'ia des monstres
 		/*
 		 * int t = this.labi.getMonstre().size(); for (int i = 0; i<t; i++) { Monstre m
@@ -165,8 +167,9 @@ public class Heros extends Personnage implements Jeu {
 		 */
 	}
 
-
-	
+	/**
+	 * @return boolean pour savoir si le heros est mort ou pas
+	 */
 	public boolean etreMort() {
 		boolean res = false;
 		if (this.getVie() == 0) {
@@ -176,11 +179,17 @@ public class Heros extends Personnage implements Jeu {
 		return res;
 	}
 
+	/**
+	 * @return un String
+	 */
 	@Override
 	public String getType() {
 		return "PJ";
 	}
 
+	/**
+	 * @param commande de type Commande Permet d'évolué entre les différents étages
+	 */
 	@Override
 	public void evoluer(Commande commande) {
 		this.deplacer(commande);
@@ -190,85 +199,94 @@ public class Heros extends Personnage implements Jeu {
 			this.inv.removeObj(0);
 		}
 		this.effet();
-		
+
 	}
-	public void prendreEpee(Epee a)
-	{
+
+	public void prendreEpee(Epee a) {
 		a.porteurPrends(this);
 		this.inv.setObj(1, a);
 		this.getLab().setEpee(null);
 	}
-	
-	public void effet()
-	{
-		if(this.hasEffect)
-		{
-			if(tpsTotal <= dureeEffet)
-			{
-			if(deltaT>=tpsEffet)
-			{
-				switch(this.effect)
-				{
-				case "POISON" :
+
+	public void effet() {
+		if (this.hasEffect) {
+			if (tpsTotal <= dureeEffet) {
+				if (deltaT >= tpsEffet) {
+					switch (this.effect) {
+					case "POISON":
 						this.subirDegats((int) (this.getVie() * 0.005));
 						break;
-				case "BLOCAGE" :
-					this.deplacement=false;
-					break;
+					case "BLOCAGE":
+						this.deplacement = false;
+						break;
+					}
+					deltaT = 0;
+				} else {
+					deltaT += 50;
+					tpsTotal += 50;
 				}
-				deltaT=0;
-			}
-			else
-			{
-				deltaT+=50;
-				tpsTotal+=50;
-			}
-			}
-			else
-			{
+			} else {
 				tpsTotal = 0;
-				this.deplacement=true;
+				this.deplacement = true;
 				this.hasEffect = false;
 			}
 		}
 	}
+
+	/**
+	 * @return un inventaire
+	 */
 	public Inventaire getInv() {
 		return this.inv;
 	}
 
+	/**
+	 * @return un boolean Permet la fin du jeux
+	 */
 	@Override
 	public boolean etreFini() {
 		return this.etreMort() || this.getAmulette() != null;
 	}
 
-
-	public void hasEffect(boolean b, String s)
-	{
+	/**
+	 * @param b de type boolean
+	 * @param s de type String
+	 *
+	 */
+	public void hasEffect(boolean b, String s) {
 		this.hasEffect = b;
 		this.effect = s;
 	}
 
+	/**
+	 * @return un boolean
+	 */
 	public boolean isPause() {
 		return this.isPause;
 	}
-	
 
-	
+	/**
+	 * defini isPause à true
+	 */
 	public void pause() {
 		this.isPause = true;
-		
-		
-	
+
 	}
 
+	/**
+	 * defini isPause à false
+	 */
 	public void unPause() {
 		this.isPause = false;
 	}
-	
+
+	/**
+	 * Permet de restart le jeu
+	 */
 	public void restart() {
 		if (this.etreMort()) {
 			super.subirDegats(-150);
 		}
 	}
-	
+
 }
