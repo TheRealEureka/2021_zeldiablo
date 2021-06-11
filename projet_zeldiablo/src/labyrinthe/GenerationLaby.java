@@ -111,6 +111,8 @@ public class GenerationLaby {
 			}
 			l.addCase(new CaseDeclencheuse(x, y));
 		}
+		
+		
 	}
 
 	/**
@@ -413,6 +415,10 @@ public class GenerationLaby {
 
 		}
 
+	}
+	
+	public void reset() {
+		tour = 0;
 	}
 
 }

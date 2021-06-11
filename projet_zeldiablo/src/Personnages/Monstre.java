@@ -55,6 +55,11 @@ public class Monstre extends Personnage {
 	public Monstre(Labyrinthe la) {
 		super(la);
 	}
+	
+	/**
+	 * Méthode qui permet de deplacer le héros en fonction de la commande correspondante à l'endroit où il souhaite aller
+	 * @param commande
+	 */
 
 	public void deplacer(Commande commande) {
 		int x = this.getPosX();
@@ -99,7 +104,11 @@ public class Monstre extends Personnage {
 		}
 
 	}
-
+	
+	/**
+	 * Méthode qui permet au monstre de se déplacer vers un héros
+	 * @param h
+	 */
 	public void charger(Heros h) {
 		Commande c = new Commande();
 		if (!this.etreMort()) {
@@ -160,14 +169,25 @@ public class Monstre extends Personnage {
 
 		}
 	}
+	
+	/**
+	 * Méthode qui retourne la portee du monstre
+	 * @return range
+	 */
 	public int getRange() {
 		return range;
 	}
-
+	
+	/**
+	 * Méthode qui permet de mettre une nouvelle portee au montre
+	 * @param range 
+	 */
 	public void setRange(int range) {
 		this.range = range;
 	}
-
+	/**
+	 * Méthode etreMort qui retourne vrai si et seulement si le monstre est mort
+	 */
 	public boolean etreMort() {
 		boolean res = false;
 		if (this.getVie() == 0) {
@@ -181,17 +201,27 @@ public class Monstre extends Personnage {
 		}
 		return res;
 	}
-
+	
+	/**
+	 * Méthode qui retourne le type du monstre
+	 */
 	public String getType() {
 		return "MONSTER";
 
 	}
 
-
+	/**
+	 * Méthode etreFini qui retourne faux
+	 */
 	public boolean etreFini() {
 		return false;
 	}
-
+	
+	/**
+	 * Méthode qui permet de mettre un effet sur le personnage
+	 * @param b boolean
+	 * @param s string effet a subir
+	 */
 	@Override
 	public void hasEffect(boolean b, String s) {
 		//Rien

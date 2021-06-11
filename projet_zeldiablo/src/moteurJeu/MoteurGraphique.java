@@ -76,7 +76,8 @@ public class MoteurGraphique {
 			
 		}
 		this.gui.dessiner();
-
+		Thread.sleep(500);
+		this.gui.closeFrame();
 	}
 	
 	public void restart(int i, int j) throws InterruptedException {
