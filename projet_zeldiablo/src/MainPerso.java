@@ -8,10 +8,12 @@ import javax.swing.JPanel;
 import Personnages.Heros;
 import Personnages.Personnage;
 import graphiques.DessinPerso;
+import graphiques.Fin;
 import labyrinthe.GenerationLaby;
 import labyrinthe.Labyrinthe;
 import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
+import moteurJeu.PanelDessin;
 import objets.Amulette;
 import objets.Inventaire;
 
@@ -26,10 +28,13 @@ public class MainPerso extends JFrame{
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		// creation du jeu
+		boolean restart = true;
+		while(restart)
+		{
 		Labyrinthe lab = new Labyrinthe(15, 15);
+		
 		GenerationLaby gL = new GenerationLaby(lab);
 		gL.labyRandom();
-		String restart;
 		Inventaire inv = new Inventaire();
 		Scanner sc = new Scanner(System.in);
 		Jeu jeu = new Heros(lab, inv);
@@ -38,26 +43,29 @@ public class MainPerso extends JFrame{
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, aff);
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
+		
 		moteur.lancerJeu(400, 450);
-		
-		
-		System.out.println("Appuyez pour O pour rejouer et N pour sortir !");
-		restart = sc.nextLine();
-		
-		while(restart.equals("O")) {
-		moteur.restart(400,  450);
-	
-		
-		
-		System.out.println("Appuyez pour O pour rejouer et N pour sortir !");
-		restart = sc.nextLine();
+		Fin f = new Fin();
+		JFrame j = new JFrame();
+		j.setSize(200,100);
+		j.setContentPane(f);
+		j.setVisible(true);
+		int stat = f.getStatus();
+		while(stat==0)
+		{
+			stat = f.getStatus();
 		}
 		
-
-		// lorsque le jeu est fini
-		System.out.println("Fin du Jeu - appuyer sur entree");
-		
-		sc.nextLine();
+		if(stat==1)
+		{
+			restart=true;
+			j.dispose();
+		}
+		if(stat==2)
+		{
+			restart=false;
+		}
+		}
 		System.exit(1);
 	}
 

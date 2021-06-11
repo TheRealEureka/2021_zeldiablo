@@ -26,7 +26,7 @@ public class InterfaceGraphique {
 	 * le controleur lie a la JFrame
 	 */
 	private Controleur controleur;
-
+	private JFrame f;
 	/**
 	 * la construction de l'interface grpahique - construit la JFrame -
 	 * construit les Attributs
@@ -37,7 +37,7 @@ public class InterfaceGraphique {
 	 */
 	public InterfaceGraphique(DessinJeu afficheurUtil, int x, int y) {
 		// creation JFrame
-		JFrame f = new JFrame();
+		 f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setResizable(false);
 
@@ -73,6 +73,10 @@ public class InterfaceGraphique {
 	 */
 	public void dessiner() {
 		this.panel.dessinerJeu();
+	}
+	public void closeFrame()
+	{
+		this.f.dispose();
 	}
 
 }
