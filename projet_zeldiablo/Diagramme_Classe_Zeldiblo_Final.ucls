@@ -120,7 +120,7 @@
   </class>  
   <interface id="14" language="java" name="moteurJeu.Jeu" project="projet_zeldiablo" 
     file="/projet_zeldiablo/src/moteurJeu/Jeu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3698" y="3412"/>    
+    <position height="-1" width="-1" x="3662" y="3300"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
