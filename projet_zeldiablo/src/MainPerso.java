@@ -1,20 +1,14 @@
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.util.Scanner;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 
 import Personnages.Heros;
-import Personnages.Personnage;
 import graphiques.DessinPerso;
 import graphiques.Fin;
 import labyrinthe.GenerationLaby;
 import labyrinthe.Labyrinthe;
 import moteurJeu.Jeu;
 import moteurJeu.MoteurGraphique;
-import moteurJeu.PanelDessin;
-import objets.Amulette;
 import objets.Inventaire;
 
 
@@ -32,11 +26,9 @@ public class MainPerso extends JFrame{
 		while(restart)
 		{
 		Labyrinthe lab = new Labyrinthe(15, 15);
-		
 		GenerationLaby gL = new GenerationLaby(lab);
 		gL.labyRandom();
 		Inventaire inv = new Inventaire();
-		Scanner sc = new Scanner(System.in);
 		Jeu jeu = new Heros(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 		lab.setPers(jeu);
@@ -51,6 +43,7 @@ public class MainPerso extends JFrame{
 		j.setContentPane(f);
 		j.setVisible(true);
 		int stat = f.getStatus();
+		gL.reset();
 		while(stat==0)
 		{
 			stat = f.getStatus();
@@ -60,7 +53,6 @@ public class MainPerso extends JFrame{
 		{
 			restart=true;
 			j.dispose();
-			gL.reset();
 		}
 		if(stat==2)
 		{
