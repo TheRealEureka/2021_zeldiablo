@@ -122,7 +122,7 @@ public class GenerationLaby {
 		tour++;
 		if(tour>3)
 		{
-			l.setAmulette(new Amulette(14, 2, l));
+			l.setAmulette(new Amulette(8, 10, l));
 			
 		}
 		else {
@@ -204,10 +204,10 @@ public class GenerationLaby {
 		l.addCase(new Case(12, 9));
 		l.addCase(new Case(8, 11));
 		l.addCase(new Case(5, 10));
-		l.addCase(new Case(2, 13));
+		
 		l.addCase(new Case(2, 11));
 		l.addCase(new CaseDeclencheuse(8, 10));
-		
+		l.addCase(new Case(1, 13));
 		for (int i = 3; i < 14; i++) {
 			l.addCase(new Case(13, i));
 			
