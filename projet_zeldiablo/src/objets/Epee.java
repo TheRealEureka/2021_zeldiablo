@@ -10,8 +10,17 @@ import labyrinthe.Labyrinthe;
 
 public class Epee extends Objet {
 
+	/**
+	 * attribut rivé de type personnage
+	 */
 	private Personnage porteur;
 
+	/**
+	 * @param xc   de type int
+	 * @param yc   de type int
+	 * @param labi de type labyrinthe Construit une epee dans un labyrinthe à une
+	 *             position x et y donné
+	 */
 	public Epee(int xc, int yc, Labyrinthe labi) {
 
 		super(labi);
@@ -35,19 +44,28 @@ public class Epee extends Objet {
 
 	}
 
+	/**
+	 * @param p de type personnage permet à un personage de prendre l'épee
+	 */
 	public void porteurPrends(Personnage p) {
 		if (p.getPosX() == this.getX() && p.getPosY() == this.getY()) {
 			this.porteur = p;
-			p.setPointsAttaque(p.getPointsAttaque()+5);
+			p.setPointsAttaque(p.getPointsAttaque() + 5);
 		}
 	}
 
+	/**
+	 * permet de posé l'épee
+	 */
 	public void porteurPose() {
 		if (this.porteur != null) {
 			this.porteur = null;
 		}
 	}
 
+	/**
+	 * return un string
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

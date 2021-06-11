@@ -1,6 +1,5 @@
 package objets;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,15 +10,20 @@ import labyrinthe.Labyrinthe;
 
 public class Amulette extends Objet {
 
-
+	/**
+	 * attribut privé de type porteur
+	 */
 	private Personnage porteur;
 
-
-
+	/**
+	 * @param xc   de type int
+	 * @param yc   de type int
+	 * @param labi de type labyrinthe construit une amulette
+	 */
 	public Amulette(int xc, int yc, Labyrinthe labi) {
 
-		super (labi);
-		
+		super(labi);
+
 		if (this.getX() > labi.getHauteur()) {
 			this.setX(10);
 		} else {
@@ -32,15 +36,16 @@ public class Amulette extends Objet {
 		}
 		File imgLoc = new File("src/images/totem.png");
 		try {
-			   this.setBi(ImageIO.read(imgLoc)) ;
-			} catch (IOException ex) {
-			   System.out.println("aya");
-			}
-	 
+			this.setBi(ImageIO.read(imgLoc));
+		} catch (IOException ex) {
+			System.out.println("aya");
+		}
+
 	}
 
-
-
+	/**
+	 * @param p de type personnage permet au personnage de prendre l'amulette
+	 */
 	public void porteurPrends(Personnage p) {
 		if (p.getPosX() == this.getX() && p.getPosY() == this.getY()) {
 			this.porteur = p;
@@ -48,13 +53,18 @@ public class Amulette extends Objet {
 		}
 	}
 
+	/**
+	 * peremet de poser l'amulette
+	 */
 	public void porteurPose() {
 		if (this.porteur != null) {
 			this.porteur = null;
 		}
 	}
 
-
+	/**
+	 * return un string
+	 */
 	public String toString() {
 		return "Amulette";
 	}
