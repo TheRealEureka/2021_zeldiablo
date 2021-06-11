@@ -32,6 +32,7 @@ public class CaseDeclencheuse extends Case {
 		return res;
 	}
 
+	
 	/**
 	 *Methode qui appelle un effet random dans la liste d'effets
 	 *@param heros qui va subir l'effet

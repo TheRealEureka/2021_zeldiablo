@@ -90,6 +90,7 @@ public class Case {
 	}
 
 	
+	
 
 	/**
 	 * @param personnage de type Personnage
