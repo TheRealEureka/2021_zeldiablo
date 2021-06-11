@@ -38,7 +38,6 @@ public class Epee extends Objet {
 	public void porteurPrends(Personnage p) {
 		if (p.getPosX() == this.getX() && p.getPosY() == this.getY()) {
 			this.porteur = p;
-			p.setPortee(p.getPortee()+1);
 			p.setPointsAttaque(p.getPointsAttaque()+5);
 		}
 	}

@@ -132,7 +132,7 @@ public class DessinPerso implements DessinJeu {
 				crayon.setFont(f);
 				crayon.drawString("WASTED", 85, 197);	
 			}
-			if(!joueur.etreMort() && joueur.getAmulette()!=null)
+			if(joueur.herosGagne())
 			{
 				crayon.setColor(new Color(0, 0, 0, 150));
 				crayon.fillRect(0, 150, 400, 60);
