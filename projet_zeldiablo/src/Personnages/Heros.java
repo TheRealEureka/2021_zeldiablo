@@ -270,4 +270,5 @@ public class Heros extends Personnage implements Jeu {
 			super.subirDegats(-150);
 		}
 	}
+	
 }
