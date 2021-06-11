@@ -122,7 +122,7 @@ public class GenerationLaby {
 		tour++;
 		if(tour>3)
 		{
-			l.setAmulette(new Amulette(8, 10, l));
+			l.setAmulette(new Amulette(9, 10, l));
 			
 		}
 		else {
