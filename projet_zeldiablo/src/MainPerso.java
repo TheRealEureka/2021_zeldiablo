@@ -15,14 +15,7 @@ import moteurJeu.MoteurGraphique;
 import objets.Amulette;
 import objets.Inventaire;
 
-/**
- * class Main
- * <p>
- * Permet de lancer le jeu jeuPerso en utilisant le moteur graphique fourni.
- * 
- * @author vthomas
- * 
- */
+
 public class MainPerso extends JFrame{
 
 	/**
