@@ -60,6 +60,7 @@ public class MainPerso extends JFrame{
 		{
 			restart=true;
 			j.dispose();
+			gL.reset();
 		}
 		if(stat==2)
 		{
