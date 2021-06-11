@@ -130,10 +130,16 @@ public class DessinPerso implements DessinJeu {
 				crayon.setColor(Color.RED);
 				Font f = new Font("Serif", Font.BOLD, 50);
 				crayon.setFont(f);
-				crayon.drawString("WASTED", 85, 197);
-				
-
-				
+				crayon.drawString("WASTED", 85, 197);	
+			}
+			if(!joueur.etreMort() && joueur.getAmulette()!=null)
+			{
+				crayon.setColor(new Color(0, 0, 0, 150));
+				crayon.fillRect(0, 150, 400, 60);
+				crayon.setColor(Color.GREEN);
+				Font f = new Font("Serif", Font.BOLD, 50);
+				crayon.setFont(f);
+				crayon.drawString("WIN", 130, 197);	
 			}
 			BufferedImage img1 = no;
 			BufferedImage img2 = no;
