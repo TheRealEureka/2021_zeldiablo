@@ -1,22 +1,24 @@
 package effet;
 
 import Personnages.Fantome;
-import Personnages.Heros;
 import Personnages.Monstre;
 import Personnages.Personnage;
 import Personnages.Troll;
 import labyrinthe.Labyrinthe;
 
-public class EffetAjoutMonstre implements Effet{
+public class EffetAjoutMonstre implements Effet {
 
+	/**
+	 *
+	 */
 	@Override
 	public void effet(Personnage h) {
-		
+
 		Labyrinthe la = h.getLab();
 		int x = h.getPosX();
 		int y = h.getPosY();
-		
-		int nouveauX = x+1;
+
+		int nouveauX = x + 1;
 		int nouveauY = y;
 		while (!la.etreAccessible(nouveauX, nouveauY)) {
 			if (x == la.getLargeur()) {
@@ -26,7 +28,7 @@ public class EffetAjoutMonstre implements Effet{
 		}
 		int r = (int) (Math.random() * 3);
 		Monstre m;
-		switch(r) {
+		switch (r) {
 		case 0:
 			m = new Monstre(15, 22, la, 20);
 			m.setPosX(nouveauX);
@@ -45,12 +47,9 @@ public class EffetAjoutMonstre implements Effet{
 			m.setPosY(nouveauY);
 			la.addMonstre(m);
 			break;
-			
-			
+
 		}
-		
+
 	}
-
-
 
 }
