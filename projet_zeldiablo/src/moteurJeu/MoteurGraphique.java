@@ -28,6 +28,8 @@ public class MoteurGraphique {
 	 * l'afficheur a utiliser pour le rendu
 	 */
 	private DessinJeu dessin;
+	
+	private boolean restart = true;
 
 	/**
 	 * construit un moteur
@@ -55,7 +57,7 @@ public class MoteurGraphique {
 		this.gui.dessiner();
 		Thread.sleep(500);
 		// boucle de jeu
-		while (!this.jeu.etreFini()) {
+		while (!this.jeu.etreFini() && restart) {
 			// demande controle utilisateur
 			
 			Commande c = controle.getCommande();
@@ -76,5 +78,12 @@ public class MoteurGraphique {
 		this.gui.dessiner();
 
 	}
+	
+	public void restart(int i, int j) throws InterruptedException {
+		this.restart = true;
+		this.jeu.restart();
+	}
+	
+	
 
 }

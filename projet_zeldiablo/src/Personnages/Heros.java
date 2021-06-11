@@ -22,8 +22,7 @@ public class Heros extends Personnage implements Jeu {
 	private boolean hasEffect = false;
 	private String effect;
 	private boolean isPause = false;
-	
-	
+
 	private int deltaT = 0;
 	private int tpsEffet = 100;
 
@@ -264,6 +263,12 @@ public class Heros extends Personnage implements Jeu {
 
 	public void unPause() {
 		this.isPause = false;
+	}
+	
+	public void restart() {
+		if (this.etreMort()) {
+			super.subirDegats(-150);
+		}
 	}
 	
 }
