@@ -29,8 +29,9 @@ public class MainPerso extends JFrame{
 		Labyrinthe lab = new Labyrinthe(15, 15);
 		GenerationLaby gL = new GenerationLaby(lab);
 		gL.labyRandom();
-
+		String restart;
 		Inventaire inv = new Inventaire();
+		Scanner sc = new Scanner(System.in);
 		Jeu jeu = new Heros(lab, inv);
 		DessinPerso aff = new DessinPerso(jeu, lab);
 		lab.setPers(jeu);
@@ -40,10 +41,22 @@ public class MainPerso extends JFrame{
 		moteur.lancerJeu(400, 450);
 		
 		
+		System.out.println("Appuyez pour O pour rejouer et N pour sortir !");
+		restart = sc.nextLine();
+		
+		while(restart.equals("O")) {
+		moteur.restart(400,  450);
+	
+		
+		
+		System.out.println("Appuyez pour O pour rejouer et N pour sortir !");
+		restart = sc.nextLine();
+		}
+		
 
 		// lorsque le jeu est fini
 		System.out.println("Fin du Jeu - appuyer sur entree");
-		Scanner sc = new Scanner(System.in);
+		
 		sc.nextLine();
 		System.exit(1);
 	}

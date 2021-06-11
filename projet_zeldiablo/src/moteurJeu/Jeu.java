@@ -26,4 +26,8 @@ public interface Jeu {
 	public void pause();
 	
 	public void unPause();
+	
+	public void restart();
+	
+
 }
