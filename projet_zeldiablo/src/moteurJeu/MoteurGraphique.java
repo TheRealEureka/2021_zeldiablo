@@ -51,7 +51,9 @@ public class MoteurGraphique {
 		// creation de l'interface graphique
 		this.gui = new InterfaceGraphique(this.dessin, width, height);
 		Controleur controle = this.gui.getControleur();
-
+		
+		this.gui.dessiner();
+		Thread.sleep(500);
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
 			// demande controle utilisateur

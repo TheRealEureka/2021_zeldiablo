@@ -250,7 +250,8 @@ public class DessinPerso implements DessinJeu {
 		{
 			
 			this.dessinerObjet("START", 0, 0,null, im);
-			if(deltaT>1000)
+			
+			if(deltaT>500)
 			{	
 				
 				this.joueur.unPause();
