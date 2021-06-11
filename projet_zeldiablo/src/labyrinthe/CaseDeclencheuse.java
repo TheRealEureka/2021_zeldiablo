@@ -10,10 +10,18 @@ public class CaseDeclencheuse extends Case {
 			new EffetTeleportation(), new EffetBlocage(), new EffetAjoutMonstre(), new EffetGagnerPv(), new EffetPoison(),
 			new EffetTeleportation(), new EffetBlocage()};
 
+	/**
+	 * @param _x type int
+	 * @param _y type int
+	 * constructeur de case déclancheuse
+	 */
 	public CaseDeclencheuse(int _x, int _y) {
 		super(_x, _y, false);
 	}
 
+	/**
+	 * @return un type String
+	 */
 	public String getType() {
 		String res;
 		if (used) {
@@ -24,6 +32,10 @@ public class CaseDeclencheuse extends Case {
 		return res;
 	}
 
+	/**
+	 *Methode qui appelle un effet random dans la liste d'effets
+	 *@param heros qui va subir l'effet
+	 */
 	@Override
 	public void effet(Personnage heros) {
 		this.used = true;
